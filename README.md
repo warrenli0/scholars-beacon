@@ -1,1 +1,1 @@
-# scholars-beacon
+# Scholars Beacon
