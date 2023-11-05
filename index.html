@@ -115,6 +115,12 @@
             window.ftypes = new Array();
             fnames[0]='EMAIL';
             ftypes[0]='email';
+
+            $(document).ready(function() {
+            $('#mc-embedded-subscribe-form').submit(function(event) {
+                alert('Thank you for subscribing! We will be in touch soon.');
+            });
+        });
         }(jQuery));
         var $mcj = jQuery.noConflict(true);
     </script>
