@@ -118,26 +118,5 @@
         }(jQuery));
         var $mcj = jQuery.noConflict(true);
     </script>
-
-  <div id="success-popup" style="display: none;">
-    <p>Thank you for subscribing!</p>
-    <button onclick="closePopup()">Close</button>
-  </div>
-
-  <script>
-    function closePopup() {
-      document.getElementById('success-popup').style.display = 'none';
-    }
-
-    $(document).ready(function() {
-      $('#mc-embedded-subscribe-form').submit(function(event) {
-        $('#success-popup').show();
-
-        setTimeout(function() {
-          $('#success-popup').hide();
-        }, 5000);
-      });
-    });
-  </script>
 </body>
 </html>
