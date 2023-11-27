@@ -1,0 +1,102 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  font-family: 'Poppins', sans-serif;
+}
+
+.white{
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color:#003D5B;
+}
+
+.white div{
+  width: 90%;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size:8vw;
+}
+
+.gold{
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color:#30638E;
+}
+
+.gold div{
+  width: 90%;
+  color: #FFA515;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size:6vw;
+}
+
+.referral{
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color:#003D5B;
+}
+
+.referral div{
+  width: 90%;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size:4vw;
+}
+
+.referral input{
+  padding: 10px;
+  border: 4px solid #000;
+  box-shadow:0 0 15px 20px rgba(0,0,0,0.1);
+  border-radius:10px;
+  font-family:inherit;
+  color: #BFBFBF;
+  width:20%;
+  background-color:#001E2B;
+}
+
+.private{
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color:#30638E;
+}
+
+.private h1{
+  width: 90%;
+  color: #FFA515;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size:4vw;
+}
+
+.private h2{
+  width: 90%;
+  color: #FFF;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size:3vw;
+}
