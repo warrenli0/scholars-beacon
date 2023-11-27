@@ -1,158 +1,71 @@
-<!--
-https://www.youtube.com/watch?v=4Y-4Xb6FsRI
-  -->
-
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- add meta data 4 search engine keywords -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Multiple Choice Quiz</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      background-color: aliceblue;
-    }
-    form{
-      margin-top:20px;
-    }
-    .quiz-container {
-      width: 80%;
-      margin: 0 auto;
-    }
+  <title>SB Practice Questions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="questions.css">
 
-    h1 {
-      text-align: center;
-    }
-
-    .question {
-      width:45%;
-      margin-bottom: 20px;
-      background-color: #fff;
-      padding:20px;
-    }
-    .question:nth-child(odd){
-      margin-right:5%;
-    }
-    .question p{
-      font-weight: bold;
-    }
-
-    .answers {
-      margin-bottom: 20px;
-    }
-    .answers label:not(:first-child){
-      border-top:1px solid #e0e0e0;
-    }
-
-    label {
-      padding:10px 0;
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    input[type="radio"] {
-      margin-right: 10px;
-    }
-
-    .submit-btn {
-      display: block;
-      margin: 20px auto;
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    .result {
-      font-weight: bold;
-      font-size: 22px;
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #f2f2f2;
-      border-radius: 5px;
-      text-align: center;
-    }
-    .d-flex{
-      display: flex;
-    }
-  </style>
 </head>
-<body>
-  <div class="quiz-container">
-    <h1>Multiple Choice Quiz</h1>
-    <hr>
-    <form id="quiz-form">
-      <div class="d-flex">
-        <div class="question">
-          <p>1. What is Aruns last name?</p>
-          <div class="answers">
-            <label>
-              <input type="radio" name="q1" value="a">
-              Harden
-            </label>
-            <label>
-              <input type="radio" name="q1" value="b">
-              Barden
-            </label>
-            <label>
-              <input type="radio" name="q1" value="c">
-              Fartin
-            </label>
-            <label>
-              <input type="radio" name="q1" value="d">
-              Dartin
-            </label>
-          </div>
-        </div>
 
-        <div class="question">
-          <p>2. What is Warrens nickname?</p>
-          <div class="answers">
-            <label>
-              <input type="radio" name="q2" value="a">
-              gigachhad
-            </label>
-            <label>
-              <input type="radio" name="q2" value="b">
-              chibi
-            </label>
-            <label>
-              <input type="radio" name="q2" value="c">
-              Yang tu chang
-            </label>
-            <label>
-              <input type="radio" name="q2" value="d">
-              gun kai
-            </label>
-          </div>
-        </div>
-      </div>
-      <button type="submit" class="submit-btn">Submit</button>
-    </form>
+<body onload = "stopWatch()" >
 
-    <div class="result" id="result"></div>
-  </div>
+  <section class="white">
+    <div class="timer" id="clock">
+      00:00
+    </div>
+    <div class="qBox">
+       <p>
+         Maria is staying at a hotel that charges $99.95 per night plus tax for a room.
+         A tax of 8% is applied to the room rate, and an additional onetime untaxed fee of
+         $5.00 is charged by the hotel. Which of the following represents Maria’s total
+         charge, in dollars, for staying x nights?
+       </p>
 
-  <script>
-    const quizForm = document.getElementById('quiz-form');
-    const resultDiv = document.getElementById('result');
-    const correctAnswers = ['a', 'c'];
+       <button type="button">(99.95 + 0.08x) + 5</button> <br>
+       <button type="button">1.08(99.95x) + 5</button> <br>
+       <button type="button">1.08(99.95x + 5)</button> <br>
+       <button type="button">1.08(99.95 + 5)x</button>
+    </div>
+  </section>
 
-    quizForm.addEventListener('submit', e => {
-      e.preventDefault();
+</body>
 
-      let score = 0;
-      const userAnswers = [quizForm.q1.value,quizForm.q2.value];
-      userAnswers.forEach((answer, index) => {
-        if (answer === correctAnswers[index]) {
-          score += 1;
-        }
-      });
+<script>
 
-      resultDiv.innerHTML = `Your score is ${score}/${correctAnswers.length}`;
-    });
+
+  let second = 0;
+  let minute = 0;
+
+  function stopWatch() {
+
+          let minString = "00";
+          let secString = "";
+          second++
+          if (second == 60) {
+            minute++
+            second = 0
+            secString = "0"
+          }
+          else if (second < 10) {
+            secString = "0"
+          }
+
+          if (minute < 10) {
+            minString = "0" + minute
+          } else {
+            minString = minute
+          }
+
+          let nString = "" + minString + ":" + secString + second
+          document.getElementById('clock').innerHTML = nString;
+          setTimeout(stopWatch, 1000);
+  }
+
+
 </script>
+
+</html>

@@ -11,7 +11,7 @@ html{
   min-height: 100vh;
   width: 100%;
   position: relative;
-  background-color:#003D5B;
+  background-color:#002433;
 }
 
 .white div{
@@ -34,7 +34,7 @@ html{
 
 .gold div{
   width: 90%;
-  color: #FFA515;
+  color: #FFB800;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -47,7 +47,7 @@ html{
   min-height: 100vh;
   width: 100%;
   position: relative;
-  background-color:#003D5B;
+  background-color:#002433;
 }
 
 .referral div{
@@ -81,7 +81,7 @@ html{
 
 .private h1{
   width: 90%;
-  color: #FFA515;
+  color: #FFB800;
   position: absolute;
   top: 25%;
   left: 50%;

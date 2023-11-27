@@ -1,0 +1,75 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  font-family: 'Poppins', sans-serif;
+}
+
+.white{
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color:#002433;
+}
+
+.timer{
+  text-align: right;
+  font-weight: bold;
+  width: 98%;
+  position: absolute;
+  top: 4%;
+  color: #fff;
+  font-size:1.3vw;
+}
+
+.qBox{
+  width: 70%;
+  height: 60%;
+  border-radius: 30px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size:1vw;
+  background: #000;
+}
+
+.qBox p{
+  position: relative;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  width: 80%;
+  font-size:1.4vw;
+
+}
+
+.qBox button{
+  position: relative;
+  top: 15%;
+  text-align: left;
+  width: 20%;
+  left: 10%;
+
+  margin: 5px;
+  padding: 10px;
+  border: 4px solid #000;
+  box-shadow:0 0 15px 20px rgba(0,0,0,0.1);
+  border-radius:10px;
+  font-family:inherit;
+  font-weight: bold;
+  font-size:1vw;
+  color: #000;
+  width:18%;
+  background-color:#fff;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.qBox button:hover {background-color: #FFB800;}
+
+.qBox button:active {background-color:#9E7200;
