@@ -7,7 +7,7 @@
   margin: 0 auto;
 
   width: 70%; 
-  height: auto;
+  min-height: 70vh;
 
   background-color: black;
   padding: 16px;
@@ -66,4 +66,43 @@
   color: white;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+
+.final-results h2 {
+  font-weight: 600;
+}
+
+.final-results ul {
+  list-style: none;
+  font-weight: 800;
+  padding: 16px;
+  text-align: left;
+}
+
+.final-results li {
+  margin-top: 8px;
+  padding-left: 30%;
+}
+
+.final-results span {
+  float: right;
+  text-align: left;
+  padding-right: 40%;
+}
+
+.final-results button {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: large;
+  margin-bottom: 16px;
+  background-color: white;
+  color: black;
+  padding: 8px;
+  border-radius: 10px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.final-results button:hover {
+  background-color: #FFB800;
 }
