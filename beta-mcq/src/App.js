@@ -9,7 +9,9 @@ function App() {
   const [question, setQuestion] = useState(0);
   const [answers, setAnswers] = useState([]); // qNum, T/F -> set by user
   const [showReview, setReview] = useState(false);
-
+  const [finishReview, setFinishReview] = useState(false);
+  const [endofSession, setFinishSession] = useState(false);
+  
   const questions = [
     {
       text: "Maria is staying at a hotel that charges $99.95 per night plus tax for a room. A tax of 8% is applied to the room rate, and an additional onetime untaxed fee of $5.00 is charged by the hotel. Which of the following represents Maria’s total charge, in dollars, for staying x nights?",
@@ -20,7 +22,18 @@ function App() {
         { id: 3, text: "1.08(99.95 + 5)x", isCorrect: false },
       ],
       type: "Math (no calc)",
-      explanation: "The room rate is $99.95 for every night. Since you stay for x nights, the price becomes 99.95x. However, there is a tax of 8% on the room rate, so the pice is 0.08(99.95x). Lastly, with the addition of a one time untaxed fee, the answer is the second option — 1.08(99.95x) + 5.",
+      explanation: "The room rate is $99.95 for every night. Since you stay for x nights, the price becomes 99.95x. However, there is a tax of 8% on the room rate, so the price is 0.08(99.95x). Lastly, with the addition of a one time untaxed fee of $5, the answer is the second option: 1.08(99.95x) + 5.",
+    },
+    {
+      text: "Greek yogurt business have found many methods of controlling and eliminating most environmental threats. Given these solutions as well as the many health benefits of the food, the advantages of Greek yogurt 'outdo' the potential drawbacks of its production.",
+      options: [
+        { id: 0, text: "NO CHANGE", isCorrect: false },
+        { id: 1, text: "defeat", isCorrect: false },
+        { id: 2, text: "outperform", isCorrect: false },
+        { id: 3, text: "outweigh", isCorrect: true },
+      ],
+      type: "Grammar",
+      explanation: "“Outweigh” is the only choice between “advantages” and “drawbacks.” Choices 1, 2, and 3 are incorrect because each implies a competitive relationship that is inappropriate in this context.",
     },
     {
       text: "Given y = a(x-2)(x+4) and a is a nonzero constant: The graph of the equation in the xy-plane is a parabola with vertex (c,d), Which of the following is equal to d?",
@@ -31,18 +44,7 @@ function App() {
         { id: 3, text: "-2a", isCorrect: false },
       ],
       type: "Math (no calc)",
-      explanation: "TBD 1",
-    },
-    {
-      text: "At a lunch stand, each hamburger has 50 more calories than each order of fries. If 2 hamburgers and 3 orders of fries have a total of 1700 calories, how many calories does a hamburger have?",
-      options: [
-        { id: 0, text: "320", isCorrect: false },
-        { id: 1, text: "370", isCorrect: true },
-        { id: 2, text: "270", isCorrect: false },
-        { id: 3, text: "warren", isCorrect: false },
-      ],
-      type: "Math (no calc)",
-      explanation: "TBD 2",
+      explanation: "The vertex is in the middle of the x-intercepts. The x-intercepts are where y = 0, so when x - 2 = 0 and x + 4 = 0. The x-intercepts are (2,0) and (-4,0). The x-value for the vertex is in the middle of 2 and -4, so it is -1. Substituting -1 for x, we get y = -9a, so the vertex is (-1, -9a). The answer is -9a.",
     },
     {
       text: "At Luffy's High School, approximately 7 percent of enrolled juniors and 5 percent of enrolled seniors were inducted into the National Pirate Society last year. If there were 562 juniors and 602 seniors enrolled at Luffy's High School last year, which is closest to the total number of juniors and seniors at Luffy's High School last year who were inducted into the National Pirate Society?",
@@ -53,7 +55,51 @@ function App() {
         { id: 3, text: "39", isCorrect: false },
       ],
       type: "Math (calc)",
-      explanation: "TBD 3",
+      explanation: "Since 7 percent of the 562 juniors is 0.07(562) and 5 percent of the 602 seniors is 0.05(602), the expression 0.07(562) + 0.05(602) can be evaluated to determine the total number of juniors and seniors inducted into the National Pirate Society. Of the given choices, 69 is closest to the value of the expression.",
+    },
+    {
+      text: "Yogurt manufacturers, food 'scientists; and' government officials are also working together to develop additional solutions for reusing whey.",
+      options: [
+        { id: 0, text: "NO CHANGE", isCorrect: false },
+        { id: 1, text: "scientists: and", isCorrect: false },
+        { id: 2, text: "scientists, and", isCorrect: true },
+        { id: 3, text: "scientists, and,", isCorrect: false },
+      ],
+      type: "Grammar",
+      explanation: "Choice 3 is the best answer because it utilizes proper punctuation for items listed in a series. In this case those items are nouns: “Yogurt manufacturers, food scientists, and government officials. Choices 1 and 2 are incorrect because both fail to recognize that the items are a part of a series. Since a comma is used after “manufacturers,” a semicolon or colon should not be used after “scientists.” Choice 4 is incorrect because the comma after “and” is unnecessary and deviates from grammatical conventions for presenting items in a series.",
+    },
+    {
+      text: "At a lunch stand, each hamburger has 50 more calories than each order of fries. If 2 hamburgers and 3 orders of fries have a total of 1700 calories, how many calories does a hamburger have?",
+      options: [
+        { id: 0, text: "320", isCorrect: false },
+        { id: 1, text: "370", isCorrect: true },
+        { id: 2, text: "270", isCorrect: false },
+        { id: 3, text: "warren", isCorrect: false },
+      ],
+      type: "Math (no calc)",
+      explanation: "The equation 2h + 3f = 1700 represents the fact that 2 hamburgers and 3 orders of fries contain a total of 1700 calories, and the equation h = f + 50 represents the fact that one hamburger contains 50 more calories than an order of fries. Substituting f + 50 for h in 2h + 3f = 1700 gives 2(f + 50) + 3f = 1700, meaning f = 320. Therefore, h = 370.",
+    },
+    {
+      text: "Which choice most effectively combines the two sentences at the quoted portion? Typically, the ice sheet begins to show evidence of thawing in late ‘summer. This’ follows several weeks of higher temperatures.",
+      options: [
+        { id: 0, text: "summer, following", isCorrect: true },
+        { id: 1, text: "summer, and this thawing follows", isCorrect: false },
+        { id: 2, text: "summer, and such thawing follows", isCorrect: false },
+        { id: 3, text: "summer and this evidence follows", isCorrect: false },
+      ],
+      type: "Grammar",
+      explanation: "Choice 1 is the best answer because it concisely combines the two sentences while maintaining the original meaning. Choices 2, 3, and 4 are incorrect because each is unnecessarily wordy, thus undermining one purpose of combining two sentences: to make the phrasing more concise.",
+    },
+    {
+      text: "Because consumers reap the nutritional benefits of Greek yogurt and support those who make and sell ‘it, therefore farmers’ and businesses should continue finding safe and effective methods of producing the food.",
+      options: [
+        { id: 0, text: "NO CHANGE", isCorrect: false },
+        { id: 1, text: "it, farmers", isCorrect: true },
+        { id: 2, text: "it, so farmers", isCorrect: false },
+        { id: 3, text: "it: farmers", isCorrect: false },
+      ],
+      type: "Grammar",
+      explanation: "Choice 2 is the best answer because it provides a syntactically coherent and grammatically correct sentence. Choices 1 and 3 are incorrect because the adverbial conjunctions “therefore” and “so,” respectively, are unnecessary following “Because.” Choice 4 is incorrect because it results in a grammatically incomplete sentence (the part of the sentence before the colon must be an independent clause).",
     },
     {
       text: "Neal walks 25 meters in 13.7 seconds. If he walks at this same rate, which of the following is closest to the distance he will walk in 4 minutes?",
@@ -64,7 +110,18 @@ function App() {
         { id: 3, text: "1000 meters", isCorrect: false },
       ],
       type: "Math (calc)",
-      explanation: "TBD 4",
+      explanation: "25 meters in 13.7 seconds is a rate of about 1.82 m/s. He walks for 4 minutes which is 240 seconds. The total distance is then (1.82 m/s) * (240 s) = 436.8 m, which is closest to 450 meters.",
+    },
+    {
+      text: "Having become frustrated trying to solve difficult problems, ‘no colleagues were nearby to share ideas’.",
+      options: [
+        { id: 0, text: "NO CHANGE", isCorrect: false },
+        { id: 1, text: "colleagues were important for sharing ideas.", isCorrect: false },
+        { id: 2, text: "ideas couldn’t be shared with colleagues.", isCorrect: false },
+        { id: 3, text: "I missed having colleagues nearby to consult.", isCorrect: true },
+      ],
+      type: "Grammar",
+      explanation: "Choice 4 is the best answer because it is the only choice that provides a grammatically standard and coherent sentence. The participial phrase “Having become frustrated. . .” functions as an adjective modifying “I,” the writer.",
     },
   ];
 
@@ -82,26 +139,46 @@ function App() {
       setScore(score + 1);
     }
 
-    if (question + 1 < questions.length) {
-      setQuestion(question + 1);
-    } else {
+    // taking every 5th question
+    if ((question + 1) % 5 === 0) {
       setResults(true);
+    } else {
+      setQuestion(question + 1);
     }
   }
 
   const nextReviewQ = () => {
-    setQuestion(question + 1);
+    if ((question + 1) % 5 === 0) {
+      setFinishReview(true);
+    } else {
+      setQuestion(question + 1);
+    }
   }
 
   // begin review
   const startReview = () => {
     //setAnswers([]);
     //setScore(0);
-    console.log(answers);
-    setQuestion(0);
+    //console.log(answers);
+    setFinishReview(false);
+    setQuestion(question-4);
     setResults(false);
     setReview(true);
   };
+
+  // next problems
+  const nextProblems = () => {
+    setScore(0);
+    setAnswers([]);
+    setFinishReview(false);
+    if ((question + 1) >= questions.length) {
+      setQuestion(0);
+    } else {
+      setQuestion(question+1);
+    }
+    setResults(false);
+    setReview(false);
+  }
 
   // not sure why CSS not being inherited so having to do like this for some classes to save time
   const ecstyle = {
@@ -117,13 +194,14 @@ function App() {
     
   };
   
-  
+
   const rcstyle = {
     justifyContent: "center",
     display: "flex",
   };
 
   //action={understand(question)} in form
+  // explanation card component
   function ECard() {
     return (
       <div style={ecstyle}>
@@ -142,10 +220,70 @@ function App() {
     )
   }
 
+  // results card component
+  function RCard() {
+    return (
+      <div className="final-results">
+        <h1>Results</h1>
+        <h2>
+          {score} out of 5 correct
+        </h2>
+        <ul>
+          {answers.map((resp) => {
+            if (resp.response) {
+              return (
+                <li style={{color: "#33FF00"}} key={resp.id}>Question {resp.id+1} <span style={{color: "white"}}>{questions[resp.id].type}</span></li>
+              );
+            } else {
+              return (
+                <li style={{color: "#FF0001"}} key={resp.id}>Question {resp.id+1} <span style={{color: "white"}}>{questions[resp.id].type}</span></li>
+              );
+            }
+          })}
+        </ul>
+        <button onClick={() => startReview()}>Start Review</button>
+      </div>
+    )
+  }
+
+   // finished review card component
+  function FinishedReviewCard() {
+    return (
+      <div className="finish-review">
+        <h1>You completed the review!</h1>
+        <button onClick={() => startReview()}>Review Again</button>
+        <button onClick={() => nextProblems()}>Try 5 new problems</button>
+        <button onClick={() => setFinishSession(true)}>Finish!</button>
+      </div>
+    )
+  }
+
+  function EndofSessionCard() {
+    return (
+      <div>
+        <h1>end of session!</h1>
+      </div>
+    )
+  }
+
   // qustion card component
   function QCard() {
+
+    // we out
+    if (endofSession) {
+      return (
+        <EndofSessionCard />
+      )
+    }
+
+    // review done
+    else if (finishReview) {
+      return (
+        <FinishedReviewCard />
+      )
+    }
     /* question card */
-    if (showReview) {
+    else if (showReview) {
 
       return (
         <div div style={rcstyle}>
@@ -159,7 +297,7 @@ function App() {
                     <li style={{backgroundColor: "#33FF00"}} key={option.id}>{option.text}</li>
                   );
                 } else {
-                  if (answers[question].choice === option.id) {
+                  if (answers[question%5].choice === option.id) {
                     return (
                       <li style={{backgroundColor: "#FF0001"}} key={option.id}>{option.text}</li>
                     );
@@ -203,27 +341,9 @@ function App() {
     
       { showResults ? (
         /* results card */
-        <div className="final-results">
-        <h1>Results</h1>
-        <h2>
-          {score} out of 5 correct
-        </h2>
-        <ul>
-          {answers.map((resp) => {
-            if (resp.response) {
-              return (
-                <li style={{color: "#33FF00"}} key={resp.id}>Question {resp.id+1} <span style={{color: "white"}}>{questions[resp.id].type}</span></li>
-              );
-            } else {
-              return (
-                <li style={{color: "#FF0001"}} key={resp.id}>Question {resp.id+1} <span style={{color: "white"}}>{questions[resp.id].type}</span></li>
-              );
-            }
-          })}
-        </ul>
-        <button onClick={() => startReview()}>Start Review</button>
-      </div>
+        <RCard />
       ) : (
+        
 
         <QCard />
 
