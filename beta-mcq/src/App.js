@@ -11,6 +11,10 @@ function App() {
   const [showReview, setReview] = useState(false);
   const [finishReview, setFinishReview] = useState(false);
   const [endofSession, setFinishSession] = useState(false);
+  const [satORact, setsatORact] = useState(true);
+  const [choiceSAT, setchoiceSAT] = useState(true);
+  const [enterScore, setenterScore] = useState(false);
+  const [beginPractice, setbeginPractice] = useState(false);
   
   const questions = [
     {
@@ -180,6 +184,30 @@ function App() {
     setReview(false);
   }
 
+  // choose SATorACT
+  const chooseSATorACT = (param) => {
+    setsatORact(false);
+    setchoiceSAT(param);
+    setenterScore(true);
+    //document.body.style.backgroundColor = "#001E2B";
+  }
+
+  const backToChoose = () => {
+    setsatORact(true);
+    setenterScore(false);
+  }
+
+  const beginPracticing = () => {
+    setsatORact(false);
+    setenterScore(false);
+    setbeginPractice(true);
+  }
+
+  const startTheQuestions = () => {
+    setbeginPractice(false);
+    document.body.style.backgroundColor = "#001E2B";
+  }
+
   // not sure why CSS not being inherited so having to do like this for some classes to save time
   const ecstyle = {
     color: "black",
@@ -206,7 +234,7 @@ function App() {
     return (
       <div style={ecstyle}>
         <h2>Explanation</h2>
-        <h3 style={{fontWeight: "400"}}>{questions[question].explanation}</h3>
+        <h3 style={{fontSize: "1.1em", fontWeight: "400"}}>{questions[question].explanation}</h3>
         <div className="checkandnext">
           <form >
             <input type="checkbox" name="cb" />
@@ -266,11 +294,118 @@ function App() {
     )
   }
 
+  function SATorACT() {
+    document.body.style.backgroundColor = "black";
+    return (
+      <div className="satoract">
+        <h2>What are you preparing for?</h2>
+        <button onClick={() => chooseSATorACT(true)}>SAT</button>
+        <button onClick={() => chooseSATorACT(false)}>ACT</button>
+        <p onClick={() => beginPracticing()}>I am unsure which to take yet</p>
+      </div>
+    )
+  }
+
+  function EnterTestScore() {
+
+    if (choiceSAT) {
+
+      return (
+        <div>
+          <div className="test-score">
+          <h1>Your Latest SAT Score</h1>
+          <input type="text"></input>
+          <table>
+            <tr>
+              <th>Reading/Writing:</th>
+              <th>Math:</th>
+            </tr>
+            <tr>
+              <td><input type="text"></input></td>
+              <td><input type="text"></input></td>
+            </tr>
+          </table>
+          <h2 onClick={() => beginPracticing()}>Start Practice</h2>
+          <p>No need to input score if you don't want to or haven't take one yet!</p>
+
+          </div>
+          <div>
+            <h3 onClick={() => backToChoose()} style={{cursor: "pointer", color: "white", position: "absolute", float:"left", bottom: "30px", left:"30px"}}>Back</h3>
+          </div>
+          
+        </div>
+        
+      )
+
+    } else {
+
+      return (
+        <div>
+            <div className="test-score">
+            <h1>Your Latest ACT Score</h1>
+            <input type="text"></input>
+            <table>
+              <tr>
+                <th>English:</th>
+                <th>Reading:</th>
+                <th>Math:</th>
+                <th>Science:</th>
+              </tr>
+              <tr>
+                <td><input type="text"></input></td>
+                <td><input type="text"></input></td>
+                <td><input type="text"></input></td>
+                <td><input type="text"></input></td>
+              </tr>
+            </table>
+            <h2 onClick={() => beginPracticing()}>Start Practice</h2>
+            <p>No need to input score if you don't want to or haven't take one yet!</p>
+          </div>
+          <div>
+            <h3 onClick={() => backToChoose()} style={{cursor: "pointer", color: "white", position: "absolute", float:"left", bottom: "30px", left:"30px"}}>Back</h3>
+          </div>
+        </div>
+        
+      )
+
+    }
+
+    
+  }
+
+  function BeginPracticeCard() {
+    return (
+      <div className="begin-practice">
+        <h1>5 questions</h1>
+        <h3>Give it your best shot!</h3>
+        <button onClick={() => startTheQuestions()}>Start :D</button>
+      </div>
+    )
+  }
+
   // qustion card component
   function QCard() {
 
+    if (satORact) {
+      return (
+        <SATorACT />
+      )
+    }
+
+    else if (enterScore) {
+      return (
+        <EnterTestScore />
+      )
+    }
+
+    else if (beginPractice) {
+      return (
+        <BeginPracticeCard />
+      )
+    }
+
     // we out
-    if (endofSession) {
+    else if (endofSession) {
       return (
         <EndofSessionCard />
       )
@@ -344,7 +479,7 @@ function App() {
         <RCard />
       ) : (
         
-
+        // basically put all the components into here, need to make is cleaner
         <QCard />
 
       )}
