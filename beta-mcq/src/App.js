@@ -15,7 +15,8 @@ function App() {
   const [choiceSAT, setchoiceSAT] = useState(true);
   const [enterScore, setenterScore] = useState(false);
   const [beginPractice, setbeginPractice] = useState(false);
-  
+  const [enterEmail, setenteremail] = useState(false);
+
   const questions = [
     {
       text: "Maria is staying at a hotel that charges $99.95 per night plus tax for a room. A tax of 8% is applied to the room rate, and an additional onetime untaxed fee of $5.00 is charged by the hotel. Which of the following represents Maria’s total charge, in dollars, for staying x nights?",
@@ -208,6 +209,18 @@ function App() {
     document.body.style.backgroundColor = "#001E2B";
   }
 
+  const finishTheSession = () => {
+    setFinishSession(true);
+    setFinishReview(false);
+    document.body.style.backgroundColor = "black";
+  }
+
+  const goToEmail = () => {
+    setFinishSession(false);
+    setenteremail(true);
+    document.body.style.backgroundColor = "#002839";
+  }
+
   // not sure why CSS not being inherited so having to do like this for some classes to save time
   const ecstyle = {
     color: "black",
@@ -240,7 +253,7 @@ function App() {
             <input type="checkbox" name="cb" />
             <label for="cb" style={{fontWeight: "600", fontSize:"18.72px", verticalAlign: "middle"}}>I understand this problem</label>
           </form>
-          <p style={{color:"#858585"}}>Don't fully understand? Skip for now!</p>
+          <p style={{color:"#858585"}}>Don't fully understand? Skip for now or ask on Discord!</p>
         </div>
         <span onClick={() => nextReviewQ()} style={{position: "absolute", fontSize:"50px", float:"right", bottom: "20px", right:"20px", cursor: "pointer"}}>&#8658;</span> 
         
@@ -281,15 +294,59 @@ function App() {
         <h1>You completed the review!</h1>
         <button onClick={() => startReview()}>Review Again</button>
         <button onClick={() => nextProblems()}>Try 5 new problems</button>
-        <button onClick={() => setFinishSession(true)}>Finish!</button>
+        <button onClick={() => finishTheSession()}>Finish!</button>
       </div>
     )
   }
 
+  //end of session card style
+  const eos_style = {
+    color: "white",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  };
+
   function EndofSessionCard() {
     return (
-      <div>
-        <h1>end of session!</h1>
+      <div style={eos_style}>
+        <h1>You finished the review!</h1>
+        <h2 style={{color: "#FFB800", cursor: "pointer"}} onClick={() => goToEmail()}>Continue</h2>
+      </div>
+    )
+  }
+
+  //https://www.w3schools.com/css/tryit.asp?filename=trycss_form_responsive
+  function UserEmail() {
+    return (
+      <div className="user-email">
+        <h1>Congrats on being student <span style={{color: "#FFB800"}}>#64</span> to fully finish!</h1>
+        <p>All of us on the SB team thank you for taking the time to go through this demo.</p>
+        <p>If you would like to receive updates on SB or have any feedback, please fill out the form below.</p>
+
+        <div className="form-for-email">
+          <div>
+            <label for="email">Email: </label>
+            <input type="text" id="email"></input>
+          </div>
+          <div>
+            <label for="grade">Grade: </label>
+            <select id="grade">
+              <option value="below">Below 9th</option>
+              <option value="9th">9th</option>
+              <option value="10th">10th</option>
+              <option value="11th" selected="selected">11th</option>
+              <option value="12th">12th</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
+            <textarea id="comments" placeholder="Comments... (optional)" style={{height: "200px", width: "80%", fontFamily: "Poppins", borderRadius: "5px", padding: "5px"}}></textarea>
+          </div>
+          <button>Submit</button>
+        </div>
+          
       </div>
     )
   }
@@ -417,6 +474,13 @@ function App() {
         <FinishedReviewCard />
       )
     }
+
+    else if (enterEmail) {
+      return (
+        <UserEmail />
+      )
+    }
+
     /* question card */
     else if (showReview) {
 
