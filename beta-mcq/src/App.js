@@ -17,7 +17,10 @@ function App() {
   const [beginPractice, setbeginPractice] = useState(false);
   const [enterEmail, setenteremail] = useState(false);
   const [showHome, setShowHome] = useState(true);
+  const [mathWeight, setMathWeight] = useState(50);
+  const [englishWeight, setenglishWeight] = useState(50);
 
+  
   const questions = [
     {
       text: "Maria is staying at a hotel that charges $99.95 per night plus tax for a room. A tax of 8% is applied to the room rate, and an additional onetime untaxed fee of $5.00 is charged by the hotel. Which of the following represents Maria’s total charge, in dollars, for staying x nights?",
@@ -288,14 +291,84 @@ function App() {
     )
   }
 
-   // finished review card component
-  function FinishedReviewCard() {
+   // old finished review card component
+  function oldFinishedReviewCard() {
     return (
       <div className="finish-review">
         <h1>You completed the review!</h1>
         <button onClick={() => startReview()}>Review Again</button>
         <button onClick={() => nextProblems()}>Try 5 new problems</button>
         <button onClick={() => finishTheSession()}>Finish!</button>
+      </div>
+    )
+  }
+
+  const pie = {
+    background: "conic-gradient(#F73508 0% " + mathWeight + "%, #08CAF7 " + mathWeight + "%)"
+  };
+
+  const oc_style = {
+    display: "flex",
+  };
+
+  const chart_style = {
+    width: "100px",
+    height: "100px",
+    border: "10px solid transparent",
+    borderRadius: "50%",
+    background: "linear-gradient(black, black) padding-box, conic-gradient(#13EC88 " + ((score/5)*100) + "%, #31343F "  + ((score/5)*100) + "%) border-box",
+    position: "static",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "white",
+    fontSize: "2em",
+  }
+
+  // https://stackoverflow.com/questions/52205399/percent-pie-chart-with-css-only
+  function FinishedReviewCard() {
+    return (
+      <div className="finish-review">
+        <h1>Your Analysis</h1>
+        <h3>The algorithm has been personalized to help you practice more efficiently and effectively.</h3>
+        <div classname="over-container" style={oc_style}>
+          <div className="pie-chart-container">
+            <h2>Your algorithm</h2>
+            <div id="my-pie-chart" style={pie}></div>
+            <div id="legend">
+              <div class="entry">
+                <div id="color-math" class="entry-color"></div>
+                <div class="entry-text">Math {mathWeight}%</div>
+              </div>
+              <div class="entry">
+                <div id="color-english" class="entry-color"></div>
+                <div class="entry-text">English {englishWeight}%</div>
+              </div>
+            </div>
+            <p>This determines the types of questions you will get in the future, based on your understanding, accuracy, and scores.</p>
+          </div>
+          <div className="accuracy-container">
+            <h2>Accuracy</h2>
+            <div class="chart" style={chart_style}>
+              <p>{(score/5)*100}%</p>
+            </div>
+            <p>1/2 Correct Math | 2/2 Understood</p>
+            <div class="math-score"></div>
+            <p>2/3 Correct English | 2/3 Understood</p>
+            <div class="english-score"></div>
+          </div>
+          <div className="right-text-container">
+            <p>We also keep track of your performance in subsections from relative clauses to linear inequalities, and the questions you understood vs. are still confused on, to make you test ready.</p>
+            
+            <h3>The goal of our algorithm-chosen questions is to</h3>
+            <h3>1. Have you work on questions in weak areas</h3>
+            <h3>2. Repeat problems until you fully understand them</h3>
+            
+            <p>This is the key to growing your SAT/ACT score — learn from your mistakes, improve on your weak areas, and strength your fundamentals!</p>
+            <button onClick={() => nextProblems()}>Try 5 new problems</button>
+            <button onClick={() => finishTheSession()}>Finish!</button>
+          </div>
+        </div>
       </div>
     )
   }
