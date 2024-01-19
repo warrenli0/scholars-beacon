@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/scholars-beacon/mcq/static/css/main.f9587427.css",
-    "main.js": "/scholars-beacon/mcq/static/js/main.72e9c16a.js",
-    "index.html": "/scholars-beacon/mcq/index.html",
-    "main.f9587427.css.map": "/scholars-beacon/mcq/static/css/main.f9587427.css.map",
-    "main.72e9c16a.js.map": "/scholars-beacon/mcq/static/js/main.72e9c16a.js.map"
+    "main.css": "/scholars-beacon/static/css/main.f9587427.css",
+    "main.js": "/scholars-beacon/static/js/main.72e9c16a.js",
+    "index.html": "/scholars-beacon/index.html",
+    "main.f9587427.css.map": "/scholars-beacon/static/css/main.f9587427.css.map",
+    "main.72e9c16a.js.map": "/scholars-beacon/static/js/main.72e9c16a.js.map"
   },
   "entrypoints": [
     "static/css/main.f9587427.css",
