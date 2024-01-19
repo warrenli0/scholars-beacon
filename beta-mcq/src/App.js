@@ -484,6 +484,7 @@ function App() {
                 <div class="entry-text">English {englishWeight}%</div>
               </div>
             </div>
+            <p style={{marginBottom: "0px"}}><b>Curr Score:</b> English {yourSATscore[0]}, Math {yourSATscore[1]}</p>
             <p>This determines the types of questions you will get in the future, based on your understanding, accuracy, and scores.</p>
           </div>
           <div className="accuracy-container">
