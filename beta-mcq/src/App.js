@@ -19,7 +19,15 @@ function App() {
   const [showHome, setShowHome] = useState(true);
   const [mathWeight, setMathWeight] = useState(50);
   const [englishWeight, setenglishWeight] = useState(50);
-
+  const [mathValues, setMathValues] = useState([0,0]); // numCorrect, numAttempted
+  const [englishValues, setEnglishValues] = useState([0,0]); // numCorrect, numAttempted 
+  const [mathUnderstood, setmathUnderstood] = useState([0,0]); // numUnderstood, numAttempted | OVERALL
+  const [englishUnderstood, setenglishUnderstood] = useState([0,0]); // numUnderstood, numAttempted | OVERALL
+  const [yourSATscore, setyourSATscore] = useState([800, 800]); // english, math score
+  const [mathScore, setMathScore] = useState([0,0]); // for current 5
+  const [englishScore, setenglishScore] = useState([0,0]); // for current 5
+  const [currmathunderstood, setcurrmathunderstood] = useState([0,0]); // for current 5
+  const [curenglishunderstood, setcurenglishunderstood] = useState([0,0]); // for current 5
   
   const questions = [
     {
@@ -137,12 +145,34 @@ function App() {
   // Helper funcs
   const optionClicked = (isCorrect, id) => {
     // .push() creates copy, use ... to make new array with all items and new id
-    console.log(isCorrect);
+    //console.log(isCorrect);
     setAnswers([
       ...answers,
       {id: question, response: isCorrect, choice: id}
     ]);
     //console.log(answers);
+
+    if (questions[question].type == "Math (no calc)" || questions[question].type == "Math (calc)") {
+      const newMathValues = [mathValues[0], mathValues[1]+1];
+      const currMathValue = [mathScore[0], mathScore[1]+1];
+      if (isCorrect) {
+        newMathValues[0] += 1;
+        currMathValue[0] += 1;
+      }
+      setMathValues(newMathValues);
+      setMathScore(currMathValue);
+    }
+
+    else if (questions[question].type == "Grammar") {
+      const newenglishValues = [englishValues[0], englishValues[1]+1];
+      const currenglishValues = [englishScore[0], englishScore[1]+1];
+      if (isCorrect) {
+        newenglishValues[0] += 1;
+        currenglishValues[0] += 1;
+      }
+      setEnglishValues(newenglishValues);
+      setenglishScore(currenglishValues);
+    }
 
     if (isCorrect) {
       setScore(score + 1);
@@ -157,7 +187,54 @@ function App() {
   }
 
   const nextReviewQ = () => {
+    if (questions[question].type == "Math (no calc)" || questions[question].type == "Math (calc)") {
+      const newMathUnderstood = [mathUnderstood[0], mathUnderstood[1]+1];
+      const newcurrMathUnderstood = [currmathunderstood[0], currmathunderstood[1]+1];
+      if (document.getElementById("meunderstand").checked) {
+        newMathUnderstood[0] += 1;
+        newcurrMathUnderstood[0]+=1;
+      }
+      setmathUnderstood(newMathUnderstood);
+      setcurrmathunderstood(newcurrMathUnderstood);
+    }
+
+    else if (questions[question].type == "Grammar") {
+      const newEnglishUnderstood = [englishUnderstood[0], englishUnderstood[1]+1];
+      const newcurrEnglishUnderstood = [curenglishunderstood[0], curenglishunderstood[1]+1];
+      if (document.getElementById("meunderstand").checked) {
+        newEnglishUnderstood[0] += 1;
+        newcurrEnglishUnderstood[0]+=1;
+      }
+      setenglishUnderstood(newEnglishUnderstood);
+      setcurenglishunderstood(newcurrEnglishUnderstood);
+    }
+
+    // time to go to analysis
     if ((question + 1) % 5 === 0) {
+      var mathP = mathScore[0] / mathScore[1];
+      var engP = englishScore[0] / englishScore[1];
+      var mathUndP = currmathunderstood[0] / currmathunderstood[1];
+      var engUndp = curenglishunderstood[0] / curenglishunderstood[1];
+
+      if (mathP < engP) {
+        if (englishWeight > 20) {
+          setMathWeight(mathWeight+5);
+          setenglishWeight(englishWeight-5);
+        } 
+      } else if (mathP > engP) {
+        if (mathWeight > 20) {
+          setMathWeight(mathWeight-5);
+          setenglishWeight(englishWeight+5);
+        }
+      } else if (mathP == 1 && engP == 1) { // push back towards 50:50
+        if (mathWeight < englishWeight) {
+          setMathWeight(mathWeight+5);
+          setenglishWeight(englishWeight-5);
+        } else if (mathWeight > englishWeight) {
+          setMathWeight(mathWeight-5);
+          setenglishWeight(englishWeight+5);
+        }
+      }
       setFinishReview(true);
     } else {
       setQuestion(question + 1);
@@ -178,6 +255,10 @@ function App() {
   // next problems
   const nextProblems = () => {
     setScore(0);
+    setMathScore([0,0]);
+    setenglishScore([0,0]);
+    setcurenglishunderstood([0,0]);
+    setcurrmathunderstood([0,0]);
     setAnswers([]);
     setFinishReview(false);
     if ((question + 1) >= questions.length) {
@@ -194,7 +275,6 @@ function App() {
     setsatORact(false);
     setchoiceSAT(param);
     setenterScore(true);
-    //document.body.style.backgroundColor = "#001E2B";
   }
 
   const backToChoose = () => {
@@ -203,9 +283,39 @@ function App() {
   }
 
   const beginPracticing = () => {
-    setsatORact(false);
-    setenterScore(false);
-    setbeginPractice(true);
+
+    var eng = document.getElementById("english-score").value;
+    var mat = document.getElementById("math-score").value;
+    // +eng converts to num
+    if ((eng == null || eng == "") || (isNaN(eng)) || (+eng > 800)){
+      alert("invalid english score!");
+    } else if ((mat == null || mat == "") || (isNaN(mat)) || (+mat > 800)){
+      alert("invalid math score!");
+    }
+     else {
+      eng = +eng;
+      mat = +mat;
+      setyourSATscore([eng, mat]);
+
+      if (eng > mat) {
+        var dif = eng - mat;
+        dif = Math.floor(dif/50);
+        dif = Math.min(dif, 6)  //max diff is 300 -> 80:20 -> 6 iterations of 5%
+        setenglishWeight(50 - (dif*5));
+        setMathWeight(50 + (dif*5));
+      } else if (eng < mat) {
+        var dif = mat - eng;
+        dif = Math.floor(dif/50);
+        dif = Math.min(dif, 6)  //max diff is 300 -> 80:20 -> 6 iterations of 5%
+        setenglishWeight(50 + (dif*5));
+        setMathWeight(50 - (dif*5));
+      }
+
+      setsatORact(false);
+      setenterScore(false);
+      setbeginPractice(true);
+    }
+
   }
 
   const startTheQuestions = () => {
@@ -254,7 +364,7 @@ function App() {
         <h3 style={{fontSize: "1.1em", fontWeight: "400"}}>{questions[question].explanation}</h3>
         <div className="checkandnext">
           <form >
-            <input type="checkbox" name="cb" />
+            <input type="checkbox" name="cb" id="meunderstand" />
             <label for="cb" style={{fontWeight: "600", fontSize:"18.72px", verticalAlign: "middle"}}>I understand this problem</label>
           </form>
           <p style={{color:"#858585"}}>Don't fully understand? Skip for now or ask on Discord!</p>
@@ -309,6 +419,7 @@ function App() {
 
   const oc_style = {
     display: "flex",
+    justifyContent: "center",
   };
 
   const chart_style = {
@@ -316,13 +427,41 @@ function App() {
     height: "100px",
     border: "10px solid transparent",
     borderRadius: "50%",
-    background: "linear-gradient(black, black) padding-box, conic-gradient(#13EC88 " + ((score/5)*100) + "%, #31343F "  + ((score/5)*100) + "%) border-box",
+    background: "linear-gradient(black, black) padding-box, conic-gradient(#13EC88 " + (((mathValues[0]+englishValues[0])/(mathValues[1]+englishValues[1]))*100) + "%, #31343F "  + (((mathValues[0]+englishValues[0])/(mathValues[1]+englishValues[1]))*100) + "%) border-box",
     position: "static",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     color: "white",
     fontSize: "2em",
+  }
+
+  const math_bar = {
+    width: "300px",
+    height: "15px",
+    borderRadius: "10px",
+    background: "linear-gradient(to right, #F73508 " + ((mathValues[0]/mathValues[1])*100) + "%, #801900 " + ((mathValues[0]/mathValues[1])*100) + "%)",
+  }
+
+  const understood_math_bar = {
+    width: "300px",
+    height: "15px",
+    borderRadius: "10px",
+    background: "linear-gradient(to right, #F73508 " + ((mathUnderstood[0]/mathUnderstood[1])*100) + "%, #801900 " + ((mathUnderstood[0]/mathUnderstood[1])*100) + "%)",
+  }
+
+  const english_bar = {
+    width: "300px",
+    height: "15px",
+    borderRadius: "10px",
+    background: "linear-gradient(to right, #08CAF7 " + ((englishValues[0]/englishValues[1])*100) + "%, #006F89 " + ((englishValues[0]/englishValues[1])*100) + "%)",
+  }
+
+  const understood_english_bar = {
+    width: "300px",
+    height: "15px",
+    borderRadius: "10px",
+    background: "linear-gradient(to right, #08CAF7 " + ((englishUnderstood[0]/englishUnderstood[1])*100) + "%, #006F89 " + ((englishUnderstood[0]/englishUnderstood[1])*100) + "%)",
   }
 
   // https://stackoverflow.com/questions/52205399/percent-pie-chart-with-css-only
@@ -350,12 +489,17 @@ function App() {
           <div className="accuracy-container">
             <h2>Accuracy</h2>
             <div class="chart" style={chart_style}>
-              <p>{(score/5)*100}%</p>
+              <p>{((mathValues[0]+englishValues[0])/(mathValues[1]+englishValues[1]))*100}%</p>
             </div>
-            <p>1/2 Correct Math | 2/2 Understood</p>
-            <div class="math-score"></div>
-            <p>2/3 Correct English | 2/3 Understood</p>
-            <div class="english-score"></div>
+            <p>{mathValues[0]}/{mathValues[1]} Correct Math</p>
+            <div style={math_bar}></div>
+            <p>{mathUnderstood[0]}/{mathUnderstood[1]} Understood</p>
+            <div style={understood_math_bar}></div>
+            <p style={{margin: "3px"}}></p>
+            <p>{englishValues[0]}/{englishValues[1]} Correct English</p>
+            <div style={english_bar}></div>
+            <p>{englishUnderstood[0]}/{englishUnderstood[1]} Understood</p>
+            <div style={understood_english_bar}></div>
           </div>
           <div className="right-text-container">
             <p>We also keep track of your performance in subsections from relative clauses to linear inequalities, and the questions you understood vs. are still confused on, to make you test ready.</p>
@@ -476,8 +620,8 @@ function App() {
               <th>Math:</th>
             </tr>
             <tr>
-              <td><input type="text"></input></td>
-              <td><input type="text"></input></td>
+              <td><input type="text" id="english-score"></input></td>
+              <td><input type="text" id="math-score"></input></td>
             </tr>
           </table>
           <h2 onClick={() => beginPracticing()}>Start Practice</h2>

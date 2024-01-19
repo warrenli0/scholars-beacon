@@ -307,6 +307,10 @@
   text-align: left;
 }
 
+.accuracy-container p{
+  margin: 10px;
+}
+
 .right-text-container {
   color: white;
   padding: 5px;
@@ -319,20 +323,6 @@
 
 .right-text-container h3{
   font-weight: 600;
-}
-
-.math-score {
-  width: 300px;
-  height: 25px;
-  border-radius: 10px;
-  background: linear-gradient(to right, #F73508 50%, #801900 50%);
-}
-
-.english-score {
-  width: 300px;
-  height: 25px;
-  border-radius: 10px;
-  background: linear-gradient(to right, #08CAF7 66%, #006F89 33%);
 }
 
 .pie-chart-container {
