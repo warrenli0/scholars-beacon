@@ -16,6 +16,7 @@ function App() {
   const [enterScore, setenterScore] = useState(false);
   const [beginPractice, setbeginPractice] = useState(false);
   const [enterEmail, setenteremail] = useState(false);
+  const [showHome, setShowHome] = useState(true);
 
   const questions = [
     {
@@ -363,6 +364,30 @@ function App() {
     )
   }
 
+  function HomePage() {
+    document.body.style.backgroundColor = "#001E2B";
+    const handleClick = () => {
+        setShowHome(false);
+        setsatORact(true);
+    };
+
+    return (
+        <div className="home-page-container">
+            <div className="sb-title">
+                <h1>Scholars Beacon</h1>
+            </div>
+            <div className="your-sat">
+                <h2>your SAT & ACT prep platform</h2>
+            </div>
+            <div className="get-started">
+                <h3>We are developing the only tool you’ll need to crack the SAT & ACT, click below to try out our beta and reach the end to be the first to get access.</h3>
+                <h2 onClick={handleClick}>Get started!</h2>
+            </div>
+            
+        </div>
+    )
+}
+
   function EnterTestScore() {
 
     if (choiceSAT) {
@@ -443,7 +468,13 @@ function App() {
   // qustion card component
   function QCard() {
 
-    if (satORact) {
+    if (showHome) {
+      return (
+        <HomePage />
+      )
+    }
+
+    else if (satORact) {
       return (
         <SATorACT />
       )
@@ -458,6 +489,12 @@ function App() {
     else if (beginPractice) {
       return (
         <BeginPracticeCard />
+      )
+    }
+
+    else if (showResults) {
+      return (
+        <RCard />
       )
     }
 
@@ -534,18 +571,16 @@ function App() {
   return (
     <div className="App">
     
-
-    <h1 className="timer">SB</h1>
-
     
-      { showResults ? (
+      { showHome ? (
         /* results card */
-        <RCard />
+        <HomePage />
       ) : (
         
-        // basically put all the components into here, need to make is cleaner
-        <QCard />
-
+        <div>
+          <h1 className="timer">SB</h1>
+          <QCard />
+        </div>
       )}
       
     </div>

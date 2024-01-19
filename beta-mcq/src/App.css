@@ -3,6 +3,64 @@
   font-family: 'Poppins', sans-serif;
 }
 
+
+.home-page-container {
+  min-height: 250vh;
+  width: 100%;
+  position: relative;
+}
+
+.sb-title {
+ position: sticky;
+ top: 50px;  
+ width: 90%;
+ text-align: center;
+ margin:auto;
+ margin-top: 40vh;
+}
+
+.sb-title h1 {
+  color: #fff;
+  font-size:4vw;
+}
+
+.your-sat {
+  position: sticky;
+  top: 120px;  
+  width: 90%;
+  text-align: center;
+  margin:auto;
+  margin-top: 60vh;
+}
+
+.your-sat h2 {
+  color: #FFB800;
+  font-size:4vw;
+}
+
+.get-started {
+  position: sticky;
+  top: 240px;  
+  width: 90%;
+  text-align: center;
+  margin:auto;
+  margin-top: 90vh;
+}
+
+.get-started h3{
+  color: white;
+  font-size:3vw;
+  font-weight: 600;
+}
+
+.get-started h2{
+  color: white;
+  padding-top: 20px;
+  font-size:3vw;
+  font-weight: 800;
+  cursor: pointer;
+}
+
 .question-card {
   margin: 0 auto;
 
