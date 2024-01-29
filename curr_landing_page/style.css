@@ -298,7 +298,44 @@ body {
 .seaweed-text {
     height: 80%;
     color: #FFFFFF;
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-template-rows: 40% 60%;
+    gap: 10px;
+    padding: 10px;
+    /*border-style: solid;
+    border-color: red;
+    border-width: 4px;*/
 }
+
+.sea-item {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.sea-item h1{
+    font-weight: 700;
+}
+
+.sea-item h3{
+    font-weight: 400;
+}
+
+.sea-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.sea-img img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
 
 .seaweed-wave {
     background-image: url('./seaweed-wave.svg');
@@ -322,8 +359,17 @@ body {
 
 .hidden {
     opacity: 0;
-    transition: all 1.5s;
-    animation-timing-function: ease-in;
+    transition: all 1.5s ease-in;
+}
+
+.hidden2 {
+    opacity: 0;
+    transition: all 1.5s ease-in .5s;
+}
+
+.hidden3 {
+    opacity: 0;
+    transition: all 1.5s ease-in 1s;
 }
 
 .show {

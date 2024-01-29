@@ -20,5 +20,5 @@ function fishOneSpeak() {
     }, 5000);
 };
 
-const hiddenElements = document.querySelectorAll(".hidden");
+const hiddenElements = document.querySelectorAll(".hidden, .hidden2, .hidden3");
 hiddenElements.forEach((e1) => observer.observe(e1));
