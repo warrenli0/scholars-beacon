@@ -4,6 +4,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+body {
+    overflow-x: clip;
+}
+
 /* Hero Page */
 
 .hero-page {
@@ -14,7 +18,7 @@
 
 .hero-page img {
     position: absolute;
-    max-width: 50%;
+    max-width: 35%;
     height: auto;
     bottom: 15%;
     right: 30px;
@@ -96,12 +100,7 @@
     background-size: cover;
 }
 
-
-
 @media only screen and (max-width: 768px) {
-    .hero-page {
-    }
-
     .hero-text {
         align-items: normal;
     }
@@ -116,7 +115,7 @@
     }
 
     .hero-page img {
-        max-width: 70%;
+        max-width: 40%;
     }
   }
 
@@ -128,19 +127,72 @@
     position: relative;
 }
 
+.orange-fish {
+    animation: swim-right;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+.orange-fish img {
+    width: 50px;
+}
+
 .fish1 {
     position: absolute;
     top: 0;
     left: 0;
     transform: translateX(-50%);
-    animation-name: swim-right;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-    animation-name: 1s;
 }
 
-.fish1 img {
+.fish2 {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    transform: translateX(-100%);
+    animation-name: swim-right2;
+    animation-duration: 9s;
+    animation-delay: 1s;
+}
+
+.fish3 {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    transform: translateX(-100%);
+    animation-name: swim-right3;
+    animation-delay: 1.5s;
+    animation-duration: 12s;
+}
+
+.fish4 {
+    position: absolute;
+    top: 40%;
+    right: 0;
+    transform: translateX(90%);
+    animation-name: swim-left;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-delay: .5s;
+    animation-duration: 9s;
+}
+
+.fish4 img {
     width: 50px;
+}
+
+.big-orange {
+    position: absolute;
+    top: 60%;
+    left: 0;
+    transform: translateX(-100%);
+    animation-name: swim-right3;
+    animation-iteration-count: infinite;
+    animation-delay: 1.5s;
+    animation-duration: 15s;
+}
+
+.big-orange img {
+    width: 70px;
 }
 
 #orange-fish-right {
@@ -161,14 +213,45 @@
   60% {
     transform: translateX(50vw);
   }
-  65% {
-    transform: translateX(50vw);
-  }
   100% {
     transform: translateX(100vw);
     animation-timing-function: ease-in-out;
   }
 }
+
+@keyframes swim-left {
+    0% {
+      transform: translateX(90%);
+      animation-timing-function: ease-in-out;
+    }
+    100% {
+      transform: translateX(-100vw);
+    }
+  }
+
+@keyframes swim-right2 {
+    0% {
+      transform: translateX(-100%);
+      animation-timing-function: ease-out;
+    }
+    40% {
+      transform: translateX(40vw);
+    }
+    100% {
+      transform: translateX(100vw);
+      animation-timing-function: ease-in-out;
+    }
+  }
+
+  @keyframes swim-right3 {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100vw);
+      animation-timing-function: cubic-bezier(.82,.12,.83,.67);
+    }
+  }
 
 .hook-text {
     height: 80%;
@@ -206,9 +289,32 @@
 
 /* 3 point page Seaweed */
 
-.seaweed {
+.seaweed-page {
     height: 100vh;
     background-color: #025B9B; 
+    position: relative;
+}
+
+.seaweed-text {
+    height: 80%;
+    color: #FFFFFF;
+}
+
+.seaweed-wave {
+    background-image: url('./seaweed-wave.svg');
+    aspect-ratio: 960/200;
+    width: 100%;
+    height: 20%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/* SB Info */
+
+.sb-page {
+    height: 100vh;
+    background-color: #023E8A; 
     position: relative;
 }
 
@@ -222,4 +328,33 @@
 
 .show {
     opacity: 1;
+}
+
+@keyframes shakeY {
+    from,
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translate3d(0, -10px, 0);
+    }
+  
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translate3d(0, 10px, 0);
+    }
+  }
+  
+  .seawweedo {
+    animation-name: shakeY;
+    animation-iteration-count: infinite;
+    animation-delay: 1.5s;
+    animation-duration: 15s;
 }
