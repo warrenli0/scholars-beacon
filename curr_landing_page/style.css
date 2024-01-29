@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Hero Page */
+
+.hero-page {
+    height: 100vh;
+    background-color: #CAF0F8; 
+    position: relative;
+}
+
+.hero-page img {
+    position: absolute;
+    max-width: 50%;
+    height: auto;
+    bottom: 15%;
+    right: 30px;
+}
+
+.hero-text {
+    color: #002839;
+    height: 60%;
+
+    /*border-style: solid;
+    border-color: red;
+    border-width: 4px; */
+
+    display: flex;
+    align-items: center;
+}
+
+
+.hero-centering {
+    /*border-style: solid;
+    border-color: green;
+    border-width: 4px;*/
+    margin-left: 5%;
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.hero-text h1 {
+    font-weight: 700;
+    text-shadow: 0px 2px 3px rgba(161, 161, 161, 0.44);
+    font-size: 40px;
+}
+
+.hero-text h2{
+    font-weight: 500;
+    text-shadow: 0px 2px 3px rgba(161, 161, 161, 0.44);
+    font-size: 40px;
+}
+
+.hero-text h4{
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.hero-text button {
+    background-color: #002839;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 5px;
+    border-style: none;
+    border-radius: 8px;
+    box-shadow: 0px 6px 5px 0px rgba(0,0,0,0.44);
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+.hero-text button:hover {
+    background-color: #ffb700;
+}
+
+.temp {
+    height: 30%;
+    border-style: solid;
+    border-color: red;
+    border-width: 4px;
+}
+
+.beach {
+    background-image: url('./beach.svg');
+    aspect-ratio: 960/300;
+    width: 100%;
+    height: 40%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    .hero-page {
+    }
+
+    .hero-text {
+        align-items: normal;
+    }
+
+    .hero-centering {
+        margin: 5px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: flex-start;
+    }
+
+    .hero-page img {
+        max-width: 70%;
+    }
+  }
+
+/* Hook Page */
+
+.hook-page {
+    height: 100vh;
+    background-color: #0096C7; 
+    position: relative;
+}
+
+.hook-text {
+    height: 80%;
+    color: #FFFFFF;
+}
+
+.main-hook {
+    height: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.main-hook h1 {
+    padding: 20px;
+    font-weight: 500; 
+    text-align: center;
+    font-size: 40px;
+}
+
+.hook-wave {
+    background-image: url('./hook-wave.svg');
+    aspect-ratio: 960/300;
+    width: 100%;
+    height: 20%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+@media only screen and (max-width: 335px) {
+    .main-hook h1 {
+        font-size: 30px;
+    }
+}
+
+/* 3 point page Seaweed */
+
+.seaweed {
+    height: 100vh;
+    background-color: #025B9B; 
+    position: relative;
+}
