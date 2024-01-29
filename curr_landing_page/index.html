@@ -10,11 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-    <!-- https://animate.style/ -->
+    <!-- https://animate.style/ 
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+    />-->
     <title>Scholars Beacon</title>
 </head>
 <body>  
@@ -23,9 +23,9 @@
 
         <!-- Hero Page -->
         <div class="hero-page">
-            <div class="hero-text animate__animated animate__fadeInLeft">
-                <div class="hero-centering">
-                    <h1 >Scholars Beacon</h1>
+            <div class="hero-text">
+                <div class="hero-centering hidden">
+                    <h1>Scholars Beacon</h1>
                     <h2>Study effectively for the SAT & ACT</h2>
                     <h4>the only SAT/ACT online prep platform you need</h4>
                     <button>try the beta!</button>
@@ -39,9 +39,13 @@
 
         <!-- Hook -->
         <div class="hook-page">
+            <div class="fish1">
+                <img src="images/orange_fish_right.png" onclick="fishOneSpeak()" id="orange-fish-right">
+                <img src="images/orange_fish_right_text.png" id="fish1-text">
+            </div>
             <div class="hook-text">
-                <div class="main-hook">
-                    <h1>One of our co-founders improved their ACT score from <span style="color: #FFD979;">31 to 36</span> in just by self-studying. You can too!</h1>
+                <div class="main-hook hidden">
+                    <h1>One of our co-founders improved their ACT score from <span style="color: #FFD979;">31 to 36</span> just by self-studying. You can too!</h1>
                 </div>   
                 <h1 style="color: #FFD979; font-weight: 500; text-align: center;">here's how...</h1>
             </div>
@@ -55,5 +59,6 @@
 
     </div>
     
+    <script src="index.js"></script>
 </body>
 </html>

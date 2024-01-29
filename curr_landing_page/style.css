@@ -128,6 +128,48 @@
     position: relative;
 }
 
+.fish1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-50%);
+    animation-name: swim-right;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-name: 1s;
+}
+
+.fish1 img {
+    width: 50px;
+}
+
+#orange-fish-right {
+    cursor: pointer;
+}
+
+#fish1-text {
+    opacity: 0;
+    transform: translateY(-130%);
+}
+
+/*https://stackoverflow.com/questions/70237468/how-do-i-code-an-object-moving-leaving-from-left-to-right-side-of-the-screen*/
+@keyframes swim-right {
+  0% {
+    transform: translateX(-100%);
+    animation-timing-function: ease-out;
+  }
+  60% {
+    transform: translateX(50vw);
+  }
+  65% {
+    transform: translateX(50vw);
+  }
+  100% {
+    transform: translateX(100vw);
+    animation-timing-function: ease-in-out;
+  }
+}
+
 .hook-text {
     height: 80%;
     color: #FFFFFF;
@@ -148,7 +190,7 @@
 
 .hook-wave {
     background-image: url('./hook-wave.svg');
-    aspect-ratio: 960/300;
+    aspect-ratio: 960/200;
     width: 100%;
     height: 20%;
     background-repeat: no-repeat;
@@ -168,4 +210,16 @@
     height: 100vh;
     background-color: #025B9B; 
     position: relative;
+}
+
+/* Fade in effects */
+
+.hidden {
+    opacity: 0;
+    transition: all 1.5s;
+    animation-timing-function: ease-in;
+}
+
+.show {
+    opacity: 1;
 }
