@@ -4,7 +4,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
+html, body {
     overflow-x: hidden;
 }
 
@@ -14,7 +14,7 @@ body {
     height: 100vh;
     /*background-color: #CAF0F8; */
     background: rgb(255,237,79);
-    background: radial-gradient(circle at right top, rgba(255,237,79,1) 0%, rgba(218,239,196,1) 35%, rgba(202,240,248,1) 100%); 
+    background: radial-gradient(circle at left top, rgba(255,237,79,1) 0%, rgba(218,239,196,1) 35%, rgba(202,240,248,1) 100%); 
     position: relative;
 }
 
@@ -98,6 +98,7 @@ body {
 .beach {
     background-image: url('./images/figma-beach.png');
     width: 100%;
+    min-width: 800px;
     height: 40%;
     background-repeat: no-repeat;
     background-position: center;
@@ -152,16 +153,19 @@ body {
 .hook-wave {
     background-image: url('./images/figma-hook-wave.png');
     width: 100%;
+    min-width: 1000px;
     height: 30%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 103% 115%;
-    /* TODO; fix waves min size */
 }
 
-@media only screen and (max-width: 335px) {
+@media only screen and (max-width: 768px) {
     .main-hook h1 {
         font-size: 30px;
+    }
+    .heres-how {
+        font-size: 20px;
     }
 }
 
@@ -226,10 +230,42 @@ body {
 .seaweed-wave {
     background-image: url('./images/figma-three-wave.png');
     width: 100%;
+    min-width: 1000px;
     height: 20%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 102% 72%;
+}
+
+@media only screen and (max-width: 712px) {
+    .seaweed-text {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 33.33% 33.33% 33.33%;
+    }
+    .sea-repetition-text{
+        order: 1;
+    }
+    .sea-repetition-bubble{
+        order: 2;
+    }
+    .sea-accountability-text {
+        order: 3;
+    }
+    .sea-accountability-bubble {
+        order: 4;
+    }
+    .sea-community-text {
+        order: 5;
+    }
+    .sea-community-bubble {
+        order: 6;
+    }
+    .sea-item h1 {
+        font-size: 20px;
+    }
+    .sea-item h3{
+        font-size: 15px;
+    }
 }
 
 /* SB Info */
@@ -331,13 +367,57 @@ body {
     position: relative;
 }
 
-.ocean-bottom h1 {
+.ocean-content {
+    height: 80%;
+}
+
+.ocean-content h1 {
     padding-top: 25px;
     text-align: center;
 }
 
-/* Fish + Fade in effects */
+.ocean-bottom-beach {
+    background-image: url('./images/figma-bottom-beach.png');
+    width: 100%;
+    min-width: 1000px;
+    height: 20%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 102% 100%;
+}
 
+#closed-treasure {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 150px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#open-treasure {
+    position: absolute;
+    bottom: 22px;
+    left: 18px;
+    width: 150px;
+    opacity: 0;
+}
+
+#treasure-peng-text {
+    position: absolute;
+    bottom: 150px;
+    left: 150px;
+    width: 150px;
+    opacity: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .ocean-content h1 {
+        font-size: 20px;
+    }
+}
+
+/* Fish + Fade in effects */
 
 .orange-fish {
     animation: swim-right;

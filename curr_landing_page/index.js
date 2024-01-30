@@ -20,5 +20,12 @@ function fishOneSpeak() {
     }, 5000);
 };
 
+function openChest() {
+    document.getElementById("closed-treasure").style.opacity = 0;
+    document.getElementById("open-treasure").style.opacity = 1;
+    document.getElementById("treasure-peng-text").style.opacity = 1;
+};
+
+
 const hiddenElements = document.querySelectorAll(".hidden, .hidden2, .hidden3");
 hiddenElements.forEach((e1) => observer.observe(e1));
