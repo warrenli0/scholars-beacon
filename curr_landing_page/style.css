@@ -261,7 +261,7 @@ html, body {
     height: 20%;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 102% 75%;
+    background-size: 102% 78%;
 }
 
 @media only screen and (max-width: 712px) {
@@ -391,6 +391,7 @@ html, body {
 
 .ocean-bottom {
     height: 100vh;
+    overflow-x: hidden;
     background-color: #021B3A; 
     color: white;
     position: relative;
