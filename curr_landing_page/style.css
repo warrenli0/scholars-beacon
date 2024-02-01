@@ -47,7 +47,9 @@ html, body {
     border-color: green;
     border-width: 4px;*/
     margin-left: 5%;
-    height: 65%;
+    margin-top: 5%;
+    height: 100%;
+    max-width: 700px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -67,6 +69,7 @@ html, body {
 }
 
 .hero-text h4{
+    max-width: 600px;
     font-weight: 500;
     font-size: 20px;
 }
@@ -74,8 +77,10 @@ html, body {
 .hero-text button {
     background-color: #002839;
     color: white;
+    width: 150px;
+    height: 50px;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 20px;
     padding: 5px;
     border-style: none;
     border-radius: 8px;
@@ -102,7 +107,7 @@ html, body {
     height: 40%;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 101% 100%;
+    background-size: 101% 102%;
 }
 
 @media only screen and (max-width: 768px) {
@@ -117,6 +122,23 @@ html, body {
         flex-direction: column;
         justify-content: space-evenly;
         align-items: flex-start;
+    }
+
+    .hero-text h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+    .hero-text h2 {
+        font-size: 25px;
+    }
+    .hero-text h4 {
+        font-size: 15px;
+    }
+
+    .hero-text button {
+        width: 150px;
+        height: 50px;
+        font-size: 15px;
     }
 
     .hero-page img {
@@ -234,7 +256,7 @@ html, body {
     height: 20%;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 102% 72%;
+    background-size: 102% 75%;
 }
 
 @media only screen and (max-width: 712px) {
@@ -284,6 +306,8 @@ html, body {
     grid-template-rows: 12% 22% 22% 22% 22%;
     gap: 10px;
     padding: 1em;
+    position: relative;
+    z-index: 1;
     /*border-style: solid;
     border-color: red;
     border-width: 4px;*/
@@ -365,15 +389,89 @@ html, body {
     background-color: #021B3A; 
     color: white;
     position: relative;
+    overflow-y: hidden;
 }
 
 .ocean-content {
     height: 80%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 10% 70% 20%;
+    gap: 10px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .ocean-content h1 {
     padding-top: 25px;
+    grid-column: span 2;
+}
+
+.ocean-text {
+    display: flex;
+    justify-content: center;
+}
+
+.ocean-text h3 {
+    max-width: 250px;
+}
+
+.ocean-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.small-bub {
+    max-width: 10%;
+    max-height: 10%;
+}
+
+#bub1 {
+    position: absolute;
+    bottom: 15%;
+    left: 20%;
+}
+#bub2 {
+    position: absolute;
+    bottom: 45%;
+    left: 15%;
+}
+#bub3 {
+    position: absolute;
+    bottom: 15%;
+    right: 20%;
+}
+#bub4 {
+    position: absolute;
+    bottom: 45%;
+    right: 15%;
+}
+
+.scuba-peng {
+    max-height: 80%;
+    max-width: 80%;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.scuba-text {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    width: 150px;
+}
+
+.discord-bubu {
+    max-height: 50%;
+    max-width: 50%;
+    padding: 5px;
+    cursor: pointer;
 }
 
 .ocean-bottom-beach {
@@ -397,23 +495,66 @@ html, body {
 
 #open-treasure {
     position: absolute;
-    bottom: 22px;
-    left: 18px;
-    width: 150px;
+    bottom: 27px;
+    left: 16px;
+    width: 185px;
     opacity: 0;
 }
 
-#treasure-peng-text {
+#ocean-footer-text {
+    color: black;
     position: absolute;
-    bottom: 150px;
-    left: 150px;
-    width: 150px;
-    opacity: 0;
+    bottom: 2px;
+    left: 2px;
 }
 
 @media only screen and (max-width: 768px) {
     .ocean-content h1 {
         font-size: 20px;
+    }
+
+    .ocean-content {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 10% 45% 45%;
+    }
+    .ocean-header{
+        order: 1;
+    }
+    .five-probs{
+        order: 2;
+        align-items: center;
+    }
+    .ocean-scuba-png{
+        order: 3;
+    }
+    .join-disc {
+        order: 4;
+        align-items: center;
+    }
+    .ocean-discord {
+        order: 5;
+    }
+    #ocean-footer-text {
+        font-size: 12px;
+    }
+    #closed-treasure {
+        width: 100px;
+        cursor: pointer;
+        bottom: 30px;
+        z-index: 1;
+    }
+    
+    #open-treasure {
+        width: 100px;
+        bottom: 32px;
+    }
+    
+    #treasure-peng-text {
+        position: absolute;
+        bottom: 100px;
+        left: 100px;
+        width: 100px;
+        opacity: 0;
     }
 }
 
@@ -471,6 +612,21 @@ html, body {
     width: 50px;
 }
 
+.fish5 {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    transform: translateX(90%);
+    animation-name: swim-left;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+    animation-duration: 7s;
+}
+
+.fish5 img {
+    width: 50px;
+}
+
 .green-fish {
     position: absolute;
     top: 20%;
@@ -482,7 +638,36 @@ html, body {
     animation-delay: 0s;
 }
 
+.green-fish2 {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    transform: translateX(110%);
+    animation-name: swim-left;
+    animation-duration: 13s;
+    animation-iteration-count: infinite;
+}
+
+.green-fish2 img {
+    width: 60px;
+}
+
+.green-fish-right {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    transform: translateX(-100%);
+    animation-name: swim-right;
+    animation-duration: 9s;
+    animation-iteration-count: infinite;
+    animation-delay: .5s;
+}
+
 .green-fish img {
+    width: 60px;
+}
+
+.green-fish-right img {
     width: 60px;
 }
 
@@ -499,6 +684,20 @@ html, body {
 
 .big-orange img {
     width: 70px;
+}
+
+.big-orange-whale {
+    position: absolute;
+    top: 80%;
+    right: 0;
+    transform: translateX(110%);
+    animation-name: swim-left;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+
+.big-orange-whale img {
+    width: 150px;
 }
 
 #orange-fish-right {
@@ -540,7 +739,7 @@ html, body {
 
 @keyframes swim-left {
     0% {
-      transform: translateX(90%);
+      transform: translateX(110%);
       animation-timing-function: ease-in-out;
     }
     100% {
@@ -553,7 +752,7 @@ html, body {
       transform: translateX(-100%);
       animation-timing-function: ease-out;
     }
-    40% {
+    70% {
       transform: translateX(40vw);
     }
     100% {
@@ -631,4 +830,22 @@ html, body {
     animation-name: shakeY;
     animation-iteration-count: infinite;
     animation-duration: 22s;
+}
+
+.seawweedo4 {
+    animation-name: shakeY;
+    animation-iteration-count: infinite;
+    animation-duration: 24s;
+}
+
+.seawweedo5 {
+    animation-name: shakeY;
+    animation-iteration-count: infinite;
+    animation-duration: 19s;
+}
+
+.seawweedo6 {
+    animation-name: shakeY;
+    animation-iteration-count: infinite;
+    animation-duration: 17s;
 }
