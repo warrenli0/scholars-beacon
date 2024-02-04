@@ -8,6 +8,7 @@ function App() {
   // Properties
   const [showLP, setshowLandingPage] = useState(true);
   const [showTopWave, setShowTopWave] = useState(0);
+  const [wavesFinished, setWavesFinished] = useState(false);
 
   /*
   if (showLandingPage) {
