@@ -56,7 +56,7 @@ export default function SbInfo() {
                 </div>
                 <div className="sb-item-text" ref={divRef2}>
                     <div className='hidden'>
-                        <h3>Question list of <b>1000+ problems</b> ranging in all topics – categorized by <b>subtopics {'&'} difficulty</b></h3>
+                        <h3>Question list of <b style={{color: '#FFB800'}}>1000+ problems</b> ranging in all topics – categorized by <b style={{color: '#FFB800'}}>subtopics {'&'} difficulty</b></h3>
                     </div>
                 </div>
                 <div className="sb-img" ref={divRef3}>
@@ -67,12 +67,12 @@ export default function SbInfo() {
                 </div>
                 <div className="sb-item-text" ref={divRef5}>
                     <div className='hidden'>
-                        <h3><b>Analytics dashboard</b> to highlight your strong and weak areas</h3>
+                        <h3><b style={{color: '#FFB800'}}>Analytics dashboard</b> to highlight your strong and weak areas</h3>
                     </div>
                 </div>
                 <div className="sb-item-text" ref={divRef6}>
                     <div className='hidden'>
-                        <h3>The fastest growing SAT/ACT <b>online community</b> — study and learn together!</h3>
+                        <h3>The fastest growing SAT/ACT <b style={{color: '#FFB800'}}>online community</b> — study and learn together!</h3>
                     </div>
                 </div>
                 <div className="sb-img" ref={divRef7}>
@@ -83,7 +83,7 @@ export default function SbInfo() {
                 </div>
                 <div className="sb-item-text" ref={divRef9}>
                     <div className='hidden'>
-                        <h3>Daily <b>personalized</b> practice problems determined by your performance</h3>
+                        <h3>Daily <b style={{color: '#FFB800'}}>personalized</b> practice problems determined by your performance</h3>
                     </div>
                 </div>
               </div> 
