@@ -19,8 +19,8 @@ function App() {
   return (
     <div>
       <LandingPage setShowTopWave={setShowTopWave} showLP={showLP} setshowLandingPage={setshowLandingPage}/>
-      <WaveTransition showTopWave={showTopWave}/>
-      <Start showLP={showLP} />
+      <WaveTransition showTopWave={showTopWave} wavesFinished={wavesFinished} setWavesFinished={setWavesFinished}/>
+      <Start showLP={showLP}/>
     </div>
   )
 }
