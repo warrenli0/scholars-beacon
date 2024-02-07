@@ -40,17 +40,23 @@ export default function Choose({}) {
             setTimeout(function(){
                 setspeak("1");
             }, 2000);
-        } else if (chooseSATorACT == '4') { // invalid input case
+        } else if (chooseSATorACT == '4') { // invalid input case for SAT
             setspeak("reset");
             setpengText("Enter a valid score between 200 and 800 each!");
             setTimeout(function(){
                 setspeak("1");
             }, 500);
-        } else if (chooseSATorACT == '5') { // time 4 problems
+        } else if (chooseSATorACT == '5') { // invalid input case for ACT
+            setspeak("reset");
+            setpengText("Enter a valid score between 1 and 36 each!");
+            setTimeout(function(){
+                setspeak("1");
+            }, 500);
+        } else if (chooseSATorACT == '6') { // time 4 problems
             setspeak("reset");
             setpengText("Have fun :)");
             setTimeout(function(){
-                setspeak("1");
+                setspeak("2");
             }, 500);
         }
     }, [chooseSATorACT]);
@@ -74,7 +80,7 @@ export default function Choose({}) {
             <div className='start-text'>
                 <SatAct showChoice={showChoice} setshowChoice={setshowChoice} setchooseSATorACT={setchooseSATorACT} chooseSATorACT={chooseSATorACT}/>
                 <EnterSat showEnterSAT={showEnterSAT} setshowEnterSAT={setshowEnterSAT} chooseSATorACT={chooseSATorACT} setchooseSATorACT={setchooseSATorACT}/>
-                <EnterAct showEnterACT={showEnterACT} setshowEnterACT={setshowEnterACT} chooseSATorACT={chooseSATorACT}/>
+                <EnterAct showEnterACT={showEnterACT} setshowEnterACT={setshowEnterACT} chooseSATorACT={chooseSATorACT} setchooseSATorACT={setchooseSATorACT}/>
                 <Begin showStart={showStart} />
             </div>
             <div className='start-beach'></div>

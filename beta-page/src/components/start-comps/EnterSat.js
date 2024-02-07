@@ -43,10 +43,15 @@ export default function EnterSat({showEnterSAT, setshowEnterSAT, chooseSATorACT,
             {
                 setchooseSATorACT('4')
             }
-        } else {
-            alert("valid baby");
+        } else { // next page
+            if (exit == '0'){ // in case someone tries to click a couple buttons
+                setExit('1'); // triggers animation
+                setchooseSATorACT('3'); // bring in next page
+                setTimeout(function(){
+                    setshowEnterSAT(false);
+                }, 2000);
+            }
         }
-        
     };
 
     if (showEnterSAT) {
@@ -68,7 +73,7 @@ export default function EnterSat({showEnterSAT, setshowEnterSAT, chooseSATorACT,
                     <input type="text" id="english-score" validenglish={validEnglish} onChange={(e) => setenglishScore(e.target.value)}></input>
                 </div>
 
-                <h2 className='sat-con' onClick={() => {contSAT()}}><span>Continue</span></h2>
+                <h2 className='sat-con'><span onClick={() => {contSAT()}}>Continue</span></h2>
             </div>
         )
     }
