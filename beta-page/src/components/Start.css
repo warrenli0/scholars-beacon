@@ -6,7 +6,6 @@
 
 html, body {
     overflow-x: hidden;
-    overflow-y: hidden;
 }   
 
 .start-page {
@@ -34,14 +33,20 @@ html, body {
     display: flex;
     gap: 40px;
     z-index: 4;
+    
 }
 
 .choose img {
+    transition-duration: 0.2s;
     width: 30vw;
 }
 
 .choose img[exit='0'] {
     cursor: pointer;
+}
+
+.choose img[exit='0']:hover {
+    transform: translate(0px, -10px);
 }
 
 .choose img[exit='1'] {
@@ -144,8 +149,13 @@ html, body {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 45% 45% 10%;
-    animation: backInRight 1.5s forwards; 
+    animation: backInRightSAT 1.5s forwards; 
     animation-delay: .4s;
+}
+
+.enter-sat-container[exit='1'] {
+    animation: backOutLeftSAT 2s forwards; 
+    cursor: auto;
 }
 
 .sat-cen {
@@ -167,11 +177,22 @@ html, body {
     text-align: center;
     font-size: 80px;
     font-weight: 700;
+    transition-duration: .2s;
 }
 
 .sat-cen input[type="text"]:focus {
     outline: 0;
     box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.75);
+}
+
+#math-score[validmath="1"] {
+    animation: shakeX 1.5s; 
+    border-color: rgb(255, 0, 0);
+}
+
+#english-score[validenglish="1"] {
+    animation: shakeX 1.5s; 
+    border-color: rgb(255, 0, 0);
 }
 
 #math-pic {
@@ -196,6 +217,11 @@ html, body {
 
 .sat-con span{
     cursor: pointer;
+    transition-duration: .2s;
+}
+
+.sat-con span:hover {
+    color: #ffb700;
 }
 
 @media only screen and (max-width: 781px) {
@@ -237,8 +263,6 @@ html, body {
 
 /* EnterAct.js */
 
-/* EnterSat.js */
-
 .enter-act-container {
     position: absolute;
     left: 50vw;
@@ -256,6 +280,11 @@ html, body {
     grid-template-rows: 45% 45% 10%;
     animation: backInRightACT 1.5s forwards; 
     animation-delay: .4s;
+}
+
+.enter-act-container[exit='1'] {
+    animation: backOutLeftACT 2s forwards; 
+    cursor: auto;
 }
 
 .act-cen {
@@ -368,6 +397,64 @@ html, body {
     }
 }
 
+/* Begin.js */
+
+.begin-container {
+    position: absolute;
+    left: 50vw;
+    top: 50vh;
+    transform: translate(110%, -50%);
+    background-color: rgba(0, 24, 60, .5);
+    width: 45vw;
+    height: 45vh;
+    border: solid white 5px;
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 4;
+    animation: backInRightBegin 1.5s forwards; 
+    animation-delay: .4s;
+    text-align: center;
+}
+
+.begin-container h1 {
+    font-weight: 400;
+    font-size: 35px;
+    color: white;
+}
+
+.begin-con {
+    color: white;
+    position: absolute;
+    font-size: 40px;
+    font-weight: 600;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.begin-con:hover {
+    color: #ffb700;
+}
+
+@media only screen and (max-width: 838px) {
+    .begin-container h1 {
+        font-size: 25px;
+    }
+    .begin-con {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .begin-container h1 {
+        font-size: 20px;
+    }
+    .begin-con {
+        font-size: 25px;
+    }
+}
+
 /* Animations */
 
 @keyframes typing {
@@ -399,7 +486,7 @@ html, body {
   }
 
 /* for SAT */
-  @keyframes backInRight {
+  @keyframes backInRightSAT {
     0% {
       transform: translate(100%, -50%);
       opacity: 0.7;
@@ -419,6 +506,29 @@ html, body {
       opacity: 1;
       width: 55vw;
       height: 53vh;
+    }
+  }
+
+  @keyframes backOutLeftSAT {
+    0% {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+      width: 55vw;
+      height: 53vh;
+    }
+  
+    20% {
+      transform: translate(-50%, -50%);
+      opacity: 0.7;
+      width: 45vw;
+      height: 43vh;
+    }
+  
+    100% {
+      transform: translate(-110vw, -50%);
+      opacity: 0.7;
+      width: 45vw;
+      height: 43vh;
     }
   }
 
@@ -445,3 +555,74 @@ html, body {
       height: 55vh;
     }
   }
+
+  @keyframes backOutLeftACT {
+    0% {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+      width: 65vw;
+      height: 55vh;
+    }
+  
+    20% {
+      transform: translate(-50%, -50%);
+      opacity: 0.7;
+      width: 55vw;
+      height: 48vh;
+    }
+  
+    100% {
+      transform: translate(-110vw, -50%);
+      opacity: 0.7;
+      width: 55vw;
+      height: 48vh;
+    }
+  }
+
+  /* for Begin */
+  @keyframes backInRightBegin {
+    0% {
+      transform: translate(110%, -50%);
+      opacity: 0.7;
+      width: 45vw;
+      height: 45vh;
+    }
+  
+    80% {
+      transform: translate(-50%, -50%);
+      opacity: 0.7;
+      width: 45vw;
+      height: 45vh;
+    }
+  
+    100% {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+      width: 50vw;
+      height: 50vh;
+    }
+  }
+
+/* credit https://animate.style/ */
+  @keyframes shakeX {
+    from,
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+      transform: translate3d(-10px, 0, 0);
+    }
+  
+    20%,
+    40%,
+    60%,
+    80% {
+      transform: translate3d(10px, 0, 0);
+    }
+  }
+  

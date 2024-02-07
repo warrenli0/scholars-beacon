@@ -4,14 +4,23 @@ import reading from '../../images/act-reading.png';
 import science from '../../images/act-science.png';
 import { useState } from "react";
 
-export default function EnterAct({showEnterACT}) {
+export default function EnterAct({showEnterACT, setshowEnterACT, chooseSATorACT}) {
 
     // used to trigger the exit animation
     const [exit, setExit] = useState('0');
 
+    if (chooseSATorACT == '3') { //skip condition
+        if (exit == '0'){ // in case someone tries to click a couple buttons
+            setExit('1'); // triggers animation
+            setTimeout(function(){
+                setshowEnterACT(false);
+            }, 2000);
+        }
+    }
+
     if (showEnterACT) {
         return (
-            <div className='enter-act-container'>
+            <div className='enter-act-container' exit={exit}>
                 <div className='act-cen'>
                     <img src={math} id="act-math-pic"/>
                 </div>

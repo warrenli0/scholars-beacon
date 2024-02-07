@@ -1,8 +1,8 @@
 import sat from '../../images/SAT.png';
 import act from '../../images/ACT.png';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function SatAct({showChoice, setshowChoice, setchooseSATorACT}) {
+export default function SatAct({showChoice, setshowChoice, setchooseSATorACT, chooseSATorACT}) {
 
     // used to trigger the exit animation
     const [exit, setExit] = useState('0');
@@ -16,6 +16,18 @@ export default function SatAct({showChoice, setshowChoice, setchooseSATorACT}) {
             }, 2000);
         }
     };
+
+    useEffect(() => {
+        // gotta zoom out
+        if (chooseSATorACT == '3') {
+            if (exit == '0'){ // in case someone tries to click button again
+                setExit('1'); // triggers animation
+                setTimeout(function(){
+                    setshowChoice(false);
+                }, 2000);
+            }
+        }
+    }, [chooseSATorACT]);
 
     function clickACT() {
         if (exit == '0'){ // in case someone tries to click a couple buttons
