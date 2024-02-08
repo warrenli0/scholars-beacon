@@ -7,3 +7,89 @@
 html, body {
     overflow-x: hidden;
 }
+
+/* FirstWave.js */
+
+.first-wave-out {
+    position: fixed;
+    bottom: 0px;
+    z-index: 5;
+    width: 100vw;
+}
+
+.first-wave {
+    background: url(../images/begin-surf-wave.svg) repeat-x;
+    width: 6400px;
+    height: 198px;
+    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+    transform: translate3d(0, 0, 0);
+    position: absolute;
+    top: 0px;
+}
+
+.cool-peng {
+    position: absolute;
+    width: 200px;
+    right: -15vw;
+    top: 30px;
+    animation: surf 8s forwards;
+}
+
+.first-wave-bottom {
+    position: absolute;
+    top: calc(197px + 0px);
+    height: calc(101vh);
+    width: 100vw;
+    background: #1888FE;
+}
+
+.first-wave-container {
+    animation: up 6s forwards;
+}
+
+
+.surf-wave {
+    background: url(../images/begin-wave.svg) repeat-x; 
+    width: 6400px;
+    height: 198px;
+    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -1s infinite;
+    transform: translate3d(0, 0, 0);
+    position: absolute;
+    top: 100px;
+}
+
+.surf-wave-bottom {
+    position: absolute;
+    top: calc(197px + 100px);
+    height: calc(100vh);
+    width: 100vw;
+    background: linear-gradient(#48CAE4, #00B4D8);
+}
+
+.surf-wave-container {
+    animation: up 6s forwards;
+    animation-delay: .3s;
+}
+
+@keyframes up {
+    100% {
+        transform: translateY(calc(-100vh - 297px));
+    }
+}
+
+@keyframes surf {
+    100% {
+        right: 130vw;
+        top: 60px;
+    }
+}
+
+
+@keyframes wave {
+    0% {
+      margin-left: 0;
+    }
+    100% {
+      margin-left: -1600px;
+    }
+  }

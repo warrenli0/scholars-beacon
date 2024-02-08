@@ -8,9 +8,19 @@ html, body {
     overflow-x: hidden;
 }   
 
+body {
+
+  overflow-y: hidden;
+}
+
 .start-page {
     height: 100vh;
     background:radial-gradient(ellipse at center, #ADDDFF 0%, #2AD3FA 100%);
+    transform: translateY(0vh);
+}
+
+.start-page[exit='1'] {
+  animation: start-up 6s forwards; 
 }
 
 .sb-top-right {
@@ -55,13 +65,14 @@ html, body {
 }
 
 .start-beach {
-    background-image: url('../images/start-beach.png');
+    background-image: url('../images/start-beach-curr.png');
     width: 100%;
     min-width: 1100px;
-    height: 30%;
+    height: 50%;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 101% 102%;
+    object-fit: fill;
 }
 
 .start-skip {
@@ -506,6 +517,12 @@ html, body {
         }
     to { width: 100%;
         padding: 10px }
+}
+
+@keyframes start-up {
+  100% {
+    transform: translateY(-110vh);
+  }
 }
 
 /* credit https://animate.style/ */
