@@ -89,7 +89,7 @@ html, body {
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: .5fr .5fr 1fr 1fr;
     opacity: 1;
 }
 
@@ -126,6 +126,7 @@ html, body {
     transform: translateX(-100%);
     animation: in-from-left 1s forwards;
     animation-delay: 4.2s;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.39);
 }
 
 .qcard-misc h1 {
@@ -135,6 +136,92 @@ html, body {
 .qcard-misc img {
     width: 80px;
     cursor: pointer;
+}
+
+.qcard-notepad {
+    position: relative;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 3;
+    grid-row-end: 5;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.the-notepad {
+    position: relative;
+    height: 88.5%;
+    width: 85%;
+    background-color: white;
+    outline: solid #03045E 5px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.8);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 12% 8% 70%;
+    transform: translateX(-120%);
+    animation: in-from-left 1s forwards;
+    animation-delay: 4.3s;
+}
+
+.note-cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-note {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    cursor: pointer;
+}
+
+.icon-note:hover {
+    background-color: #FFB800;
+}
+
+.icon-note[chosen='1'] {
+    background-color: #FFB800;
+}
+
+.draw-note {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    cursor: pointer;
+}
+
+.draw-note:hover {
+    background-color: #FFB800;
+}
+
+.draw-note[chosen='2'] {
+    background-color: #FFB800;
+}
+
+.ping-note {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    cursor: pointer;
+}
+
+.ping-note:hover {
+    background-color: #FFB800;
+}
+
+.ping-note[chosen='3'] {
+    background-color: #FFB800;
+}
+
+.note-cont img{
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .qcard-ping {
@@ -168,7 +255,7 @@ html, body {
 
 .the-qcard {
     position: absolute;
-    height: 80%;
+    height: 82%;
     width: 90%;
     background-color: white;
     border: solid #03045E 5px;
@@ -201,6 +288,12 @@ html, body {
     grid-column: span 2;
     display: flex;
     align-items: center;
+}
+
+.the-notepad-line {
+    grid-column: span 3;
+    display: flex;
+    align-items: baseline;
 }
 
 .the-real-line {
@@ -237,6 +330,10 @@ html, body {
     background-color: #FFB800;
 }
 
+.the-button:focus {
+    background-color: #FFB800;
+}
+
 .the-arrow {
     grid-column: span 2;
     text-align: right;
@@ -249,7 +346,7 @@ html, body {
 
 @keyframes in-from-left {
     0%{
-        transform: translateX(-100%);
+        transform: translateX(-120%);
     }
     100% {
         transition-timing-function: ease-in;

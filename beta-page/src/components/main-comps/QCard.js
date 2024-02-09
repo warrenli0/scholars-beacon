@@ -1,6 +1,5 @@
 
-import peng from '../../images/ping-bubble.png';
-import note from '../../images/note-icon.png';
+import TheNotepad from './TheNotepad';
 import TheQcard from './TheQcard';
 
 import React, { useState, useRef } from "react";
@@ -135,13 +134,9 @@ export default function QCard({showQCards}) {
                     </div>
                     <div className='qcard-misc'> 
                         <h1>00:00</h1>
-                        <img src={note}/>
                     </div>
-                    <div className='qcard-speak'> 
-                        <p></p>
-                    </div>
-                    <div className='qcard-ping'> 
-                        <img src={peng}/>
+                    <div className='qcard-notepad'> 
+                        <TheNotepad/>
                     </div>
                     <div className='qcard-container'> {/* qcard */}
                         <TheQcard prob={questions[currQIndex]}/>

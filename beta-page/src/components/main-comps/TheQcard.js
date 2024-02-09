@@ -17,7 +17,7 @@ export default function TheQcard({prob}) {
                 </div>
                 <div className="the-line"><div className="the-real-line"></div></div>
                 <div className="answer-choice">
-                    <QButton choice={prob.options[0].text} />
+                    <QButton choice={prob.options[0].text}/>
                 </div>
                 <div className="answer-choice">
                     <QButton choice={prob.options[1].text} />
