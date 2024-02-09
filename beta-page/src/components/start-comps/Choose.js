@@ -77,7 +77,7 @@ export default function Choose({setshowMain, showMain, setshowwholeStart}) {
     
     return (
         <div className='start-page' exit={showMain}>
-            <h1 className='sb-top-right'>SB</h1>
+            <h1 className='sb-top-right' exit={showMain}>SB</h1>
             <div className='start-text'>
                 <SatAct showChoice={showChoice} setshowChoice={setshowChoice} setchooseSATorACT={setchooseSATorACT} chooseSATorACT={chooseSATorACT}/>
                 <EnterSat showEnterSAT={showEnterSAT} setshowEnterSAT={setshowEnterSAT} chooseSATorACT={chooseSATorACT} setchooseSATorACT={setchooseSATorACT}/>

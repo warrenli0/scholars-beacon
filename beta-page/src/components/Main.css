@@ -8,7 +8,16 @@ html, body {
     overflow-x: hidden;
 }
 
-/* FirstWave.js */
+/* Wave stuff */
+
+.top-right-sb {
+    position: absolute;
+    top: 0;
+    right: 8px;
+    color: white;
+    text-shadow: 0px 0px 2px #7d7d7d;
+    z-index: 6;
+}
 
 .first-wave-out {
     position: fixed;
@@ -21,7 +30,7 @@ html, body {
     background: url(../images/begin-surf-wave.svg) repeat-x;
     width: 6400px;
     height: 198px;
-    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+    animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53);
     transform: translate3d(0, 0, 0);
     position: absolute;
     top: 0px;
@@ -52,23 +61,210 @@ html, body {
     background: url(../images/begin-wave.svg) repeat-x; 
     width: 6400px;
     height: 198px;
-    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -1s infinite;
+    animation: wave 10s cubic-bezier(0.36, 0.45, 0.63, 0.53) -1s;
     transform: translate3d(0, 0, 0);
     position: absolute;
     top: 100px;
 }
 
-.surf-wave-bottom {
-    position: absolute;
-    top: calc(197px + 100px);
-    height: calc(100vh);
-    width: 100vw;
-    background: linear-gradient(#48CAE4, #00B4D8);
-}
-
 .surf-wave-container {
     animation: up 6s forwards;
     animation-delay: .3s;
+}
+
+
+/* qcard stuff */
+
+.question-page {
+    position: fixed;
+    top: 0px;
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+}
+
+.question-grid {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    opacity: 1;
+}
+
+.surf-wave-bottom {
+    position: absolute;
+    top: calc(100vh + 197px + 100px);
+    height: calc(100vh);
+    width: 100vw;
+    background: linear-gradient(#48CAE4, #00B4D8);
+    animation: up 6s forwards;
+    animation-delay: .3s;
+}
+
+.qcard-header {
+    color: white;
+    padding: 20px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.39);
+    transform: translateX(-100%);
+    animation: in-from-left 1s forwards;
+    animation-delay: 4.1s;
+}
+
+.qcard-header h3{
+    font-weight: 500;
+}
+
+.qcard-misc {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    position: relative;
+    color: white;
+    transform: translateX(-100%);
+    animation: in-from-left 1s forwards;
+    animation-delay: 4.2s;
+}
+
+.qcard-misc h1 {
+    font-weight: 400;
+}
+
+.qcard-misc img {
+    width: 80px;
+    cursor: pointer;
+}
+
+.qcard-ping {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    transform: translateX(-100%);
+    animation: in-from-left 1s forwards;
+    animation-delay: 4.3s;
+}
+
+.qcard-ping img {
+    max-height: 95%;
+    max-width: 95%;
+}
+
+.qcard-container {
+    position: relative;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.the-qcard {
+    position: absolute;
+    height: 80%;
+    width: 90%;
+    background-color: white;
+    border: solid #03045E 5px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.75);
+    animation: in-from-bottom 1s forwards;
+    animation-delay: 4.3s;
+    transform: translateY(100vh);
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 18% 18% 10% 8% 18% 18% 10%;
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+.the-question {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    text-align: justify;
+    overflow-y: scroll;
+}
+
+.the-question h2 {
+    font-weight: 400;
+}
+
+.the-line {
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+}
+
+.the-real-line {
+    background-color: #03045E;
+    border: solid #03045E 2px;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.answer-choice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.the-button {
+    width: 80%;
+    height: 80%;
+    border: solid #03045E 5px;
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    transition: background-color .2s;
+}
+
+.the-button p {
+    font-size: 25px;
+}
+
+.the-button:hover {
+    background-color: #FFB800;
+}
+
+.the-arrow {
+    grid-column: span 2;
+    text-align: right;
+}
+
+.the-arrow img {
+    width: 60px;
+    cursor: pointer;
+}
+
+@keyframes in-from-left {
+    0%{
+        transform: translateX(-100%);
+    }
+    100% {
+        transition-timing-function: ease-in;
+        transform: translateX(0);
+    }
+}
+
+@keyframes in-from-bottom {
+    0%{
+        transform: translateY(100vh);
+    }
+    100% {
+        transition-timing-function: ease-in;
+        transform: translateY(0);
+    }
 }
 
 @keyframes up {

@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import surfer from '../../images/surfing-peng.png';
 
 export default function FirstWave({showfirstwave, setshowfirstwave}) {
+
+    useEffect(() => {
+        //Runs only on the first render
+        setTimeout(function(){
+            setshowfirstwave(false);
+        }, 6100);
+      }, []);
 
     if (showfirstwave) {
         return (
@@ -15,7 +22,6 @@ export default function FirstWave({showfirstwave, setshowfirstwave}) {
 
                 <div className='surf-wave-container'>
                     <div className='surf-wave'></div>
-                    <div className='surf-wave-bottom'></div>
                 </div>
             </div>
         )
