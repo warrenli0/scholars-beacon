@@ -96,12 +96,120 @@ html, body {
 .surf-wave-bottom {
     position: absolute;
     top: calc(100vh + 197px + 100px);
-    height: calc(100vh);
+    height: calc(100vh + 1px);
     width: 100vw;
     background: linear-gradient(#48CAE4, #00B4D8);
     animation: up 6s forwards;
     animation-delay: .3s;
 }
+
+.surf-wave-bottom[move='1'] {
+    animation: up-bg-from-mid 4s forwards;
+}
+.surf-wave-bottom[move='2'] {
+    display: none;
+}
+.surf-wave-bottom[move='3'] {
+    display: none;
+}
+.surf-wave-bottom[move='4'] {
+    display: none;
+}
+.surf-wave-bottom[move='5'] {
+    display: none;
+}
+
+.second-bg {
+    display: none;
+    position: absolute;
+    top: calc(100vh);
+    height: calc(101vh);
+    width: 100vw;
+    background: linear-gradient(#00B4D8, #0096C7);
+    animation: up-bg 4s forwards;
+}
+
+.second-bg[move='1'] {
+    display: block;
+}
+
+.second-bg[move='2'] {
+    display: block;
+    animation: bg-up-from-mid 4s forwards;
+}
+.second-bg[move='3'] {
+    display: none;
+}
+.second-bg[move='4'] {
+    display: none;
+}
+.second-bg[move='5'] {
+    display: none;
+}
+
+.third-bg {
+    display: none;
+    position: absolute;
+    top: calc(100vh);
+    height: calc(101vh);
+    width: 100vw;
+    background: linear-gradient(#0096C7, #0077B6);
+    animation: up-bg 4s forwards;
+}
+
+.third-bg[move='2'] {
+    display: block;
+}
+
+.third-bg[move='3'] {
+    display: block;
+    animation: bg-up-from-mid 4s forwards;
+}
+.third-bg[move='4'] {
+    display: none;
+}
+
+.fourth-bg {
+    display: none;
+    position: absolute;
+    top: calc(100vh);
+    height: calc(101vh);
+    width: 100vw;
+    background: linear-gradient(#0077B6, #023E8A);
+    animation: up-bg 4s forwards;
+}
+.fourth-bg[move='3'] {
+    display: block;
+}
+
+.fourth-bg[move='4'] {
+    display: block;
+    animation: bg-up-from-mid 4s forwards;
+}
+.fourth-bg[move='5'] {
+    display: none;
+}
+
+.fifth-bg {
+    display: none;
+    position: absolute;
+    top: calc(100vh);
+    height: calc(101vh);
+    width: 100vw;
+    background: linear-gradient(#023E8A, #03045E);
+    animation: up-bg 4s forwards;
+}
+.fifth-bg[move='4'] {
+    display: block;
+}
+.fifth-bg[move='5'] {
+    display: block;
+    animation: bg-up-from-mid 4s forwards;
+}
+.fifth-bg[move='6'] {
+    display: none;
+}
+
 
 .qcard-header {
     color: white;
@@ -208,6 +316,7 @@ html, body {
     resize: none;
     width: 95%;
     height: 95%;
+    padding: 2px;
 }
 
 .draw-note {
@@ -297,6 +406,16 @@ html, body {
     padding-bottom: 0;
 }
 
+.the-qcard[exit='1'] {
+    animation: up-qcard 2s forwards;
+    animation-delay: 0s;
+}
+
+.the-qcard[exit='2'] {
+    animation: in-from-bottom 2s forwards;
+    animation-delay: 0s;
+}
+
 .the-question {
     grid-column-start: 1;
     grid-column-end: 3;
@@ -364,7 +483,16 @@ html, body {
     background-color: #FFD66D;
 }
 
-.the-button:focus {
+#choice1[chosen='1'] {
+    background-color: #FFB800;
+}
+#choice2[chosen='2'] {
+    background-color: #FFB800;
+}
+#choice3[chosen='3'] {
+    background-color: #FFB800;
+}
+#choice4[chosen='4'] {
     background-color: #FFB800;
 }
 
@@ -376,6 +504,24 @@ html, body {
 .the-arrow img {
     width: 60px;
     cursor: pointer;
+    display: none;
+}
+
+.the-arrow img[exit='1'] {
+    cursor: auto;
+}
+
+.the-arrow img[chosen='1'] {
+    display: inline;
+}
+.the-arrow img[chosen='2'] {
+    display: inline;
+}
+.the-arrow img[chosen='3'] {
+    display: inline;
+}
+.the-arrow img[chosen='4'] {
+    display: inline;
 }
 
 @keyframes in-from-left {
@@ -398,11 +544,45 @@ html, body {
     }
 }
 
+@keyframes up-qcard {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+
 @keyframes up {
     100% {
         transform: translateY(calc(-100vh - 297px));
     }
 }
+
+@keyframes up-bg-from-mid {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: -100vh;
+    }
+}
+
+@keyframes up-bg {
+    100% {
+        transform: translateY(calc(-100vh));
+    }
+}
+
+@keyframes bg-up-from-mid {
+    0% {
+        transform: translateY(calc(-100vh));
+    }
+    100% {
+        transform: translateY(calc(-200vh));
+    }
+}
+
 
 @keyframes surf {
     100% {

@@ -149,6 +149,7 @@ function Timer({show}) {
 export default function QCard({showQCards}) {
     const [currQIndex, setcurrQIndex] = useState(0);
     const [showIcon, setshowIcon] = useState('1');
+    const [bgNum, setbgNum] = useState(0);
 
     /* One reason to use useCallback is to prevent a component from re-rendering unless its props have changed. source: w3 */
 
@@ -156,7 +157,12 @@ export default function QCard({showQCards}) {
         return (
             <div className='question-page'> {/* Fixed container to position off of */}
                 
-                <div className='surf-wave-bottom'></div> {/* First bg that moves up */}
+                <div className='surf-wave-bottom' move={+bgNum}></div> {/* First bg that moves up */}
+                <div className='second-bg' move={+bgNum}></div>
+                <div className='third-bg' move={+bgNum}></div>
+                <div className='fourth-bg' move={+bgNum}></div>
+                <div className='fifth-bg' move={+bgNum}></div>
+                
                 <div className='question-grid'> {/* Used to position misc + qcards */}
                     <div className='qcard-header'> 
                         <h1>Q.{currQIndex+1}</h1>
@@ -171,11 +177,10 @@ export default function QCard({showQCards}) {
                         <TheNotepad/>
                     </div>
                     <div className='qcard-container'> {/* qcard */}
-                        <TheQcard prob={questions[currQIndex]}/>
+                        <TheQcard prob={questions[currQIndex]} bgNum={bgNum} setbgNum={setbgNum} currQIndex={currQIndex} setcurrQIndex={setcurrQIndex}/>
                     </div>
                 </div>
             </div>
         )
     }
 };
-  
