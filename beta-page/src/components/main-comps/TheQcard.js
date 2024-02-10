@@ -1,5 +1,4 @@
 import arrow from "../../images/Arrow.png"
-import QButton from "./QButton";
 import React, { useState, useRef } from "react";
 
 export default function TheQcard({prob}) {
@@ -17,16 +16,16 @@ export default function TheQcard({prob}) {
                 </div>
                 <div className="the-line"><div className="the-real-line"></div></div>
                 <div className="answer-choice">
-                    <QButton choice={prob.options[0].text}/>
+                    <button className="the-button"><p>{prob.options[0].text}</p></button>
                 </div>
                 <div className="answer-choice">
-                    <QButton choice={prob.options[1].text} />
+                    <button className="the-button"><p>{prob.options[1].text}</p></button>
                 </div>
                 <div className="answer-choice">
-                    <QButton choice={prob.options[2].text} />
+                    <button className="the-button"><p>{prob.options[2].text}</p></button>
                 </div>
                 <div className="answer-choice">
-                    <QButton choice={prob.options[3].text} />
+                    <button className="the-button"><p>{prob.options[3].text}</p></button>
                 </div>
                 
                 <div className="the-arrow"><img src={arrow}/></div>

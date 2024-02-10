@@ -119,29 +119,26 @@ const questions = [
 ];
 
 function Timer({show}) {
+  // measures total seconds passed
   const [seconds, setSeconds] = useState(-4);
-  const [minutes, setMinutes] = useState(0);
   var showseconds = '';
-  var showminutes = '';
+  var showminutes = '00';
 
   setTimeout(function(){
     setSeconds(seconds + 1);
   }, 1000);
 
-  if (seconds < 10) {
-    showseconds = '0' + seconds;
-  } else if (seconds > 59) {
+  if (seconds % 60 < 10) {
+    showseconds = '0' + seconds % 60;
+  } else if (seconds % 60 == 0) {
     showseconds = '00';
-    setSeconds(0);
-    setMinutes(minutes + 1);
   } else {
-    showseconds = '' + seconds;
+    showseconds = '' + seconds % 60;
   }
 
-  if (minutes < 10) {
-    showminutes = '0' + minutes;
-  } else {
-    showminutes = '' + minutes;
+  showminutes = Math.floor(seconds / 60);
+  if (showminutes < 10) {
+    showminutes = '0' + showminutes;
   }
 
   return (
