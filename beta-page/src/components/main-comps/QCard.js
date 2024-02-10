@@ -1,4 +1,5 @@
-
+import show_icon from '../../images/Show.png'
+import hide_icon from '../../images/Hide.png'
 import TheNotepad from './TheNotepad';
 import TheQcard from './TheQcard';
 
@@ -117,8 +118,40 @@ const questions = [
     },
 ];
 
+function Timer({show}) {
+  const [seconds, setSeconds] = useState(-4);
+  const [minutes, setMinutes] = useState(0);
+  var showseconds = '';
+  var showminutes = '';
+
+  setTimeout(function(){
+    setSeconds(seconds + 1);
+  }, 1000);
+
+  if (seconds < 10) {
+    showseconds = '0' + seconds;
+  } else if (seconds > 59) {
+    showseconds = '00';
+    setSeconds(0);
+    setMinutes(minutes + 1);
+  } else {
+    showseconds = '' + seconds;
+  }
+
+  if (minutes < 10) {
+    showminutes = '0' + minutes;
+  } else {
+    showminutes = '' + minutes;
+  }
+
+  return (
+    <h1 show={show}>{showminutes}:{showseconds}</h1>
+  )
+};
+
 export default function QCard({showQCards}) {
     const [currQIndex, setcurrQIndex] = useState(0);
+    const [showIcon, setshowIcon] = useState('1');
 
     /* One reason to use useCallback is to prevent a component from re-rendering unless its props have changed. source: w3 */
 
@@ -133,7 +166,9 @@ export default function QCard({showQCards}) {
                         <h3><i>{questions[currQIndex].type}</i></h3>
                     </div>
                     <div className='qcard-misc'> 
-                        <h1>00:00</h1>
+                        <img src={show_icon} id='show_icon' show={showIcon} onClick={() => {setshowIcon('0')}}/>
+                        <img src={hide_icon} id='hide_icon' show={showIcon} onClick={() => {setshowIcon('1')}}/>
+                        <Timer show={showIcon}/>
                     </div>
                     <div className='qcard-notepad'> 
                         <TheNotepad/>
