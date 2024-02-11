@@ -41,6 +41,10 @@ function Content({version, calc, currQIndex, notesArray, setnotesArray}) {
 export default function TheNotepad({currQIndex, notesArray, setnotesArray, calc}) {
     const [selectedChoice, setselectedChoice] = useState('1');
 
+    if (selectedChoice == '4' && calc == 'false') {
+        setselectedChoice('1');
+    }
+
     return (
         <div className="the-notepad" calculator={calc}>
             <div className="note-cont icon-note" onClick={() => {setselectedChoice('1')}} chosen={selectedChoice} calculator={calc}><img src={note}/></div>
