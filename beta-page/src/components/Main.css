@@ -287,6 +287,9 @@ html, body {
     animation: in-from-left 1s forwards;
     animation-delay: 4.3s;
 }
+.the-notepad[calculator='true'] {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
 
 .note-cont {
     display: flex;
@@ -345,12 +348,37 @@ html, body {
     transition: background-color .2s;
     cursor: pointer;
 }
+.ping-note[calculator='true'] {
+    border-radius: 0px;
+}
 
 .ping-note:hover {
     background-color: #FFD66D;
 }
 
 .ping-note[chosen='3'] {
+    background-color: #FFB800;
+}
+
+.calc-note {
+    grid-column-start: 4;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    border-radius: 0px 3px 0px 0px;
+    transition: background-color .2s;
+    cursor: pointer;
+    display: none;
+}
+.calc-note[calculator='true'] {
+    display: block;
+}
+
+.calc-note:hover {
+    background-color: #FFD66D;
+}
+
+.calc-note[chosen='4'] {
     background-color: #FFB800;
 }
 
@@ -440,6 +468,9 @@ html, body {
     display: flex;
     align-items: baseline;
 }
+.the-notepad-line[calculator='true'] {
+    grid-column: span 4;
+}
 
 .the-real-line {
     background-color: #03045E;
@@ -455,6 +486,9 @@ html, body {
     grid-row-start: 3;
     grid-row-end: 3;
     overflow-y: scroll;
+}
+.notepad-content[calculator='true'] {
+    grid-column-end: 5;
 }
 
 .answer-choice {

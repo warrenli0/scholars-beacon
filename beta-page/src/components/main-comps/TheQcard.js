@@ -21,6 +21,9 @@ export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
     // check here to see which format to display qcard in
     // question + 4 answer choices
     if (showCard) {
+        if (prob.type == 'Reading') {
+            console.log('format 2');
+        }
         return (
             <div className='the-qcard' exit={exit}>
                 <div className="the-question">
