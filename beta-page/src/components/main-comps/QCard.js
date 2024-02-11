@@ -53,10 +53,16 @@ export default function QCard({questions, showQCards, notesArray, setnotesArray}
                         <h1>Q.{currQIndex+1}</h1>
                         <h3><i>{questions[currQIndex].type}</i></h3>
                     </div>
+                    <div className='qcard-question-type'>
+                      <h3><i>{questions[currQIndex].type}</i></h3>
+                    </div>
                     <div className='qcard-misc'> 
                         <img src={show_icon} id='show_icon' show={showIcon} onClick={() => {setshowIcon('0')}}/>
                         <img src={hide_icon} id='hide_icon' show={showIcon} onClick={() => {setshowIcon('1')}}/>
                         <Timer show={showIcon}/>
+                    </div>
+                    <div className='qcard-version-note'>
+                      <h3>experience the full version on larger screen</h3>
                     </div>
                     <div className='qcard-notepad'> 
                         <TheNotepad currQIndex={currQIndex} notesArray={notesArray} setnotesArray={setnotesArray} calc={''+(questions[currQIndex].type == 'Math (calc)')}/>

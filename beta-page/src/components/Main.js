@@ -53,8 +53,7 @@ export default function Main({showMain}) {
               explanation: "Read the first book of the world of witchcraft and wizardry.",
             },
             {
-              text: "Think about the picture and answer the question.",
-              img_text: "At Luffy's High School, approximately 7 percent of enrolled juniors and 5 percent of enrolled seniors were inducted into the National Pirate Society last year. If there were 562 juniors and 602 seniors enrolled at Luffy's High School last year, which is closest to the total number of juniors and seniors at Luffy's High School last year who were inducted into the National Pirate Society?",
+              text: "At Luffy's High School, approximately 7 percent of enrolled juniors and 5 percent of enrolled seniors were inducted into the National Pirate Society last year. If there were 562 juniors and 602 seniors enrolled at Luffy's High School last year, which is closest to the total number of juniors and seniors at Luffy's High School last year who were inducted into the National Pirate Society?",
               options: [
                 { id: 0, text: "140", isCorrect: false },
                 { id: 1, text: "30", isCorrect: false },
@@ -67,7 +66,7 @@ export default function Main({showMain}) {
               img_link: "https://i.pinimg.com/736x/92/9f/b5/929fb508fc6c76f8df83486b87e74e6e.jpg",
             },
             {
-              text: "Yogurt manufacturers, food 'scientists; and' government officials are also working together to develop additional solutions for reusing whey.",
+              text: "Yogurt manufacturers, food '/*scientists; and/*' government officials are also working together to develop additional solutions for reusing whey.",
               options: [
                 { id: 0, text: "NO CHANGE", isCorrect: false },
                 { id: 1, text: "scientists: and", isCorrect: false },
