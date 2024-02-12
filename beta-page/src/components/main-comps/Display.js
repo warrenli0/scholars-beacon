@@ -3,7 +3,7 @@ import hide_icon from '../../images/Hide.png'
 import TheNotepad from './TheNotepad';
 import TheQcard from './TheQcard';
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
 function Timer({show}) {
   // measures total seconds passed
@@ -33,7 +33,7 @@ function Timer({show}) {
   )
 };
 
-export default function QCard({questions, showQCards, setshowQCards, notesArray, setnotesArray}) {
+export default function Display({questions, showQCards, setshowQCards, notesArray, setnotesArray}) {
     const [currQIndex, setcurrQIndex] = useState(0);
     const [showIcon, setshowIcon] = useState('1');
     const [bgNum, setbgNum] = useState(0);
@@ -81,7 +81,7 @@ export default function QCard({questions, showQCards, setshowQCards, notesArray,
                     <div className='qcard-container'> {/* qcard */}
                         <TheQcard prob={questions[currQIndex]} bgNum={bgNum} setbgNum={setbgNum} currQIndex={currQIndex} setcurrQIndex={setcurrQIndex}/>
                     </div>
-                </div>
+                  </div>
 
             </div>
         )

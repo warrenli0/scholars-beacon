@@ -1,6 +1,6 @@
 import './Main.css'
 import FirstWave from './main-comps/FirstWave';
-import QCard from './main-comps/QCard';
+import Display from './main-comps/Display';
 
 import React, { useState, useEffect } from "react";
 
@@ -149,7 +149,7 @@ export default function Main({showMain}) {
                 <h1 className='top-right-sb'>SB</h1>
 
                 {/* Qcards + review page + ecards all in one */}
-                <QCard questions={questions} showQCards={showQCards} setshowQCards={setshowQCards} notesArray={notesArray} setnotesArray={setnotesArray}/>
+                <Display questions={questions} showQCards={showQCards} setshowQCards={setshowQCards} notesArray={notesArray} setnotesArray={setnotesArray}/>
 
             </div>
         )
