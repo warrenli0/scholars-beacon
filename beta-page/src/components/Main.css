@@ -446,13 +446,18 @@ html, body {
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 4;
-    padding: 10px;
+    position: relative;
+    
 }
 .the-image img {
-    max-width: 100%;
+    max-width: 90%;
     max-height: 100%;
     border: 5px solid #03045E;
     border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .the-passage {
@@ -460,20 +465,21 @@ html, body {
     grid-column-end: 1;
     grid-row-start: 1;
     grid-row-end: 6;
-    padding-right: 13px;
-    text-align: justify;
+    text-align: left;
     overflow-y: scroll;
+    font-size: 15px;
 }
 .the-passage[format='for-img'] {
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 1;
     grid-row-end: 3;
-    padding-right: 13px;
 }
 
 .the-passage h2 {
     font-weight: 400;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .the-qcard[exit='1'] {
@@ -491,9 +497,9 @@ html, body {
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 4;
-    text-align: justify;
+    text-align: left;
+    font-size: 15px;
     overflow-y: scroll;
-    padding-right: 13px;
 }
 .the-question[format='Reading'] {
     grid-column-start: 3;
@@ -510,6 +516,8 @@ html, body {
 
 .the-question h2 {
     font-weight: 400;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .the-line {
@@ -544,8 +552,8 @@ html, body {
 }
 .the-real-line[format='Reading'] {
     background-color: #03045E;
-    border: solid #03045E 2px;
-    border-radius: 5px;
+    border: solid #03045E 1.5px;
+    border-radius: 4px;
     height: 90%;
     width: 1px;
     margin: 0 auto;
@@ -646,7 +654,7 @@ html, body {
     }
     .question-grid {
         grid-template-columns: 20% 60% 20%;
-        grid-template-rows: 10% 5% 85%;
+        grid-template-rows: 8% 5% 87%;
     }
     .qcard-header {
         grid-column-start: 1;
@@ -654,7 +662,7 @@ html, body {
         grid-row-start: 1;
         grid-row-end: 1;
         padding-left: 10px;
-        padding-top: 13px;
+        padding-top: 5px;
     }
     .qcard-header h3 {
         display: none;
@@ -710,6 +718,142 @@ html, body {
     }
     .the-qcard {
         height: 90%;
+    }
+    .the-button p {
+        font-size: 20px;
+    }   
+}
+
+@media only screen and (max-width: 760px) {
+    .qcard-question-type h3 {
+        font-size: 15px;
+    }
+    .qcard-version-note h3 {
+        font-size: 15px;
+    }
+    .qcard-misc {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+    .the-button p {
+        font-size: 20px;
+    }
+}
+
+@media only screen and (max-width: 613px) {
+    .qcard-question-type h3 {
+        font-size: 10px;
+    }
+    .qcard-version-note h3 {
+        font-size: 10px;
+    }
+    .the-question {
+        font-size: 10px;
+    }
+    .the-button p {
+        font-size: 15px;
+    }
+    .the-qcard {
+        width: 80%;
+        grid-template-columns: 100%;
+        grid-template-rows: 18% 18% 10% 8% 9% 9% 9% 9% 10%;
+    }
+    .the-question {
+        grid-column-start: 1;
+        grid-column-end: 1;
+    }
+    .the-line {
+        grid-column-start: 1;
+        grid-column-end: 1;
+    }
+    #the-choice1 {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 5;
+        grid-row-end: 5;
+    }
+    #the-choice2 {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 6;
+        grid-row-end: 6;
+    }
+    #the-choice3 {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 7;
+        grid-row-end: 7;
+    }
+    #the-choice4 {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 8;
+        grid-row-end: 8;
+    }
+
+
+    .the-qcard[format='Image'] {
+        grid-template-columns: 100%;
+        grid-template-rows: 27% 27% 9% 9% 9% 9% 10%;
+    }
+    .the-question[format='Image']{
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+    .the-image[format='Image']{
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 2;
+        grid-row-end: 2;
+        max-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .the-image img[format='Image']{
+        position: relative;
+        max-height: 85%;
+        top: 0;
+        left: 0;
+        transform: translate(0, 0);
+    }
+    .the-line[format='Image'] {
+        display: none;
+    }
+    #the-choice1[format='Image'] {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 3;
+        grid-row-end: 3;
+    }
+    #the-choice2[format='Image'] {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 4;
+        grid-row-end: 4;
+    }
+    #the-choice3[format='Image'] {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 5;
+        grid-row-end: 5;
+    }
+    #the-choice4[format='Image'] {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 6;
+        grid-row-end: 6;
+    }
+
+    .the-passage {
+        font-size: 10px;
+    }
+
+    .qcard-misc {
+        padding-left: 15%;
+        padding-right: 15%;
     }
 }
 

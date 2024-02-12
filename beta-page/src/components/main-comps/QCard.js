@@ -62,7 +62,7 @@ export default function QCard({questions, showQCards, notesArray, setnotesArray}
                         <Timer show={showIcon}/>
                     </div>
                     <div className='qcard-version-note'>
-                      <h3>experience the full version on larger screen</h3>
+                      <h3>experience the full version on a larger screen</h3>
                     </div>
                     <div className='qcard-notepad'> 
                         <TheNotepad currQIndex={currQIndex} notesArray={notesArray} setnotesArray={setnotesArray} calc={''+(questions[currQIndex].type == 'Math (calc)')}/>

@@ -48,24 +48,24 @@ export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
             )
         } else if (prob.has_img) { // has sameish format as reading
             return (
-                <div className='the-qcard' exit={exit} > 
+                <div className='the-qcard' exit={exit} format='Image'> 
                    <div className="the-question" format='Image'>
                         <h2>{prob.text}</h2>
                     </div>
-                    <div className="the-image">
-                        <img src={prob.img_link}/>
+                    <div className="the-image" format='Image'>
+                        <img src={prob.img_link} format='Image'/>
                     </div>
-                    <div className="the-line"><div className="the-real-line"></div></div>
-                    <div className="answer-choice">
+                    <div className="the-line" format='Image'><div className="the-real-line"></div></div>
+                    <div className="answer-choice" id="the-choice1" format='Image'>
                         <button className="the-button" id="choice1" onClick={() => {setselectedChoice('1')}} chosen={selectedChoice}><p>{prob.options[0].text}</p></button>
                     </div>
-                    <div className="answer-choice">
+                    <div className="answer-choice" id="the-choice2" format='Image'>
                         <button className="the-button" id="choice2" onClick={() => {setselectedChoice('2')}} chosen={selectedChoice}><p>{prob.options[1].text}</p></button>
                     </div>
-                    <div className="answer-choice">
+                    <div className="answer-choice" id="the-choice3" format='Image'>
                         <button className="the-button" id="choice3" onClick={() => {setselectedChoice('3')}} chosen={selectedChoice}><p>{prob.options[2].text}</p></button>
                     </div>
-                    <div className="answer-choice">
+                    <div className="answer-choice" id="the-choice4" format='Image'>
                         <button className="the-button" id="choice4" onClick={() => {setselectedChoice('4')}} chosen={selectedChoice}><p>{prob.options[3].text}</p></button>
                     </div>
                     {/* on click triggers move up and the removal make sure click can only happen max onc*/}
@@ -79,16 +79,16 @@ export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
                         <h2>{prob.text}</h2>
                     </div>
                     <div className="the-line"><div className="the-real-line"></div></div>
-                    <div className="answer-choice">
+                    <div className="answer-choice" id="the-choice1">
                         <button className="the-button" id="choice1" onClick={() => {setselectedChoice('1')}} chosen={selectedChoice}><p>{prob.options[0].text}</p></button>
                     </div>
-                    <div className="answer-choice">
+                    <div className="answer-choice" id="the-choice2">
                         <button className="the-button" id="choice2" onClick={() => {setselectedChoice('2')}} chosen={selectedChoice}><p>{prob.options[1].text}</p></button>
                     </div>
-                    <div className="answer-choice">
+                    <div className="answer-choice" id="the-choice3">
                         <button className="the-button" id="choice3" onClick={() => {setselectedChoice('3')}} chosen={selectedChoice}><p>{prob.options[2].text}</p></button>
                     </div>
-                    <div className="answer-choice">
+                    <div className="answer-choice" id="the-choice4">
                         <button className="the-button" id="choice4" onClick={() => {setselectedChoice('4')}} chosen={selectedChoice}><p>{prob.options[3].text}</p></button>
                     </div>
                     {/* on click triggers move up and the removal make sure click can only happen max onc*/}
