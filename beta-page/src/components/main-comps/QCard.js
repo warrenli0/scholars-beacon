@@ -33,10 +33,17 @@ function Timer({show}) {
   )
 };
 
-export default function QCard({questions, showQCards, notesArray, setnotesArray}) {
+export default function QCard({questions, showQCards, setshowQCards, notesArray, setnotesArray}) {
     const [currQIndex, setcurrQIndex] = useState(0);
     const [showIcon, setshowIcon] = useState('1');
     const [bgNum, setbgNum] = useState(0);
+
+    /* close condition
+    if (bgNum == 5) {
+      setTimeout(function(){
+        setshowQCards(false);
+      }, 1500);
+    } */
 
     if (showQCards) {
         return (
@@ -48,29 +55,35 @@ export default function QCard({questions, showQCards, notesArray, setnotesArray}
                 <div className='fourth-bg' move={+bgNum}></div>
                 <div className='fifth-bg' move={+bgNum}></div>
 
-                <div className='question-grid'> {/* Used to position misc + qcards */}
-                    <div className='qcard-header'> 
+                <div className='question-grid' move={+bgNum}> {/* Used to position misc + qcards */}
+                    <div className='qcard-header' move={+bgNum}> 
                         <h1>Q.{currQIndex+1}</h1>
                         <h3><i>{questions[currQIndex].type}</i></h3>
                     </div>
-                    <div className='qcard-question-type'>
+                    <div className='qcard-question-type' move={+bgNum}>
                       <h3><i>{questions[currQIndex].type}</i></h3>
                     </div>
-                    <div className='qcard-misc'> 
+                    <div className='qcard-misc' move={+bgNum}> 
                         <img src={show_icon} id='show_icon' show={showIcon} onClick={() => {setshowIcon('0')}}/>
                         <img src={hide_icon} id='hide_icon' show={showIcon} onClick={() => {setshowIcon('1')}}/>
                         <Timer show={showIcon}/>
                     </div>
-                    <div className='qcard-version-note'>
+                    <div className='qcard-version-note' move={+bgNum}>
                       <h3>experience the full version on a larger screen</h3>
                     </div>
-                    <div className='qcard-notepad'> 
+                    <div className='qcard-notepad' move={+bgNum}> 
                         <TheNotepad currQIndex={currQIndex} notesArray={notesArray} setnotesArray={setnotesArray} calc={''+(questions[currQIndex].type == 'Math (calc)')}/>
                     </div>
                     <div className='qcard-container'> {/* qcard */}
                         <TheQcard prob={questions[currQIndex]} bgNum={bgNum} setbgNum={setbgNum} currQIndex={currQIndex} setcurrQIndex={setcurrQIndex}/>
                     </div>
                 </div>
+
+
+                <div className='start-review-bg' move={+bgNum}>
+                  
+                </div>
+
             </div>
         )
     }

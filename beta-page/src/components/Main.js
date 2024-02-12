@@ -148,8 +148,8 @@ export default function Main({showMain}) {
 
                 <h1 className='top-right-sb'>SB</h1>
 
-                {/* Qcards */}
-                <QCard questions={questions} showQCards={showQCards} notesArray={notesArray} setnotesArray={setnotesArray}/>
+                {/* Qcards + review page + ecards all in one */}
+                <QCard questions={questions} showQCards={showQCards} setshowQCards={setshowQCards} notesArray={notesArray} setnotesArray={setnotesArray}/>
 
             </div>
         )

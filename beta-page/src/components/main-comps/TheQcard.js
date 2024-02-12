@@ -10,11 +10,17 @@ export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
         if (exit == '0' || exit == '2') {
             setexit('1');
             setbgNum(bgNum + 1);
-            setTimeout(function(){
-                setcurrQIndex(currQIndex + 1);
-                setselectedChoice('0');
-                setexit('2'); // reset card to bottom of screen
-            }, 1500);
+            if (currQIndex == 4) { // last question
+                setTimeout(function(){
+                    setshowCard(false); // remove qcard after scrolls up
+                }, 1500);
+            } else {
+                setTimeout(function(){
+                    setcurrQIndex(currQIndex + 1);
+                    setselectedChoice('0');
+                    setexit('2'); // reset card to bottom of screen
+                }, 1010);
+            }
         }
     }
 
