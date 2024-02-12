@@ -299,7 +299,7 @@ html, body {
 .the-notepad[calculator='true'] {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-.qcard-notepad[move='5'] {
+.the-notepad[move='5'] {
     transform: translateX(0);
     animation: out-to-left 1s forwards;
     animation-delay: .3s;
@@ -480,7 +480,7 @@ html, body {
     grid-row-start: 1;
     grid-row-end: 6;
     text-align: left;
-    overflow-y: scroll;
+    overflow-y: auto;
     font-size: 15px;
 }
 .the-passage[format='for-img'] {
@@ -513,7 +513,7 @@ html, body {
     grid-row-end: 4;
     text-align: left;
     font-size: 15px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .the-question[format='Reading'] {
     grid-column-start: 3;
@@ -578,7 +578,7 @@ html, body {
     grid-column-end: 4;
     grid-row-start: 3;
     grid-row-end: 3;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .notepad-content[calculator='true'] {
     grid-column-end: 5;

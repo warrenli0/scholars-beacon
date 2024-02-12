@@ -54,6 +54,10 @@ export default function QCard({questions, showQCards, setshowQCards, notesArray,
                 <div className='third-bg' move={+bgNum}></div>
                 <div className='fourth-bg' move={+bgNum}></div>
                 <div className='fifth-bg' move={+bgNum}></div>
+                
+                <div className='start-review-bg' move={+bgNum}>
+                  
+                </div>
 
                 <div className='question-grid' move={+bgNum}> {/* Used to position misc + qcards */}
                     <div className='qcard-header' move={+bgNum}> 
@@ -72,16 +76,11 @@ export default function QCard({questions, showQCards, setshowQCards, notesArray,
                       <h3>experience the full version on a larger screen</h3>
                     </div>
                     <div className='qcard-notepad' move={+bgNum}> 
-                        <TheNotepad currQIndex={currQIndex} notesArray={notesArray} setnotesArray={setnotesArray} calc={''+(questions[currQIndex].type == 'Math (calc)')}/>
+                        <TheNotepad currQIndex={currQIndex} notesArray={notesArray} setnotesArray={setnotesArray} calc={''+(questions[currQIndex].type == 'Math (calc)')} bgNum={bgNum}/>
                     </div>
                     <div className='qcard-container'> {/* qcard */}
                         <TheQcard prob={questions[currQIndex]} bgNum={bgNum} setbgNum={setbgNum} currQIndex={currQIndex} setcurrQIndex={setcurrQIndex}/>
                     </div>
-                </div>
-
-
-                <div className='start-review-bg' move={+bgNum}>
-                  
                 </div>
 
             </div>

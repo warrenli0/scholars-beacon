@@ -38,7 +38,7 @@ function Content({version, calc, currQIndex, notesArray, setnotesArray}) {
     }
 }
 
-export default function TheNotepad({currQIndex, notesArray, setnotesArray, calc}) {
+export default function TheNotepad({currQIndex, notesArray, setnotesArray, calc, bgNum}) {
     const [selectedChoice, setselectedChoice] = useState('1');
 
     if (selectedChoice == '4' && calc == 'false') {
@@ -46,7 +46,7 @@ export default function TheNotepad({currQIndex, notesArray, setnotesArray, calc}
     }
 
     return (
-        <div className="the-notepad" calculator={calc}>
+        <div className="the-notepad" calculator={calc} move={+bgNum}>
             <div className="note-cont icon-note" onClick={() => {setselectedChoice('1')}} chosen={selectedChoice} calculator={calc}><img src={note}/></div>
             <div className="note-cont draw-note" onClick={() => {setselectedChoice('2')}} chosen={selectedChoice} calculator={calc}><img src={draw}/></div>
             <div className="note-cont ping-note" onClick={() => {setselectedChoice('3')}} chosen={selectedChoice} calculator={calc}><img src={ping}/></div>
