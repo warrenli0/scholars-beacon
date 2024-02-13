@@ -60,7 +60,7 @@ export default function Review({questions, bgNum, chosenAnswers}) {
                   </div>
                   <div className='review-button-cont'>
                         <h1>Start Review</h1>
-                    <img src={coral} className='review-coral'/>
+                        <img src={coral} className='review-coral'/>
                   </div>
                   <h3 className='review-message'>Continue to the end for early access at release.</h3>
             </div>
