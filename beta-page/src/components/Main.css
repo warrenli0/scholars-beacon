@@ -706,6 +706,7 @@ html, body {
     grid-row-start: 2;
     grid-row-end: 2;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     color: white;
     position: relative;
@@ -713,9 +714,11 @@ html, body {
 }
 .review-color[color='1'] {
     color: #00FF0C;
+    padding: 5px;
 }
 .review-color[color='0'] {
     color: #F23818;
+    padding: 5px;
 }
 
 .rock-ping-cont {
@@ -731,6 +734,9 @@ html, body {
     left: 0;
     max-width: 60%;
     max-height: 90%;
+}
+.display-review-coral {
+    display: none;
 }
 
 .review-text-container{
@@ -765,6 +771,7 @@ html, body {
     animation-delay: 4.0s;
 }
 
+/* credit: https://codepen.io/slurve/pen/rNLgQPV*/
 @keyframes review-typing {
     from { width: 0; }
     to { width: 100%; visibility: visible; }
@@ -805,6 +812,92 @@ html, body {
     text-align: center;
     color: #ADADAD;
     width: 100%;
+}
+
+@media only screen and (max-width: 814px) {
+    .start-review-bg {
+        grid-template-columns: 100%;
+        grid-template-rows: 25% 20% 20% 35%;
+    }
+    .review-header {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+    .review-flex {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+    .review-color {
+        flex: 0 0 30%;
+        text-align: center;
+    }
+    .review-button-cont {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 3;
+        grid-row-end: 3;
+        display: flex;
+        justify-content: center;
+    }
+    .review-button-cont h1 {
+        top: 25%;
+        left: 0%;
+    }
+    .review-button-cont img {
+        display: none;
+    }
+    .rock-ping-cont {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 4;
+        grid-row-end: 4;
+    }
+    .rock-ping {
+    }
+    .display-review-coral {
+        display: inline;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        max-width: 60%;
+        max-height: 70%;
+    }
+    .review-text-container {
+        right: 50%;
+        transform: translateX(50%)
+    }
+    .review-text-container h3 {
+        
+    }
+    .review-message {
+        bottom: 40%;
+    }
+}
+
+@media only screen and (max-width: 614px) {
+    .review-header h1 {
+        font-size: 25px;
+    }
+    .review-header h3 {
+        font-size: 15px;
+        padding: 0 5px;
+    }
+    .review-color {
+        font-size: 15px;
+    }
+    .review-button-cont h1 {
+        font-size: 40px;
+    }
+    .review-message {
+        font-size: 15px;
+    }
+    .review-text-container h3 {
+        font-size: 15px;
+    }
 }
 
 /* Resizing */

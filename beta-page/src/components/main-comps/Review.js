@@ -56,6 +56,7 @@ export default function Review({questions, bgNum, chosenAnswers}) {
                         <h3>important (and often neglected) </h3>
                         <h3>part of studying...</h3>
                     </div>
+                    <img src={coral} className='display-review-coral'/>
                   </div>
                   <div className='review-button-cont'>
                         <h1>Start Review</h1>
