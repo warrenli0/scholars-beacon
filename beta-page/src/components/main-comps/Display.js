@@ -1,5 +1,6 @@
 import QGrid from './QGrid';
 import Review from './Review';
+import EGrid from './EGrid';
 
 import React, { useState } from "react";
 
@@ -23,9 +24,11 @@ export default function Display({questions, showQCards, setshowQCards, notesArra
                 <div className='fourth-bg' move={+bgNum}></div>
                 <div className='fifth-bg' move={+bgNum}></div>
                 
-                <Review questions={questions} bgNum={bgNum} chosenAnswers={chosenAnswers}/>
+                <Review questions={questions} bgNum={bgNum} setbgNum={setbgNum} chosenAnswers={chosenAnswers}/>
 
                 <QGrid questions={questions} notesArray={notesArray} setnotesArray={setnotesArray} bgNum={bgNum} setbgNum={setbgNum} chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers}/>
+
+                <EGrid questions={questions} notesArray={notesArray} setnotesArray={setnotesArray} bgNum={bgNum} setbgNum={setbgNum} chosenAnswers={chosenAnswers}/>
 
             </div>
         )

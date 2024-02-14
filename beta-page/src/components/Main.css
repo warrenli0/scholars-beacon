@@ -126,6 +126,9 @@ html, body {
 .surf-wave-bottom[move='5'] {
     display: none;
 }
+.surf-wave-bottom[move='6'] {
+    display: none;
+}
 
 .second-bg {
     display: none;
@@ -215,7 +218,8 @@ html, body {
     animation: bg-up-from-mid 3s forwards;
 }
 .fifth-bg[move='6'] {
-    display: none;
+    display: block;
+    animation: bg-mid-from-up 2s forwards;
 }
 
 .qcard-header {
@@ -535,7 +539,6 @@ html, body {
     grid-row-start: 1;
     grid-row-end: 4;
 }
-
 .the-question h2 {
     font-weight: 400;
     width: 90%;
@@ -677,8 +680,9 @@ html, body {
     grid-template-columns: 50% 50%;
     grid-template-rows: 25% 20% 55%;
 }
-.start-review-bg[move='5'] {
-   
+.start-review-bg[move='6'] {
+   transform: translateY(calc(-100dvh));
+   animation: down-bg-from-mid 2s forwards;
 }
 
 .review-header {
@@ -856,8 +860,6 @@ html, body {
         grid-row-start: 4;
         grid-row-end: 4;
     }
-    .rock-ping {
-    }
     .display-review-coral {
         display: inline;
         position: absolute;
@@ -869,9 +871,6 @@ html, body {
     .review-text-container {
         right: 50%;
         transform: translateX(50%)
-    }
-    .review-text-container h3 {
-        
     }
     .review-message {
         bottom: 37.5%;
@@ -896,11 +895,12 @@ html, body {
         font-size: 15px;
     }
     .review-text-container h3 {
-        font-size: 15px;
+        font-size: 10px;
     }
     .review-text-container {
-        right: 1%;
-        transform: translateX(0%)
+        right: 50%;
+        transform: translateX(50%);
+        padding: .5em;
     }
 }
 
@@ -1168,6 +1168,16 @@ html, body {
     }
 }
 
+@keyframes in-from-top {
+    0%{
+        transform: translateY(-100dvh);
+    }
+    100% {
+        transition-timing-function: ease-in;
+        transform: translateY(0);
+    }
+}
+
 @keyframes up-qcard {
     0% {
         transform: translateY(0);
@@ -1198,12 +1208,30 @@ html, body {
     }
 }
 
+@keyframes down-bg-from-mid {
+    0% {
+        transform: translateY(calc(-100dvh));
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 @keyframes bg-up-from-mid {
     0% {
         transform: translateY(calc(-100dvh));
     }
     100% {
         transform: translateY(calc(-200dvh));
+    }
+}
+
+@keyframes bg-mid-from-up {
+    0% {
+        transform: translateY(calc(-200dvh));
+    }
+    100% {
+        transform: translateY(calc(-100dvh));
     }
 }
 

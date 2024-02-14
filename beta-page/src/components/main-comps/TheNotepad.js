@@ -4,13 +4,17 @@ import ping from "../../images/ping-icon.png"
 import calc_icon from "../../images/calc-icon.png"
 import React, { useState, useEffect } from "react";
 
-function Content({version, calc, currQIndex, notesArray, setnotesArray}) {
+function Content({version, calc, currQIndex, notesArray, setnotesArray, bgNum}) {
     const [noteText, setnoteText] = useState('');
 
     useEffect(() => {
         //Runs on the first render And any time any dependency value changes
         // want to update arrays when q index is 1-5 (indicating next question)
-        if (currQIndex != 0) {
+
+        if (bgNum > 5) { // display old note for ecard
+            setnoteText(notesArray[currQIndex]);
+        }
+        if (currQIndex != 0) { // update notes array before going to next question (this also saves for changes in ecard notes)
             setnotesArray([
                 ...notesArray,
                 noteText
@@ -53,7 +57,7 @@ export default function TheNotepad({currQIndex, notesArray, setnotesArray, calc,
             <div className="note-cont calc-note" onClick={() => {setselectedChoice('4')}} chosen={selectedChoice} calculator={calc}><img src={calc_icon}/></div>
             <div className="the-notepad-line" calculator={calc}><div className="the-real-line"></div></div>
             <div className="notepad-content" calculator={calc}>
-                <Content version={selectedChoice} calc={calc} currQIndex={currQIndex} notesArray={notesArray} setnotesArray={setnotesArray} />
+                <Content version={selectedChoice} calc={calc} currQIndex={currQIndex} notesArray={notesArray} setnotesArray={setnotesArray} bgNum={bgNum}/>
             </div>
         </div>
     )
