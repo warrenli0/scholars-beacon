@@ -6,6 +6,9 @@ import trashcan from "../../images/trashcan.png"
 import eraser from "../../images/eraser.png"
 import pen from "../../images/pen.png"
 import beach from "../../images/ping-beach.png"
+import beach_peng from "../../images/main-peng.png"
+import beach_ball from "../../images/beach-ball.png"
+import beach_umbrella from "../../images/beach-umbrella.png"
 
 import Whiteboard from "./Whiteboard";
 import React, { useState, useEffect, useRef } from "react";
@@ -16,6 +19,10 @@ function Content({version, calc, currQIndex, notesArray, setnotesArray, bgNum, d
     const [drawColor, setDrawColor] = useState('black');
     const [drawWidth, setdrawWidth] = useState(5);
     const [trash, setTrash] = useState('0');
+    const [story1, setstory1] = useState(["Nice to meet you!", "Except that I am a", "I learned it all", "She used to teach", "I remember this", "I got a geometry", "She drew out a", "It was almost as", "and I learned", "and what it", "to be a penguin.", "In the days of ice,", "We were primitive", "Our species is", "and we began to", "the World. It is", "Knowledge is", "We penguins", "In order to not", "savage, primal", "We wrote", "and made the", "and we test", "and make them", "to determine their", 'Just like you I', "Anyways, I'll let", "Thanks for"]);
+    const [story2, setstory2] = useState(["I am Coco.", "master of SAT", "from my mom", "me right here", "one time", "problem wrong", "circle in the sand", "big as my head", "about geometry...", "means to be...", "", "we would swim", "& hunted to live", "now civilized...", "learn about...", "truly incredible.", "power", "devised a plan.", "revert to our ...", "ways...", "textbooks...", "education system", "young penguins", "all take the SAT", "colleges...", "suppose!", "you get back to it", "listening, i <3 u"]);
+    const [storyindex, setstoryindex] = useState(-1);
+    const [showStory, setshowStory] = useState('0');
     const calculatorRef = useRef(null);
 
     useEffect(() => {
@@ -40,6 +47,21 @@ function Content({version, calc, currQIndex, notesArray, setnotesArray, bgNum, d
             setTrash('0'); 
         }, 100);
     }
+    function pingClick() {
+        if (storyindex == (story1.length - 1)) {
+            setshowStory('fin');
+            return;
+        }
+        setshowStory('0'); // opacity down
+        setTimeout(function(){
+            setstoryindex(storyindex + 1);
+            setshowStory('1');
+            /*
+            setTimeout(function(){
+                setshowStory('2'); // opacity down
+            }, 5000); */
+        }, 10);
+    }
 
     useEffect(() => {
         //Runs on the first render And any time any dependency value changes
@@ -54,7 +76,6 @@ function Content({version, calc, currQIndex, notesArray, setnotesArray, bgNum, d
                 noteText
             ]);
             setnoteText('');  
-            console.log("Curr drawing array:", drawingArray);
             if (bgNum <= 5) {
                 trashClick('2'); // clear canvas before next question (only for qcards)
             }
@@ -76,11 +97,21 @@ function Content({version, calc, currQIndex, notesArray, setnotesArray, bgNum, d
                 </div>
             </div>
             <div className="note-ping-cont" version={version}>
-                <h1>ping time</h1>
+                <div>
+                    <img src={beach_umbrella} className="beach-umbrella"/>
+                    <div className='beach-text-container' story={showStory}>
+                        <h3 version={version} story={showStory}>{story1[storyindex]}</h3>
+                        <h3 version={version} story={showStory}>{story2[storyindex]}</h3>
+                    </div>
+                </div>
+                <div className="note-ping-beach-cont">
+                    <img src={beach} className="ping-beach"/>
+                    <img src={beach_peng} className="ping-on-beach" onClick={() => {pingClick()}}/>
+                    <img src={beach_ball} className="beach-ball"/>
+                </div>
             </div>
             {/* desmos calculator */}
             <div className="note-calc-cont" ref={calculatorRef} version={version.toString()}/>
-
         </div>
     )
 }
