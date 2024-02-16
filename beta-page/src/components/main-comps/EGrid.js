@@ -4,7 +4,7 @@ import TheEcard from './TheEcard';
 
 import React, { useState } from "react";
 
-export default function EGrid({questions, notesArray, setnotesArray, bgNum, setbgNum, chosenAnswers}) {
+export default function EGrid({questions, notesArray, setnotesArray, bgNum, setbgNum, chosenAnswers, drawingArray, setdrawingArray}) {
     const [showEgrid, setshowEgrid] = useState(true);
     const [currQIndex, setcurrQIndex] = useState(0);
     const [showIcon, setshowIcon] = useState('1');
@@ -28,7 +28,7 @@ export default function EGrid({questions, notesArray, setnotesArray, bgNum, setb
                     <h3>Question by: <b>SB</b></h3>
                 </div>
                 <div className='ecard-notepad' move={+bgNum}> 
-                    <TheNotepad currQIndex={currQIndex} notesArray={notesArray} setnotesArray={setnotesArray} calc={''+(questions[currQIndex].type == 'Math (calc)')} bgNum={bgNum}/>
+                    <TheNotepad currQIndex={currQIndex} notesArray={notesArray} setnotesArray={setnotesArray} calc={''+(questions[currQIndex].type == 'Math (calc)')} bgNum={bgNum} drawingArray={drawingArray} setdrawingArray={setdrawingArray}/>
                 </div>
                 <div className='ecard-container'> {/* ecard */}
                     <TheEcard prob={questions[currQIndex]} bgNum={bgNum} setbgNum={setbgNum} currQIndex={currQIndex} setcurrQIndex={setcurrQIndex} chosenAnswers={chosenAnswers}/>

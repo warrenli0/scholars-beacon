@@ -4,7 +4,7 @@ import EGrid from './EGrid';
 
 import React, { useState } from "react";
 
-export default function Display({questions, showQCards, setshowQCards, notesArray, setnotesArray, chosenAnswers, setchosenAnswers}) {
+export default function Display({questions, showQCards, setshowQCards, notesArray, setnotesArray, chosenAnswers, setchosenAnswers, drawingArray, setdrawingArray}) {
     const [bgNum, setbgNum] = useState(0);
 
     /* close condition
@@ -26,9 +26,9 @@ export default function Display({questions, showQCards, setshowQCards, notesArra
                 
                 <Review questions={questions} bgNum={bgNum} setbgNum={setbgNum} chosenAnswers={chosenAnswers}/>
 
-                <QGrid questions={questions} notesArray={notesArray} setnotesArray={setnotesArray} bgNum={bgNum} setbgNum={setbgNum} chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers}/>
+                <QGrid questions={questions} notesArray={notesArray} setnotesArray={setnotesArray} bgNum={bgNum} setbgNum={setbgNum} chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers} drawingArray={drawingArray} setdrawingArray={setdrawingArray}/>
 
-                <EGrid questions={questions} notesArray={notesArray} setnotesArray={setnotesArray} bgNum={bgNum} setbgNum={setbgNum} chosenAnswers={chosenAnswers}/>
+                <EGrid questions={questions} notesArray={notesArray} setnotesArray={setnotesArray} bgNum={bgNum} setbgNum={setbgNum} chosenAnswers={chosenAnswers} drawingArray={drawingArray} setdrawingArray={setdrawingArray}/>
 
             </div>
         )
