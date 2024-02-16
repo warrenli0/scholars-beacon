@@ -27,7 +27,10 @@ export default function Whiteboard({drawColor, drawWidth, trash, drawingArray, s
       
     useEffect(() => {
         handleResize();
-      //window.addEventListener("resize", handleResize, false);
+        window.addEventListener("resize", handleResize, false);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, []);
 
     useEffect(() => {
