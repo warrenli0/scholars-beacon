@@ -5,6 +5,7 @@ import calc_icon from "../../images/calc-icon.png"
 import trashcan from "../../images/trashcan.png"
 import eraser from "../../images/eraser.png"
 import pen from "../../images/pen.png"
+import beach from "../../images/ping-beach.png"
 
 import Whiteboard from "./Whiteboard";
 import React, { useState, useEffect } from "react";
