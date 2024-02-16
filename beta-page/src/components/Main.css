@@ -316,6 +316,9 @@ html, body {
     animation: out-to-left 1s forwards;
     animation-delay: .3s;
 }
+.the-notepad[version='4'] {
+    grid-template-rows: 12% 2% 83% 3%;
+}
 
 .note-cont {
     display: flex;
@@ -497,7 +500,7 @@ html, body {
 
 .note-calc-cont {
     position: absolute;
-    width: 100%;
+    width: 99.5%;
     height: 100%;
     visibility: hidden;
 }

@@ -20,7 +20,7 @@ function Content({version, calc, currQIndex, notesArray, setnotesArray, bgNum, d
 
     useEffect(() => {
         if (calculatorRef.current) {
-            const calculator = window.Desmos.GraphingCalculator(calculatorRef.current);
+            const calculator = window.Desmos.GraphingCalculator(calculatorRef.current, {"keypad": false, "border": false});
         }
     }, []);
 
@@ -93,7 +93,7 @@ export default function TheNotepad({currQIndex, notesArray, setnotesArray, calc,
     }
 
     return (
-        <div className="the-notepad" calculator={calc} move={+bgNum}>
+        <div className="the-notepad" calculator={calc} move={+bgNum} version={selectedChoice}>
             <div className="note-cont icon-note" onClick={() => {setselectedChoice('1')}} chosen={selectedChoice} calculator={calc}><img src={note}/></div>
             <div className="note-cont draw-note" onClick={() => {setselectedChoice('2')}} chosen={selectedChoice} calculator={calc}><img src={draw}/></div>
             <div className="note-cont ping-note" onClick={() => {setselectedChoice('3')}} chosen={selectedChoice} calculator={calc}><img src={ping}/></div>
