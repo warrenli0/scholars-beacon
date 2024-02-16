@@ -29,11 +29,7 @@ export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
                     <div className="the-e-question">
                         <h2>{prob.text}</h2>
                     </div>
-                    <div className="the-e-line"><div className="the-e-real-line"></div></div>
-                    <div className="the-e-explanation">
-                        <h2><b>Explanation</b></h2>
-                        <h2>{prob.explanation}</h2> 
-                    </div>
+                    <div className="the-left-e-line"><div className="the-left-e-real-line"></div></div>
                     <div className="answer-choice" id="e-choice1">
                         <button className="the-e-button" choice="c1" chosen={+(chosenAnswers[0][1])} bg={""+(prob.options[0].isCorrect)}><p>{prob.options[0].text}</p></button>
                     </div>
@@ -46,6 +42,12 @@ export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
                     <div className="answer-choice" id="e-choice4">
                         <button className="the-e-button" choice="c4" chosen={+(chosenAnswers[0][1])} bg={""+(prob.options[3].isCorrect)}><p>{prob.options[3].text}</p></button>
                     </div>
+                    <div className="the-e-line"><div className="the-e-real-line"></div></div>
+                    <div className="the-e-explanation">
+                        <h2><b>Explanation</b></h2>
+                        <h2>{prob.explanation}</h2> 
+                    </div>
+                    <div className="the-right-e-line"><div className="the-left-e-real-line"></div></div>
                     <div className="the-e-check">
                         <input type="checkbox" id="e-understood" name="check"/>
                         <label><h2>I understand this problem</h2></label>
@@ -53,8 +55,8 @@ export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
                     <div className="the-e-help">
                         <h4>Don’t understand? Skip {"&"} ask for help in the discord</h4>
                         <img src={disc} />
+                        <img src={arrow} id="the-e-arrow" onClick={() => {nextQ()}}/>
                     </div>
-                    <div className="the-e-arrow"><img src={arrow} onClick={() => {nextQ()}}/></div>
                 </div>
             )
         }

@@ -90,7 +90,7 @@
     transform: translateY(-100dvh);
     display: grid;
     grid-template-columns: 48% 4% 48%;
-    grid-template-rows:  60% 10% 10% 10% 10%;
+    grid-template-rows:  55% 5% 10% 5% 5% 10% 10%;
     padding: 10px;
 }
 .the-e-question {
@@ -107,11 +107,35 @@
     width: 90%;
     margin: 0 auto;
 }
+.the-left-e-line {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    display: flex;
+    align-items: center;
+}
+.the-left-e-real-line {
+    background-color: #03045E;
+    border: solid #03045E 1.5px;
+    border-radius: 4px;
+    width: 75%;
+    height: 1px;
+    margin: 0 auto;
+}
+.the-right-e-line {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 5;
+    grid-row-end: 5;
+    display: flex;
+    align-items: center;
+}
 .the-e-line {
     grid-column-start: 2;
     grid-column-end: 2;
     grid-row-start: 1;
-    grid-row-end: 6;
+    grid-row-end: 8;
     display: flex;
     align-items: center;
 }
@@ -127,7 +151,7 @@
     grid-column-start: 3;
     grid-column-end: 3;
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 5;
     text-align: left;
     font-size: 15px;
     overflow-y: auto;
@@ -140,26 +164,26 @@
 #e-choice1 {
     grid-column-start: 1;
     grid-column-end: 1;
-    grid-row-start: 2;
-    grid-row-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 3;
 }
 #e-choice2 {
     grid-column-start: 1;
     grid-column-end: 1;
-    grid-row-start: 3;
-    grid-row-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 6;
 }
 #e-choice3{
     grid-column-start: 1;
     grid-column-end: 1;
-    grid-row-start: 4;
-    grid-row-end: 4;
+    grid-row-start: 6;
+    grid-row-end: 6;
 }
 #e-choice4{
     grid-column-start: 1;
     grid-column-end: 1;
-    grid-row-start: 5;
-    grid-row-end: 5;
+    grid-row-start: 7;
+    grid-row-end: 7;
 }
 .the-e-button {
     width: 80%;
@@ -190,8 +214,8 @@
 .the-e-check {
     grid-column-start: 3;
     grid-column-end: 3;
-    grid-row-start: 3;
-    grid-row-end: 3;
+    grid-row-start: 6;
+    grid-row-end: 6;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -207,31 +231,24 @@
 .the-e-help {
     grid-column-start: 3;
     grid-column-end: 3;
-    grid-row-start: 4;
-    grid-row-end: 4;
+    grid-row-start: 7;
+    grid-row-end: 7;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
     position: relative;
-    top: -40%;
+    top: -30%;
 }
 .the-e-help h4 {
     font-weight: 400;
+    font-size: 13px;
 }
 .the-e-help img {
     width: 30px;
     height: 30px;
 }
-.the-e-arrow {
-    grid-column: span 2;
-    text-align: right;
-    grid-column-start: 3;
-    grid-column-end: 3;
-    grid-row-start: 5;
-    grid-row-end: 5;
-}
-.the-e-arrow img {
+#the-e-arrow {
     width: 60px;
     cursor: pointer;
 }

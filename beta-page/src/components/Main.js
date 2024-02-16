@@ -17,6 +17,18 @@ export default function Main({showMain}) {
         //Runs only on the first render to get batch of questions
         setquestions([
           {
+            text: "Maria is staying at a hotel that charges $99.95 per night plus tax for a room. A tax of 8% is applied to the room rate, and an additional onetime untaxed fee of $5.00 is charged by the hotel. Which of the following represents Maria’s total charge, in dollars, for staying x nights?",
+            options: [
+              { id: 0, text: "(99.95 + 0.08x) + 5", isCorrect: false },
+              { id: 1, text: "1.08(99.95x) + 5", isCorrect: true },
+              { id: 2, text: "1.08(99.95x + 5)", isCorrect: false },
+              { id: 3, text: "1.08(99.95 + 5)x", isCorrect: false },
+            ],
+            type: "Math (no calc)",
+            has_img: false,
+            explanation: "The room rate is $99.95 for every night. Since you stay for x nights, the price becomes 99.95x. However, there is a tax of 8% on the room rate, so the price is 0.08(99.95x). Lastly, with the addition of a one time untaxed fee of $5, the answer is the second option: 1.08(99.95x) + 5.",
+          },
+          {
             text: "At Luffy's High School, approximately 7 percent of enrolled juniors and 5 percent of enrolled seniors were inducted into the National Pirate Society last year. If there were 562 juniors and 602 seniors enrolled at Luffy's High School last year, which is closest to the total number of juniors and seniors at Luffy's High School last year who were inducted into the National Pirate Society?",
             options: [
               { id: 0, text: "140", isCorrect: false },
@@ -29,18 +41,6 @@ export default function Main({showMain}) {
             has_img: true,
             img_link: "https://i.pinimg.com/736x/92/9f/b5/929fb508fc6c76f8df83486b87e74e6e.jpg",
           },
-            {
-              text: "Maria is staying at a hotel that charges $99.95 per night plus tax for a room. A tax of 8% is applied to the room rate, and an additional onetime untaxed fee of $5.00 is charged by the hotel. Which of the following represents Maria’s total charge, in dollars, for staying x nights?",
-              options: [
-                { id: 0, text: "(99.95 + 0.08x) + 5", isCorrect: false },
-                { id: 1, text: "1.08(99.95x) + 5", isCorrect: true },
-                { id: 2, text: "1.08(99.95x + 5)", isCorrect: false },
-                { id: 3, text: "1.08(99.95 + 5)x", isCorrect: false },
-              ],
-              type: "Math (no calc)",
-              has_img: false,
-              explanation: "The room rate is $99.95 for every night. Since you stay for x nights, the price becomes 99.95x. However, there is a tax of 8% on the room rate, so the price is 0.08(99.95x). Lastly, with the addition of a one time untaxed fee of $5, the answer is the second option: 1.08(99.95x) + 5.",
-            },
             {
               text: "Greek yogurt business have found many methods of controlling and eliminating most environmental threats. Given these solutions as well as the many health benefits of the food, the advantages of Greek yogurt 'outdo' the potential drawbacks of its production. Since I love this problem so much and I am having so much fun, let me give you the problem not once, but twice! Greek yogurt business have found many methods of controlling and eliminating most environmental threats. Given these solutions as well as the many health benefits of the food, the advantages of Greek yogurt 'outdo' the potential drawbacks of its production. Did you know that I am typing this as a form of procrastination?",
               options: [
