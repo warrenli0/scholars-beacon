@@ -8,7 +8,7 @@ import pen from "../../images/pen.png"
 import beach from "../../images/ping-beach.png"
 
 import Whiteboard from "./Whiteboard";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 function Content({version, calc, currQIndex, notesArray, setnotesArray, bgNum, drawingArray, setdrawingArray}) {
     const [noteText, setnoteText] = useState('');
@@ -16,6 +16,13 @@ function Content({version, calc, currQIndex, notesArray, setnotesArray, bgNum, d
     const [drawColor, setDrawColor] = useState('black');
     const [drawWidth, setdrawWidth] = useState(5);
     const [trash, setTrash] = useState('0');
+    const calculatorRef = useRef(null);
+
+    useEffect(() => {
+        if (calculatorRef.current) {
+            const calculator = window.Desmos.GraphingCalculator(calculatorRef.current);
+        }
+    }, []);
 
     function penClick() {
         setdrawChoice('1');
@@ -72,9 +79,8 @@ function Content({version, calc, currQIndex, notesArray, setnotesArray, bgNum, d
                 <h1>ping time</h1>
             </div>
             {/* desmos calculator */}
-            <div className="note-calc-cont" version={version}>
-                <h1>calc time</h1>
-            </div>
+            <div className="note-calc-cont" ref={calculatorRef} version={version.toString()}/>
+
         </div>
     )
 }
