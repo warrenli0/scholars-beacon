@@ -70,6 +70,7 @@ function Content({version, calc, currQIndex, notesArray, setnotesArray, bgNum, d
             <div className="note-ping-cont" version={version}>
                 <h1>ping time</h1>
             </div>
+            {/* desmos calculator */}
             <div className="note-calc-cont" version={version}>
                 <h1>calc time</h1>
             </div>
