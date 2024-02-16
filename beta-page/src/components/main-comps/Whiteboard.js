@@ -20,9 +20,20 @@ export default function Whiteboard({drawColor, drawWidth, trash, drawingArray, s
 
     // https://stackoverflow.com/questions/62846043/react-js-useeffect-with-window-resize-event-listener-not-working
     const handleResize = () => {
+        const canvas = canvasRef.current;
+        const dataURL = canvas.toDataURL(); // Get the data URL of the canvas content
         // https://stackoverflow.com/questions/10214873/make-canvas-as-wide-and-as-high-as-parent
         canvasRef.current.width = canvasRef.current.offsetWidth;
         canvasRef.current.height = canvasRef.current.offsetHeight;
+        // save the image url, clear the canvas? and rredraw on the new canvas
+        const image = new Image();
+        image.src = dataURL;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Draw the image onto the canvas
+        image.onload = () => {
+            ctx.drawImage(image, 0, 0);
+        };
     }
       
     useEffect(() => {
