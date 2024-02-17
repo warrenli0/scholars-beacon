@@ -527,7 +527,7 @@ html, body {
 .beach-umbrella {
     width: 100%;
     position: absolute;
-    bottom: 10%;
+    bottom: 8%;
     left: 0;
     transform: translateY(10%);
 }
@@ -1119,7 +1119,8 @@ html, body {
     display: none;
 }
 .qcard-question-type {
-    display: none;
+    visibility: hidden;
+    position: absolute;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -1145,7 +1146,8 @@ html, body {
         display: none;
     }
     .qcard-question-type {
-        display: block;
+        visibility: visible;
+        position: relative;
         grid-column-start: 1;
         grid-column-end: 1;
         grid-row-start: 2;

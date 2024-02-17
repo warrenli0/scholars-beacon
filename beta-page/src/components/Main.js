@@ -12,6 +12,7 @@ export default function Main({showMain}) {
     const [chosenAnswers, setchosenAnswers] = useState([]);
     
 
+    {/* Request for 5 questions here, replace the questions array, will adapt for 5 new questions once dashboard done */}
     const [questions, setquestions] = useState([{}]);
     useEffect(() => {
         //Runs only on the first render to get batch of questions
