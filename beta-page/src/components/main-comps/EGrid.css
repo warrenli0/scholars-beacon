@@ -97,6 +97,10 @@
     grid-template-columns: 48% 4% 48%;
     grid-template-rows: 35% 5% 15% 5% 10% 5% 5% 10% 10%;
 }
+.the-ecard[format="Image"] {
+    grid-template-columns: 48% 4% 48%;
+    grid-template-rows: 40% 15% 5% 10% 5% 5% 10% 10%;
+}
 .the-ecard[exit='1'] {
     animation: down-ecard 1s forwards;
     animation-delay: 0s;
@@ -116,6 +120,10 @@
 }
 .the-e-question[format='Reading'] {
     grid-row-start: 3;
+    grid-row-end: 3;
+}
+.the-e-question[format='Image'] {
+    grid-row-start: 1;
     grid-row-end: 3;
 }
 .the-e-question h2 {
@@ -148,7 +156,11 @@
     display: flex;
     align-items: center;
 }
-.the-2left-e-line {
+.the-left-e-line[format='Image'] {
+    grid-row-start: 3;
+    grid-row-end: 3;
+}
+ .the-2left-e-line {
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 4;
@@ -175,6 +187,12 @@
     display: flex;
     align-items: center;
 }
+.the-right-e-line[format="Image"] {
+    grid-row-start: 6;
+    grid-row-end: 6;
+    display: flex;
+    align-items: center;
+}
 .the-e-line {
     grid-column-start: 2;
     grid-column-end: 2;
@@ -186,6 +204,10 @@
 .the-e-line[format='Reading'] {
     grid-row-start: 1;
     grid-row-end: 10;
+}
+.the-e-line[format='Image'] {
+    grid-row-start: 1;
+    grid-row-end: 9;
 }
 .the-e-real-line {
     background-color: #03045E;
@@ -208,6 +230,10 @@
     grid-row-start: 1;
     grid-row-end: 8;
 }
+.the-e-explanation[format='Image'] {
+    grid-row-start: 2;
+    grid-row-end: 6;
+}
 .the-e-explanation h2 {
     font-weight: 400;
     width: 90%;
@@ -224,6 +250,9 @@
     right: 7%;
     cursor: pointer;
 }
+.thumbs-up[format="Image"][mobile='0'] {
+    top: 40%;
+}
 .green-thumbs-up {
     display: none;
 }
@@ -234,6 +263,9 @@
     top: 10px;
     right: 7%;
     cursor: pointer;
+}
+.green-thumbs-up[format="Image"][mobile='0'] {
+    top: 40%;
 }
 .thumbs-down {
     display: none;
@@ -246,6 +278,9 @@
     right: 2%;
     cursor: pointer;
 }
+.thumbs-down[format="Image"][mobile='0'] {
+    top: 40%;
+}
 .red-thumbs-down {
     display: none;
 }
@@ -257,6 +292,9 @@
     right: 2%;
     cursor: pointer;
 }
+.red-thumbs-down[format="Image"][mobile='0'] {
+    top: 40%;
+}
 #e-choice1 {
     grid-column-start: 1;
     grid-column-end: 1;
@@ -266,6 +304,10 @@
 #e-choice1[format='Reading'] {
     grid-row-start: 5;
     grid-row-end: 5;
+}
+#e-choice1[format='Image'] {
+    grid-row-start: 4;
+    grid-row-end: 4;
 }
 #e-choice2 {
     grid-column-start: 1;
@@ -277,6 +319,10 @@
     grid-row-start: 6;
     grid-row-end: 8;
 }
+#e-choice2[format='Image'] {
+    grid-row-start: 5;
+    grid-row-end: 7;
+}
 #e-choice3{
     grid-column-start: 1;
     grid-column-end: 1;
@@ -287,6 +333,10 @@
     grid-row-start: 8;
     grid-row-end: 8;
 }
+#e-choice3[format='Image'] {
+    grid-row-start: 7;
+    grid-row-end: 7;
+}
 #e-choice4{
     grid-column-start: 1;
     grid-column-end: 1;
@@ -296,6 +346,10 @@
 #e-choice4[format='Reading'] {
     grid-row-start: 9;
     grid-row-end: 9;
+}
+#e-choice4[format='Image'] {
+    grid-row-start: 8;
+    grid-row-end: 8;
 }
 .the-e-button {
     width: 80%;
@@ -335,6 +389,10 @@
     grid-row-start: 8;
     grid-row-end: 8;
 }
+.the-e-check[format="Image"] {
+    grid-row-start: 7;
+    grid-row-end: 7;
+}
 .the-e-check input{
     height: 30px;
     width: 30px;
@@ -358,6 +416,10 @@
     grid-row-start: 9;
     grid-row-end: 9;
 }
+.the-e-help[format="Image"] {
+    grid-row-start: 8;
+    grid-row-end: 8;
+}
 .the-e-help h4 {
     font-weight: 400;
     font-size: 13px;
@@ -369,6 +431,29 @@
 #the-e-arrow {
     width: 60px;
     cursor: pointer;
+}
+.the-e-image {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    position: relative;
+}
+.the-e-image[mobile='1'] {
+    display: none;
+}
+.the-e-image img {
+    max-width: 90%;
+    max-height: 90%;
+    border: 5px solid #03045E;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.the-e-image img[mobile='1'] {
+    display: none;
 }
 
 /* Resizing */
@@ -533,6 +618,10 @@
         grid-template-columns: 100%;
         grid-template-rows: 34% 5% 10% 5% 9% 9% 9% 9% 10%
     }
+    .the-ecard[format='Image'] {
+        grid-template-columns: 100%;
+        grid-template-rows: 27% 27% 9% 9% 9% 9% 10%;
+    }
     .the-ecard[mobile='1'] {
         width: 80%;
         grid-template-columns: 100%;
@@ -548,14 +637,43 @@
         grid-row-end: 1;
         font-size: 10px;
     }
+    .the-e-question[format='Image']{
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
     .the-e-question[mobile='1'] {
         display: none;
+    }
+    .the-e-image[format='Image']{
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 2;
+        grid-row-end: 2;
+        max-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .the-e-image img[format='Image']{
+        position: relative;
+        max-height: 85%;
+        top: 0;
+        left: 0;
+        transform: translate(0, 0);
     }
     .the-left-e-line {
         grid-column-start: 1;
         grid-column-end: 1;
         grid-row-start: 2;
         grid-row-end: 2;
+    }
+    .the-left-e-line[format="Image"] {
+        display: none;
+    }
+    .the-right-e-line[format="Image"] {
+        display: none;
     }
     .answer-choice[mobile='1'] {
         display: none;
@@ -570,6 +688,10 @@
         grid-row-start: 5;
         grid-row-end: 5;
     }
+    #e-choice1[format="Image"] {
+        grid-row-start: 3;
+        grid-row-end: 3;
+    }
     #e-choice2 {
         grid-column-start: 1;
         grid-column-end: 1;
@@ -579,6 +701,10 @@
     #e-choice2[format="Reading"] {
         grid-row-start: 6;
         grid-row-end: 6;
+    }
+    #e-choice2[format="Image"] {
+        grid-row-start: 4;
+        grid-row-end: 4;
     }
     #e-choice3 {
         grid-column-start: 1;
@@ -590,6 +716,10 @@
         grid-row-start: 7;
         grid-row-end: 7;
     }
+    #e-choice3[format="Image"] {
+        grid-row-start: 5;
+        grid-row-end: 5;
+    }
     #e-choice4 {
         grid-column-start: 1;
         grid-column-end: 1;
@@ -599,6 +729,10 @@
     #e-choice4[format="Reading"] {
         grid-row-start: 8;
         grid-row-end: 8;
+    }
+    #e-choice4[format="Image"] {
+        grid-row-start: 6;
+        grid-row-end: 6;
     }
     .the-e-explanation {
         display: none;
