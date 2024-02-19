@@ -30,6 +30,19 @@ export default function Main({showMain}) {
             explanation: "The room rate is $99.95 for every night. Since you stay for x nights, the price becomes 99.95x. However, there is a tax of 8% on the room rate, so the price is 0.08(99.95x). Lastly, with the addition of a one time untaxed fee of $5, the answer is the second option: 1.08(99.95x) + 5.",
           },
           {
+            text: "What is the real name of You-Know-Who?",
+            options: [
+              { id: 0, text: "Voldemort", isCorrect: true },
+              { id: 1, text: "Warren-san", isCorrect: false },
+              { id: 2, text: "Arun Gotnomani", isCorrect: false },
+              { id: 3, text: "CTC Enthusiast", isCorrect: false },
+            ],
+            type: "Reading",
+            has_img: false,
+            passage: "Mr. and Mrs. Dursley, of number four, Privet Drive, wereproud to say that they were perfectly normal, thankyou very much. They were the last people you’d expect to be in-volved in anything strange or mysterious, because they just didn’thold with such nonsense.Mr. Dursley was the director of a firm called Grunnings, whichmade drills. He was a big, beefy man with hardly any neck, al-though he did have a very large mustache. Mrs. Dursley was thinand blonde and had nearly twice the usual amount of neck, whichcame in very useful as she spent so much of her time craning overgarden fences, spying on the neighbors. The Dursleys had a smallson called Dudley and in their opinion there was no finer boyanywhere.",
+            explanation: "Read the first book of the world of witchcraft and wizardry.",
+          },
+          {
             text: "At Luffy's High School, approximately 7 percent of enrolled juniors and 5 percent of enrolled seniors were inducted into the National Pirate Society last year. If there were 562 juniors and 602 seniors enrolled at Luffy's High School last year, which is closest to the total number of juniors and seniors at Luffy's High School last year who were inducted into the National Pirate Society?",
             options: [
               { id: 0, text: "140", isCorrect: false },
@@ -53,19 +66,6 @@ export default function Main({showMain}) {
               type: "Grammar",
               has_img: false,
               explanation: "“Outweigh” is the only choice between “advantages” and “drawbacks.” Choices 1, 2, and 3 are incorrect because each implies a competitive relationship that is inappropriate in this context.",
-            },
-            {
-              text: "What is the real name of You-Know-Who?",
-              options: [
-                { id: 0, text: "Voldemort", isCorrect: true },
-                { id: 1, text: "Warren-san", isCorrect: false },
-                { id: 2, text: "Arun Gotnomani", isCorrect: false },
-                { id: 3, text: "Aniket — CTC Enthusiast", isCorrect: false },
-              ],
-              type: "Reading",
-              has_img: false,
-              passage: "Mr. and Mrs. Dursley, of number four, Privet Drive, wereproud to say that they were perfectly normal, thankyou very much. They were the last people you’d expect to be in-volved in anything strange or mysterious, because they just didn’thold with such nonsense.Mr. Dursley was the director of a firm called Grunnings, whichmade drills. He was a big, beefy man with hardly any neck, al-though he did have a very large mustache. Mrs. Dursley was thinand blonde and had nearly twice the usual amount of neck, whichcame in very useful as she spent so much of her time craning overgarden fences, spying on the neighbors. The Dursleys had a smallson called Dudley and in their opinion there was no finer boyanywhere.",
-              explanation: "Read the first book of the world of witchcraft and wizardry.",
             },
             {
               text: "Yogurt manufacturers, food '/*scientists; and/*' government officials are also working together to develop additional solutions for reusing whey.",
