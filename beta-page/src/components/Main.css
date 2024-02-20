@@ -25,6 +25,9 @@ html, body {
     z-index: 5;
     width: 100vw;
 }
+.first-wave-out[version='2'] {
+    top: 0px;
+}
 
 .first-wave {
     background: url(../images/begin-surf-wave.svg) repeat-x;
@@ -55,7 +58,9 @@ html, body {
 .first-wave-container {
     animation: up 6s forwards;
 }
-
+.first-wave-container[version='2'] {
+    animation: down 4s forwards;
+}
 
 .surf-wave {
     background: url(../images/begin-wave.svg) repeat-x; 
@@ -69,6 +74,10 @@ html, body {
 
 .surf-wave-container {
     animation: up 6s forwards;
+    animation-delay: .3s;
+}
+.surf-wave-container[version='2'] {
+    animation: down 4s forwards;
     animation-delay: .3s;
 }
 
@@ -131,10 +140,10 @@ html, body {
 }
 .surf-wave-bottom[move='10'] {
     display: block;
-    animation: mid-bg-from-up 1.67s forwards;
+    animation: mid-bg-from-up 2s forwards;
 }
 .surf-wave-bottom[move='11'] {
-    display: none; /* think about transition for dashboard */
+    animation: down 3s forwards;
 }
 
 .second-bg {
@@ -1541,6 +1550,15 @@ html, body {
 @keyframes up {
     100% {
         transform: translateY(calc(-100dvh - 297px));
+    }
+}
+
+@keyframes down {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: calc(100dvh + 197px + 100px);
     }
 }
 

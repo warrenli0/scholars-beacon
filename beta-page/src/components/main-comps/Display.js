@@ -1,18 +1,19 @@
 import QGrid from './QGrid';
 import Review from './Review';
 import EGrid from './EGrid';
+import FirstWave from './FirstWave';
 
 import React, { useState } from "react";
 
 export default function Display({questions, showQCards, setshowQCards, notesArray, setnotesArray, chosenAnswers, setchosenAnswers, drawingArray, setdrawingArray}) {
     const [bgNum, setbgNum] = useState(0);
 
-    /* close condition
-    if (bgNum == 5) {
+    /* close condition */
+    if (bgNum == 11) {
       setTimeout(function(){
-        setshowQCards(false);
-      }, 1500);
-    } */
+        setshowQCards(true); // set to false
+      }, 3500);
+    } 
 
     if (showQCards) {
         return (
