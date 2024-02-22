@@ -10,8 +10,8 @@ function App() {
   const [showLP, setshowLandingPage] = useState(false);
   const [showTopWave, setShowTopWave] = useState(0);
   const [wavesFinished, setWavesFinished] = useState(false);
-  const [showStart, setshowwholeStart] = useState(true);
-  const [showMain, setshowMain] = useState('0');
+  const [showStart, setshowwholeStart] = useState(false); // true
+  const [showMain, setshowMain] = useState('1'); // 1
 
   /*
   if (showLandingPage) {

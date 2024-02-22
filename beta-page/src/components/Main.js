@@ -6,9 +6,9 @@ import Dashboard from './main-comps/Dashboard';
 import React, { useState, useEffect } from "react";
 
 export default function Main({showMain}) {
-    const [showfirstwave, setshowfirstwave] = useState(true);
-    const [showQCards, setshowQCards] = useState(true);
-    const [showDashoard, setshowDashoard] = useState(false);
+    const [showfirstwave, setshowfirstwave] = useState(false);
+    const [showQCards, setshowQCards] = useState(false);
+    const [showDashoard, setshowDashoard] = useState(true);
     const [notesArray, setnotesArray] = useState([]);
     const [drawingArray, setdrawingArray] = useState(['','','','','']);
     const [chosenAnswers, setchosenAnswers] = useState([]);
