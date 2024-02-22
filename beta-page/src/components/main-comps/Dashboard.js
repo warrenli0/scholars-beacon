@@ -5,7 +5,7 @@ import stars from '../../images/starsbg.png';
 
 import React, { useState } from "react";
 import { Chart as ChartJS, defaults } from "chart.js/auto";
-import { Pie } from 'react-chartjs-2';
+import { Pie, Line } from 'react-chartjs-2';
 
 defaults.maintainAspectRatio = false;
 defaults.responsive = true;
@@ -36,6 +36,41 @@ const data = {
       },
     ],
 };
+const data2 = {
+    labels: [1, 2, 3, 4, 5],
+    datasets: [{
+      label: 'English',
+      data: [0, 50, 75, 50, 40],
+      fill: false,
+      backgroundColor: '#EF6C00',
+      borderColor: '#d56000',
+      tension: 0.1
+    },
+    {
+        label: 'Math',
+        data: [100, 50, 75, 30, 40],
+        fill: false,
+        backgroundColor: '#F73508',
+        borderColor: '#d62800',
+        tension: 0.1
+    },
+    {
+        label: 'Reading',
+        data: [0, 50, 75, 90, 80],
+        fill: false,
+        backgroundColor: '#08CAF7',
+        borderColor: '#00a8ce',
+        tension: 0.1
+    },
+    {
+        label: 'Science',
+        data: [100, 100, 100, 80, 75],
+        fill: false,
+        backgroundColor: '#00ED0B',
+        borderColor: '#00be09',
+        tension: 0.1
+    }]
+  };
 
 function ScoreChart({v}) {
     const types = ['English', 'Math', 'Reading', 'Science'];
@@ -91,8 +126,41 @@ export default function Dashboard({showDashoard, setshowDashoard}) {
                 <ScoreChart v={1}/>
                 <ScoreChart v={2}/>
                 <ScoreChart v={3}/>
-                <div className='line-container'>
-
+                <div className='line-chart'>
+                    <h3>Set vs % Correct</h3>
+                    <div className='line-container'>
+                        <Line 
+                        data={data2} 
+                        options= {{
+                            plugins: {
+                                legend: {
+                                    position: "bottom",
+                                    labels: {
+                                        boxWidth: 20,
+                                    },
+                                },
+                            },
+                            layout: {
+                                padding: 10,
+                            },
+                            scales: {
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Problem Set',
+                                        align: 'center',
+                                    }
+                                },
+                                y: {
+                                    title: {
+                                        display: true,
+                                        text: '% Correct',
+                                        align: 'center',
+                                    }
+                                }
+                            }
+                        }}/>
+                    </div>
                 </div>
                 <div className='dash-pie'>
                     <div>

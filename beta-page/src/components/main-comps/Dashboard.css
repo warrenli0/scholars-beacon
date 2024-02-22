@@ -145,11 +145,21 @@ body {
     border: 2px solid black;
 }
 
-.line-container {
+.line-chart {
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 3;
     grid-row-end: 3;
+    display: grid;
+    grid-template-rows: 10% 90%;    
+}
+.line-chart h3 {
+    color: white;
+    text-align: center;
+}
+
+.line-container {
+    position: relative;
 }
 
 .dash-try{
