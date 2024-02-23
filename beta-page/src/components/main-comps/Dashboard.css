@@ -46,7 +46,8 @@ body {
     text-align: center;
     display: grid;
     grid-template-columns: minmax(0, 1fr); /* triggers reszize horizontally somehow https://itnext.io/a-fully-responsive-chart-js-chart-91a72ef5e2c */
-    grid-template-rows: 25% 65% 5% 5%;    
+    grid-template-rows: 25% 75% ;    
+    padding-top: 6.5%;
 }
 .dash-pie h4 {
     font-weight: 500;
@@ -137,12 +138,32 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 0%;
+    transition: width 1s;
     height: 27.5px;
     background-color: #EF6C00;
     border-radius: 15px;
     box-sizing: border-box;
     border: 2px solid black;
+}
+
+.line-header {
+    position: relative;
+    z-index: 3;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+.line-header select {
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    border: solid white 2px;
+    border-radius: 2px;
+    padding-left: 2px;
 }
 
 .line-chart {
@@ -151,6 +172,7 @@ body {
     grid-row-start: 3;
     grid-row-end: 3;
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-rows: 10% 90%;    
 }
 .line-chart h3 {
@@ -174,7 +196,13 @@ body {
     justify-content: center;
 }
 .dash-try h1 {
+    position: relative;
+    z-index: 3;
     cursor: pointer;
+    transition: all .2s;
+}
+.dash-try h1:hover {
+    transform: scale(1.1);
 }
 .dash-try h4 {
     font-weight: 500;
@@ -203,11 +231,11 @@ body {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     z-index: 1;
 }
 .dash-cont img{
-    width: 140px;
+    width: 120px;
     cursor: pointer;
     transition: all .2s;
 }

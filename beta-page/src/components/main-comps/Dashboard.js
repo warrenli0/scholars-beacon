@@ -3,7 +3,7 @@ import beach from '../../images/dash-beach.png';
 import cont from '../../images/dash-continue.png';
 import stars from '../../images/starsbg.png';
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Pie, Line } from 'react-chartjs-2';
 
@@ -19,7 +19,7 @@ const data = {
     datasets: [
       {
         label: 'weightage %',
-        data: [12, 19, 3, 5],
+        data: [25, 25, 25, 25],
         backgroundColor: [
           '#EF6C00',
           '#F73508',
@@ -32,7 +32,7 @@ const data = {
           '#00a8ce',
           '#00be09',
         ],
-        borderWidth: 1,
+        borderWidth: 5,
       },
     ],
 };
@@ -72,7 +72,15 @@ const data2 = {
     }]
   };
 
-function ScoreChart({v}) {
+/* index by types[v]
+{
+    english: [[# attempted set1, # correct set1, # understood set1, avg time set1], [repeated set2, ...]],
+    math: [],
+    reading: [],
+    science: [],
+}*/
+
+function ScoreChart({v, actScores, actData}) {
     const types = ['English', 'Math', 'Reading', 'Science'];
     const colors = [
         '#EF6C00',
@@ -80,28 +88,37 @@ function ScoreChart({v}) {
         '#08CAF7',
         '#00ED0B',
     ]
-    const answers = [{correct: [1, 5], understood: [2,5]}, {correct: [0, 5], understood: [1,5]}, {correct: [3, 5], understood: [3,5]}, {correct: [5, 5], understood: [4,5]},]
     //score-cont0 for english
+    const [width, setWidth] = useState('0%');
+    const [width2, setWidth2] = useState('0%');
+    useEffect(() => {
+        //Runs only on the first render
+        // actdata: [# attempted set1, # correct set1, # understood set1, avg time set1]
+        setTimeout(function(){
+            setWidth(''+((actData[types[v]]["Set1"][1]/actData[types[v]]["Set1"][0])*100)+'%');
+            setWidth2(''+((actData[types[v]]["Set1"][2]/actData[types[v]]["Set1"][0])*100)+'%');
+        }, 3100); // reduce lower
+      }, []);
     return (
         <div className={'score-style score-cont'+v}>
             <div className='score-head'>
                 <h2 style={{color: colors[v]}}>{types[v]}</h2>
-                <h2>{36}</h2>
+                <h2>{actScores[v]}</h2>
             </div>
             <div className='correct-chart'>
-                <h3>{answers[v].correct[0]}/{answers[v].correct[1]} Correct</h3>
+                <h3>{actData[types[v]]["Set1"][1]}/{actData[types[v]]["Set1"][0]} Correct</h3>
                 <div className='correct-bar'>
-                    {answers[v].correct[0]
-                    ? <div style={{backgroundColor: colors[v], width: ''+((answers[v].correct[0]/answers[v].correct[1])*100)+'%'}} className='inside-correct-bar'></div>
+                    {actData[types[v]]["Set1"][1]
+                    ? <div style={{backgroundColor: colors[v], width: width}} className='inside-correct-bar'></div>
                     : <div></div>}
                     
                 </div>
             </div>
             <div className='correct-chart'>
-                <h3>{answers[v].understood[0]}/{answers[v].understood[1]} Understood</h3>
+                <h3>{actData[types[v]]["Set1"][2]}/{actData[types[v]]["Set1"][0]} Understood</h3>
                 <div className='correct-bar'>
-                    {answers[v].understood[0]
-                    ? <div style={{backgroundColor: colors[v], width: ''+((answers[v].understood[0]/answers[v].understood[1])*100)+'%'}} className='inside-correct-bar'></div>
+                    {actData[types[v]]["Set1"][2]
+                    ? <div style={{backgroundColor: colors[v], width: width2}} className='inside-correct-bar'></div>
                     : <div></div>}
                     
                 </div>
@@ -110,7 +127,8 @@ function ScoreChart({v}) {
     )
 }
 
-export default function Dashboard({showDashoard, setshowDashoard}) {
+export default function Dashboard({showDashoard, setshowDashoard, actScores, actData}) {
+    console.log(actData);
 
     if (showDashoard) {
         // different version if its SAT or ACT
@@ -122,12 +140,19 @@ export default function Dashboard({showDashoard, setshowDashoard}) {
                 <div className='dash-header'>
                     <h1>Let's <span style={{color: "#FFB800"}}>analyze</span>  how you did...</h1>
                 </div>
-                <ScoreChart v={0}/>
-                <ScoreChart v={1}/>
-                <ScoreChart v={2}/>
-                <ScoreChart v={3}/>
+                <ScoreChart v={0} actScores={actScores} actData={actData}/>
+                <ScoreChart v={1} actScores={actScores} actData={actData}/>
+                <ScoreChart v={2} actScores={actScores} actData={actData}/>
+                <ScoreChart v={3} actScores={actScores} actData={actData}/>
                 <div className='line-chart'>
-                    <h3>Set vs % Correct</h3>
+                    <form className='line-header'>
+                        <label htmlFor="cars">Set vs</label>
+                        <select name="cars" id="cars">
+                            <option value="volvo">Avg Solve Time</option>
+                            <option value="saab">% Correct</option>
+                            <option value="opel">% Understood</option>
+                        </select>
+                    </form>
                     <div className='line-container'>
                         <Line 
                         data={data2} 
@@ -163,7 +188,7 @@ export default function Dashboard({showDashoard, setshowDashoard}) {
                     </div>
                 </div>
                 <div className='dash-pie'>
-                    <div>
+                    <div className='pie-text'>
                         <h2>Personalized Algorithm</h2>
                         <h4><i>This is how we determine what questions you get in the future based on your accuracy, understanding, and scores. We prioritize your weak areas and reinforce your strong ones.</i></h4>
                     </div>
@@ -174,7 +199,7 @@ export default function Dashboard({showDashoard, setshowDashoard}) {
                             plugins: {
                                 legend: {
                                     display: false,
-                                    position: "bottom",
+                                    position: "right",
                                     labels: {
                                         boxWidth: 20,
                                     },
@@ -186,7 +211,7 @@ export default function Dashboard({showDashoard, setshowDashoard}) {
                             }
                         }}/>
                     </div>
-                    <div className='pie-legend'>
+                    {/*<div className='pie-legend'>
                         <div className='legend-cont'>
                             <div className='pie-box english-orange'></div>
                             <h4>English</h4>
@@ -203,7 +228,7 @@ export default function Dashboard({showDashoard, setshowDashoard}) {
                             <div className='pie-box science-green'></div>
                             <h4>Science</h4>
                         </div>
-                    </div>
+                    </div>*/}
                 </div>
                 <div className='dash-try'>
                     <h1>Try <span style={{color: "#FFB800"}}>5 new</span>  problems</h1>
