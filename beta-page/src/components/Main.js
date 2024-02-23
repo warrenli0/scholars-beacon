@@ -5,7 +5,7 @@ import Dashboard from './main-comps/Dashboard';
 
 import React, { useState, useEffect } from "react";
 
-export default function Main({showMain, actScores, setActData, actData}) {
+export default function Main({showMain, actScores, setActData, actData, setActWeightage, actWeightage}) {
     const [showfirstwave, setshowfirstwave] = useState(true); // req T
     const [showQCards, setshowQCards] = useState(true); // req T
     const [showDashoard, setshowDashoard] = useState(false);
@@ -156,10 +156,13 @@ export default function Main({showMain, actScores, setActData, actData}) {
 
                 <h1 className='top-right-sb'>SB</h1>
 
-                <Dashboard showDashoard={showDashoard} setshowDashoard={setshowDashoard} actScores={actScores} actData={actData}/>
+                <Dashboard showDashoard={showDashoard} setshowDashoard={setshowDashoard} actScores={actScores} actData={actData} actWeightage={actWeightage}/>
 
                 {/* Qcards + review page + ecards all in one */}
-                <Display questions={questions} showQCards={showQCards} setshowQCards={setshowQCards} notesArray={notesArray} setnotesArray={setnotesArray} chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers} drawingArray={drawingArray} setdrawingArray={setdrawingArray} setshowDashoard={setshowDashoard} setActData={setActData} actData={actData}/>
+                <Display questions={questions} showQCards={showQCards} setshowQCards={setshowQCards} notesArray={notesArray} 
+                setnotesArray={setnotesArray} chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers} drawingArray={drawingArray} 
+                setdrawingArray={setdrawingArray} setshowDashoard={setshowDashoard} setActData={setActData} actData={actData}
+                setActWeightage={setActWeightage}/>
 
             </div>
         )

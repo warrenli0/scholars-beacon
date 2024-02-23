@@ -14,6 +14,7 @@ function App() {
   const [showMain, setshowMain] = useState('0'); // 1
 
   const [actScores, setActScores] = useState(["","","",""]);
+  const [actWeightage, setActWeightage] = useState([25, 25, 25, 25]);
   const [satScores, setSatScores] = useState(["","","",""]);
 
   const [currProblemSet, setcurrProblemSet] = useState(1);
@@ -34,8 +35,8 @@ function App() {
     <div>
       <LandingPage setShowTopWave={setShowTopWave} showLP={showLP} setshowLandingPage={setshowLandingPage} setWavesFinished={setWavesFinished}/>
       <WaveTransition showTopWave={showTopWave} wavesFinished={wavesFinished} setWavesFinished={setWavesFinished}/>
-      <Start showLP={showLP} setshowMain={setshowMain} showMain={showMain} showStart={showStart} setshowwholeStart={setshowwholeStart} setActScores={setActScores} setSatScores={setSatScores}/>
-      <Main showMain={showMain} actScores={actScores} setActData={setActData} actData={actData}/>
+      <Start showLP={showLP} setshowMain={setshowMain} showMain={showMain} showStart={showStart} setshowwholeStart={setshowwholeStart} setActScores={setActScores} setSatScores={setSatScores} c/>
+      <Main showMain={showMain} actScores={actScores} setActData={setActData} actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage}/>
     </div>
   )
 }

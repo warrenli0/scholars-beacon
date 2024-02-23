@@ -5,7 +5,7 @@ import EnterAct from './EnterAct';
 import Begin from './Begin';
 import { useState, useEffect } from "react";
 
-export default function Choose({setshowMain, showMain, setshowwholeStart, setActScores, setSatScores}) {
+export default function Choose({setshowMain, showMain, setshowwholeStart, setActScores, setSatScores, setActWeightage}) {
 
     const [peng_text, setpengText] = useState("Hey there! What test are you preparing for?");
     const [speak, setspeak] = useState("0");
@@ -81,7 +81,7 @@ export default function Choose({setshowMain, showMain, setshowwholeStart, setAct
             <div className='start-text'>
                 <SatAct showChoice={showChoice} setshowChoice={setshowChoice} setchooseSATorACT={setchooseSATorACT} chooseSATorACT={chooseSATorACT}/>
                 <EnterSat showEnterSAT={showEnterSAT} setshowEnterSAT={setshowEnterSAT} chooseSATorACT={chooseSATorACT} setchooseSATorACT={setchooseSATorACT} setSatScores={setSatScores}/>
-                <EnterAct showEnterACT={showEnterACT} setshowEnterACT={setshowEnterACT} chooseSATorACT={chooseSATorACT} setchooseSATorACT={setchooseSATorACT} setActScores={setActScores}/>
+                <EnterAct showEnterACT={showEnterACT} setshowEnterACT={setshowEnterACT} chooseSATorACT={chooseSATorACT} setchooseSATorACT={setchooseSATorACT} setActScores={setActScores} setActWeightage={setActWeightage}/>
                 <Begin showStart={showStart} setshowMain={setshowMain} setshowwholeStart={setshowwholeStart}/>
             </div>
             <div className='start-beach'></div>

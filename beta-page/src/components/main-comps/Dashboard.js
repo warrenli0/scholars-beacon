@@ -14,28 +14,6 @@ defaults.font.weight = 500;
 defaults.font.family = 'Poppins';
 defaults.color = 'white';
 
-const data = {
-    labels: ['English', 'Math', 'Reading', 'Science'],
-    datasets: [
-      {
-        label: 'weightage %',
-        data: [25, 25, 25, 25],
-        backgroundColor: [
-          '#EF6C00',
-          '#F73508',
-          '#08CAF7',
-          '#00ED0B',
-        ],
-        borderColor: [
-          '#d56000',
-          '#d62800',
-          '#00a8ce',
-          '#00be09',
-        ],
-        borderWidth: 5,
-      },
-    ],
-};
 const data2 = {
     labels: [1, 2, 3, 4, 5],
     datasets: [{
@@ -127,8 +105,30 @@ function ScoreChart({v, actScores, actData}) {
     )
 }
 
-export default function Dashboard({showDashoard, setshowDashoard, actScores, actData}) {
-    console.log(actData);
+export default function Dashboard({showDashoard, setshowDashoard, actScores, actData, actWeightage}) {
+    //console.log(actData); DELETEs
+    const pie_data = {
+        labels: ['English', 'Math', 'Reading', 'Science'],
+        datasets: [
+        {
+            label: 'weightage %',
+            data: actWeightage,
+            backgroundColor: [
+            '#EF6C00',
+            '#F73508',
+            '#08CAF7',
+            '#00ED0B',
+            ],
+            borderColor: [
+            '#d56000',
+            '#d62800',
+            '#00a8ce',
+            '#00be09',
+            ],
+            borderWidth: 5,
+        },
+        ],
+    };
 
     if (showDashoard) {
         // different version if its SAT or ACT
@@ -194,7 +194,7 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                     </div>
                     <div className='pie-container'>
                         <Pie 
-                        data={data} 
+                        data={pie_data} 
                         options= {{
                             plugins: {
                                 legend: {
