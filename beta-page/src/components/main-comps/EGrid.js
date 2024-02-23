@@ -7,6 +7,7 @@ import React, { useState } from "react";
 export default function EGrid({questions, notesArray, setnotesArray, bgNum, setbgNum, chosenAnswers, drawingArray, setdrawingArray, setActData, actData}) {
     const [showEgrid, setshowEgrid] = useState(true);
     const [currQIndex, setcurrQIndex] = useState(0);
+    console.log(chosenAnswers); // DELETE
 
     if (bgNum >= 11) { // last question done
         setTimeout(function(){
