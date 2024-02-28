@@ -4,7 +4,8 @@ import TheEcard from './TheEcard';
 
 import React, { useState } from "react";
 
-export default function EGrid({questions, notesArray, setnotesArray, bgNum, setbgNum, chosenAnswers, drawingArray, setdrawingArray, setActData, actData}) {
+export default function EGrid({questions, notesArray, setnotesArray, bgNum, setbgNum, chosenAnswers, 
+    drawingArray, setdrawingArray, setActData, actData, setActWeightage, actWeightage}) {
     const [showEgrid, setshowEgrid] = useState(true);
     const [currQIndex, setcurrQIndex] = useState(0);
     if (bgNum >= 11) { // last question done
@@ -34,7 +35,9 @@ export default function EGrid({questions, notesArray, setnotesArray, bgNum, setb
                     <TheNotepad currQIndex={currQIndex} notesArray={notesArray} setnotesArray={setnotesArray} calc={''+(questions[currQIndex].type == 'Math (calc)')} bgNum={bgNum} drawingArray={drawingArray} setdrawingArray={setdrawingArray}/>
                 </div>
                 <div className='ecard-container'> {/* ecard */}
-                    <TheEcard prob={questions[currQIndex]} bgNum={bgNum} setbgNum={setbgNum} currQIndex={currQIndex} setcurrQIndex={setcurrQIndex} chosenAnswers={chosenAnswers} setActData={setActData} actData={actData}/>
+                    <TheEcard prob={questions[currQIndex]} bgNum={bgNum} setbgNum={setbgNum} 
+                    currQIndex={currQIndex} setcurrQIndex={setcurrQIndex} chosenAnswers={chosenAnswers} 
+                    setActData={setActData} actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage}/>
                 </div>
             </div>
         )

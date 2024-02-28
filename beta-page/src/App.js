@@ -22,20 +22,13 @@ function App() {
                                           English: {Set1:[0, 0, 0, 0], Set2:[0, 0, 0, 0], Set3:[0, 0, 0, 0], Set4:[0, 0, 0, 0], Set5:[0, 0, 0, 0]}, 
                                           Reading: {Set1:[0, 0, 0, 0], Set2:[0, 0, 0, 0], Set3:[0, 0, 0, 0], Set4:[0, 0, 0, 0], Set5:[0, 0, 0, 0]}, 
                                           Science: {Set1:[0, 0, 0, 0], Set2:[0, 0, 0, 0], Set3:[0, 0, 0, 0], Set4:[0, 0, 0, 0], Set5:[0, 0, 0, 0]}, }); // 5 [] for 5 problem set cap
-  /* index by types[v]
-{
-    english: [[# attempted set1, # correct set1, # understood set1, avg time set1], [repeated set2, ...]],
-    math: [],
-    reading: [],
-    science: [],
-}*/
-
 
   return (
     <div>
       <LandingPage setShowTopWave={setShowTopWave} showLP={showLP} setshowLandingPage={setshowLandingPage} setWavesFinished={setWavesFinished}/>
       <WaveTransition showTopWave={showTopWave} wavesFinished={wavesFinished} setWavesFinished={setWavesFinished}/>
-      <Start showLP={showLP} setshowMain={setshowMain} showMain={showMain} showStart={showStart} setshowwholeStart={setshowwholeStart} setActScores={setActScores} setSatScores={setSatScores} c/>
+      <Start showLP={showLP} setshowMain={setshowMain} showMain={showMain} showStart={showStart} setshowwholeStart={setshowwholeStart} 
+      setActScores={setActScores} setSatScores={setSatScores} setActWeightage={setActWeightage}/>
       <Main showMain={showMain} actScores={actScores} setActData={setActData} actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage}/>
     </div>
   )

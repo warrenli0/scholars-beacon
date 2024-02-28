@@ -6,7 +6,7 @@ import thumbs_down from "../../images/thumbs-down.png"
 import red_thumbs_down from "../../images/red-thumbs-down.png"
 import React, { useState, useRef } from "react";
 
-export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQIndex, chosenAnswers, setActData, actData}) {
+export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQIndex, chosenAnswers, setActData, actData, setActWeightage, actWeightage}) {
     const [showCard, setshowCard] = useState(true);
     const [exit, setexit] = useState('0');
     const [thumbUp, setthumbUp] = useState('0');
@@ -37,6 +37,27 @@ export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
                             Set1: [actData[prob.type].Set1[0], actData[prob.type].Set1[1], actData[prob.type].Set1[2] + 1, actData[prob.type].Set1[3]]
                         }
                     });
+                }
+            } {
+                // not understood 
+                if (prob.type.substring(0, 4) == "Math") {
+                    if (actWeightage[0]-1 >= 10 && actWeightage[1]+3 <= 60 && actWeightage[2]-1 >= 10 && actWeightage[3]-1 >= 10) {
+                        setActWeightage([actWeightage[0]-1, actWeightage[1]+3, actWeightage[2]-1, actWeightage[3]-1]);
+                    }
+                } else {
+                    if (prob.type == "English") {
+                        if (actWeightage[0]+3 <= 60 && actWeightage[1]-1 >= 10 && actWeightage[2]-1 >= 10 && actWeightage[3]-1 >= 10) {
+                            setActWeightage([actWeightage[0]+3, actWeightage[1]-1, actWeightage[2]-1, actWeightage[3]-1]);
+                        }
+                    } else if (prob.type == "Reading") {
+                        if (actWeightage[0]-1 >= 10 && actWeightage[1]-1 >= 10 && actWeightage[2]+3 <= 60 && actWeightage[3]-1 >= 10) {
+                            setActWeightage([actWeightage[0]-1, actWeightage[1]-1, actWeightage[2]+3, actWeightage[3]-1]);
+                        }
+                    } else if (prob.type == "Science") {
+                        if (actWeightage[0]-1 >= 10 && actWeightage[1]-1 >= 10 && actWeightage[2]-1 >= 10 && actWeightage[3]+3 <= 60) {
+                            setActWeightage([actWeightage[0]-1, actWeightage[1]-1, actWeightage[2]-1, actWeightage[3]+3]);
+                        }
+                    }
                 }
             }
 

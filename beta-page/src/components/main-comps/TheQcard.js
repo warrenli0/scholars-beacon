@@ -1,7 +1,8 @@
 import arrow from "../../images/Arrow.png"
 import React, { useState, useRef } from "react";
 
-export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQIndex, chosenAnswers, setchosenAnswers, setActData, actData}) {
+export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQIndex, chosenAnswers, setchosenAnswers, setActData, actData, 
+    setActWeightage, actWeightage}) {
     const [showCard, setshowCard] = useState(true);
     const [selectedChoice, setselectedChoice] = useState('0');
     const [exit, setexit] = useState('0');
@@ -45,6 +46,12 @@ export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
                             Set1: [actData.Math.Set1[0] + 1, actData.Math.Set1[1], 0]
                         }
                     });
+                    // only change weightage if problem is wrong
+                    // eng, mat, red, sci
+                    // check if doesnt go below 10 / above 60   
+                    if (actWeightage[0]-1 >= 10 && actWeightage[1]+3 <= 60 && actWeightage[2]-1 >= 10 && actWeightage[3]-1 >= 10) {
+                        setActWeightage([actWeightage[0]-1, actWeightage[1]+3, actWeightage[2]-1, actWeightage[3]-1]);
+                    }
                 } else {
                     setActData({
                         ...actData, // copy other fields
@@ -53,6 +60,19 @@ export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
                             Set1: [actData[prob.type].Set1[0] + 1, actData[prob.type].Set1[1], 0]
                         }
                     });
+                    if (prob.type == "English") {
+                        if (actWeightage[0]+3 <= 60 && actWeightage[1]-1 >= 10 && actWeightage[2]-1 >= 10 && actWeightage[3]-1 >= 10) {
+                            setActWeightage([actWeightage[0]+3, actWeightage[1]-1, actWeightage[2]-1, actWeightage[3]-1]);
+                        }
+                    } else if (prob.type == "Reading") {
+                        if (actWeightage[0]-1 >= 10 && actWeightage[1]-1 >= 10 && actWeightage[2]+3 <= 60 && actWeightage[3]-1 >= 10) {
+                            setActWeightage([actWeightage[0]-1, actWeightage[1]-1, actWeightage[2]+3, actWeightage[3]-1]);
+                        }
+                    } else if (prob.type == "Science") {
+                        if (actWeightage[0]-1 >= 10 && actWeightage[1]-1 >= 10 && actWeightage[2]-1 >= 10 && actWeightage[3]+3 <= 60) {
+                            setActWeightage([actWeightage[0]-1, actWeightage[1]-1, actWeightage[2]-1, actWeightage[3]+3]);
+                        }
+                    }
                 }
             }
             if (currQIndex == 4) { // last question

@@ -162,7 +162,7 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
                 <Display questions={questions} showQCards={showQCards} setshowQCards={setshowQCards} notesArray={notesArray} 
                 setnotesArray={setnotesArray} chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers} drawingArray={drawingArray} 
                 setdrawingArray={setdrawingArray} setshowDashoard={setshowDashoard} setActData={setActData} actData={actData}
-                setActWeightage={setActWeightage}/>
+                setActWeightage={setActWeightage} actWeightage={actWeightage}/>
 
             </div>
         )

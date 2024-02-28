@@ -6,7 +6,7 @@ import floatie from '../../images/ping-floatie.png';
 import React, { useState, useEffect } from "react";
 
 export default function Display({questions, showQCards, setshowQCards, notesArray, setnotesArray, 
-  chosenAnswers, setchosenAnswers, drawingArray, setdrawingArray, setshowDashoard, setActData, actData, setActWeightage}) {
+  chosenAnswers, setchosenAnswers, drawingArray, setdrawingArray, setshowDashoard, setActData, actData, setActWeightage, actWeightage}) {
     const [bgNum, setbgNum] = useState(0);
 
     useEffect(() => {
@@ -41,9 +41,13 @@ export default function Display({questions, showQCards, setshowQCards, notesArra
                 
                 <Review questions={questions} bgNum={bgNum} setbgNum={setbgNum} chosenAnswers={chosenAnswers}/>
 
-                <QGrid questions={questions} notesArray={notesArray} setnotesArray={setnotesArray} bgNum={bgNum} setbgNum={setbgNum} chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers} drawingArray={drawingArray} setdrawingArray={setdrawingArray} setActData={setActData} actData={actData}/>
+                <QGrid questions={questions} notesArray={notesArray} setnotesArray={setnotesArray} bgNum={bgNum} setbgNum={setbgNum} 
+                chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers} drawingArray={drawingArray} 
+                setdrawingArray={setdrawingArray} setActData={setActData} actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage}/>
 
-                <EGrid questions={questions} notesArray={notesArray} setnotesArray={setnotesArray} bgNum={bgNum} setbgNum={setbgNum} chosenAnswers={chosenAnswers} drawingArray={drawingArray} setdrawingArray={setdrawingArray} setActData={setActData} actData={actData}/>
+                <EGrid questions={questions} notesArray={notesArray} setnotesArray={setnotesArray} bgNum={bgNum} setbgNum={setbgNum} 
+                chosenAnswers={chosenAnswers} drawingArray={drawingArray} setdrawingArray={setdrawingArray} setActData={setActData} 
+                actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage}/>
 
             </div>
         )
