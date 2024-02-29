@@ -49,6 +49,41 @@ const data2 = {
         tension: 0.1
     }]
   };
+  const data3 = {
+    labels: [1, 2, 3, 4],
+    datasets: [{
+      label: 'English',
+      data: [0, 10, 75, 50],
+      fill: false,
+      backgroundColor: '#EF6C00',
+      borderColor: '#d56000',
+      tension: 0.1
+    },
+    {
+        label: 'Math',
+        data: [10, 50, 75, 30],
+        fill: false,
+        backgroundColor: '#F73508',
+        borderColor: '#d62800',
+        tension: 0.1
+    },
+    {
+        label: 'Reading',
+        data: [0, 5, 75, 90],
+        fill: false,
+        backgroundColor: '#08CAF7',
+        borderColor: '#00a8ce',
+        tension: 0.1
+    },
+    {
+        label: 'Science',
+        data: [100, 10, 0, 80],
+        fill: false,
+        backgroundColor: '#00ED0B',
+        borderColor: '#00be09',
+        tension: 0.1
+    }]
+  };
 
 /* index by types[v]
 {
@@ -73,29 +108,29 @@ function ScoreChart({v, actScores, actData}) {
         //Runs only on the first render
         // actdata: [# attempted set1, # correct set1, # understood set1, avg time set1]
         setTimeout(function(){
-            setWidth(''+((actData[types[v]]["Set1"][1]/actData[types[v]]["Set1"][0])*100)+'%');
-            setWidth2(''+((actData[types[v]]["Set1"][2]/actData[types[v]]["Set1"][0])*100)+'%');
+            setWidth(''+((actData[types[v]]["Overall"][1]/actData[types[v]]["Overall"][0])*100)+'%');
+            setWidth2(''+((actData[types[v]]["Overall"][2]/actData[types[v]]["Overall"][0])*100)+'%');
         }, 3100); // reduce lower
       }, []);
     return (
         <div className={'score-style score-cont'+v}>
             <div className='score-head'>
-                <h2 style={{color: colors[v]}}>{types[v]}</h2>
+                <h2 style={{color: colors[v]}}>{types[v]}</h2> 
                 <h2>{actScores[v]}</h2>
             </div>
             <div className='correct-chart'>
-                <h3>{actData[types[v]]["Set1"][1]}/{actData[types[v]]["Set1"][0]} Correct</h3>
+                <h3>{actData[types[v]]["Overall"][1]}/{actData[types[v]]["Overall"][0]} Correct</h3>
                 <div className='correct-bar'>
-                    {actData[types[v]]["Set1"][1]
+                    {actData[types[v]]["Overall"][1]
                     ? <div style={{backgroundColor: colors[v], width: width}} className='inside-correct-bar'></div>
                     : <div></div>}
                     
                 </div>
             </div>
             <div className='correct-chart'>
-                <h3>{actData[types[v]]["Set1"][2]}/{actData[types[v]]["Set1"][0]} Understood</h3>
+                <h3>{actData[types[v]]["Overall"][2]}/{actData[types[v]]["Overall"][0]} Understood</h3>
                 <div className='correct-bar'>
-                    {actData[types[v]]["Set1"][2]
+                    {actData[types[v]]["Overall"][2]
                     ? <div style={{backgroundColor: colors[v], width: width2}} className='inside-correct-bar'></div>
                     : <div></div>}
                     
@@ -105,8 +140,11 @@ function ScoreChart({v, actScores, actData}) {
     )
 }
 
-export default function Dashboard({showDashoard, setshowDashoard, actScores, actData, actWeightage}) {
+export default function Dashboard({showDashoard, setshowDashoard, actScores, actData, actWeightage, currProblemSet, setcurrProblemSet}) {
     //console.log(actData); DELETEs
+    const [graphID, setgraphID] = useState('1');
+    const [exit, setexit] = useState('0');
+
     const pie_data = {
         labels: ['English', 'Math', 'Reading', 'Science'],
         datasets: [
@@ -130,10 +168,22 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
         ],
     };
 
+    function tryFive(){
+        if (exit == '0') {
+            setexit('1'); // moves bbg up
+            setcurrProblemSet(currProblemSet + 1);
+            setTimeout(function(){
+                setshowDashoard(false);
+                setexit('0');
+                setgraphID('1');
+            }, 6100);
+        }
+    };
+
     if (showDashoard) {
         // different version if its SAT or ACT
         return (
-            <div className='dashboard-bg'>
+            <div className='dashboard-bg' exit={exit}>
                 <div className='dash-stars'>
                     <img src={stars}/>
                 </div>
@@ -147,13 +197,79 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                 <div className='line-chart'>
                     <form className='line-header'>
                         <label htmlFor="cars">Set vs</label>
-                        <select name="cars" id="cars">
-                            <option value="volvo">Avg Solve Time</option>
-                            <option value="saab">% Correct</option>
-                            <option value="opel">% Understood</option>
+                        <select name="cars" id="cars" onChange={(e=> setgraphID(e.target.value))}>
+                            <option value = "1">Avg Solve Time</option>
+                            <option value = "2">% Correct</option>
+                            <option value = "3">% Understood</option>
                         </select>
                     </form>
-                    <div className='line-container'>
+                    <div className='line-container' version={graphID}>
+                        <Line 
+                        data={data2} 
+                        options= {{
+                            plugins: {
+                                legend: {
+                                    position: "bottom",
+                                    labels: {
+                                        boxWidth: 20,
+                                    },
+                                },
+                            },
+                            layout: {
+                                padding: 10,
+                            },
+                            scales: {
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Problem Set',
+                                        align: 'center',
+                                    }
+                                },
+                                y: {
+                                    title: {
+                                        display: true,
+                                        text: '% Correct',
+                                        align: 'center',
+                                    }
+                                }
+                            }
+                        }}/>
+                    </div>
+                    <div className='line-container2' version={graphID}>
+                        <Line 
+                        data={data3} 
+                        options= {{
+                            plugins: {
+                                legend: {
+                                    position: "bottom",
+                                    labels: {
+                                        boxWidth: 20,
+                                    },
+                                },
+                            },
+                            layout: {
+                                padding: 10,
+                            },
+                            scales: {
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: 'Problem Set',
+                                        align: 'center',
+                                    }
+                                },
+                                y: {
+                                    title: {
+                                        display: true,
+                                        text: '% Correct',
+                                        align: 'center',
+                                    }
+                                }
+                            }
+                        }}/>
+                    </div>
+                    <div className='line-container3' version={graphID}>
                         <Line 
                         data={data2} 
                         options= {{
@@ -231,7 +347,7 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                     </div>*/}
                 </div>
                 <div className='dash-try'>
-                    <h1>Try <span style={{color: "#FFB800"}}>5 new</span>  problems</h1>
+                    <h1 onClick={() => {tryFive()}}>Try <span style={{color: "#FFB800"}}>5 new</span>  problems</h1>
                     <h4><i>adjusted to fit your algorithm!</i></h4>
                 </div>
                 <div className='dash-beach'>

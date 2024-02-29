@@ -6,7 +6,8 @@ import floatie from '../../images/ping-floatie.png';
 import React, { useState, useEffect } from "react";
 
 export default function Display({questions, showQCards, setshowQCards, notesArray, setnotesArray, 
-  chosenAnswers, setchosenAnswers, drawingArray, setdrawingArray, setshowDashoard, setActData, actData, setActWeightage, actWeightage}) {
+  chosenAnswers, setchosenAnswers, drawingArray, setdrawingArray, setshowDashoard, setActData, actData, 
+  setActWeightage, actWeightage, currProblemSet}) {
     const [bgNum, setbgNum] = useState(0);
 
     useEffect(() => {
@@ -20,6 +21,14 @@ export default function Display({questions, showQCards, setshowQCards, notesArra
         }, 6100);
       } 
     }, [bgNum]);
+
+    useEffect(() => {
+      // 5 new problems has been selected, reset bgnum
+      if (currProblemSet > 1) {
+        setbgNum(0);
+        setshowQCards(true);
+      }
+    }, [currProblemSet]);
 
     if (showQCards) {
         return (
@@ -43,11 +52,12 @@ export default function Display({questions, showQCards, setshowQCards, notesArra
 
                 <QGrid questions={questions} notesArray={notesArray} setnotesArray={setnotesArray} bgNum={bgNum} setbgNum={setbgNum} 
                 chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers} drawingArray={drawingArray} 
-                setdrawingArray={setdrawingArray} setActData={setActData} actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage}/>
+                setdrawingArray={setdrawingArray} setActData={setActData} actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage}
+                currProblemSet={currProblemSet}/>
 
                 <EGrid questions={questions} notesArray={notesArray} setnotesArray={setnotesArray} bgNum={bgNum} setbgNum={setbgNum} 
                 chosenAnswers={chosenAnswers} drawingArray={drawingArray} setdrawingArray={setdrawingArray} setActData={setActData} 
-                actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage}/>
+                actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage} currProblemSet={currProblemSet}/>
 
             </div>
         )

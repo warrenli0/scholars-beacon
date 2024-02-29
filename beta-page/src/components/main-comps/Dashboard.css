@@ -13,6 +13,9 @@ body {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 12% 38% 38% 12%;
 }
+.dashboard-bg[exit='1'] {
+    animation: up-dash 6s forwards;
+}
 
 .dash-stars {
     position: absolute;
@@ -182,6 +185,26 @@ body {
 
 .line-container {
     position: relative;
+    display: none;
+}
+.line-container[version='1'] {
+    display: block;
+}
+
+.line-container2 {
+    position: relative;
+    display: none;
+}
+.line-container2[version='2'] {
+    display: block;
+}
+
+.line-container3 {
+    position: relative;
+    display: none;
+}
+.line-container3[version='3'] {
+    display: block;
 }
 
 .dash-try{
@@ -249,5 +272,14 @@ body {
     }
     100% {
         top: 0px;
+    }
+}
+
+@keyframes up-dash {
+    0% {
+        top: 0px;
+    }
+    100% {
+        top: calc(-100dvh);
     }
 }

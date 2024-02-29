@@ -5,21 +5,20 @@ import Dashboard from './main-comps/Dashboard';
 
 import React, { useState, useEffect } from "react";
 
-export default function Main({showMain, actScores, setActData, actData, setActWeightage, actWeightage}) {
+export default function Main({showMain, actScores, setActData, actData, setActWeightage, actWeightage, currProblemSet, setcurrProblemSet}) {
     const [showfirstwave, setshowfirstwave] = useState(true); // req T
     const [showQCards, setshowQCards] = useState(true); // req T
     const [showDashoard, setshowDashoard] = useState(false);
     const [notesArray, setnotesArray] = useState([]);
     const [drawingArray, setdrawingArray] = useState(['','','','','']);
     const [chosenAnswers, setchosenAnswers] = useState([]);
-    
 
     {/* Request for 5 questions here, replace the questions array, will adapt for 5 new questions once dashboard done */}
     const [questions, setquestions] = useState([{}]);
     useEffect(() => {
-        //Runs only on when ready to get batch of questions
+        //Runs only on when ready to get the FIRST batch of questions
         if (showMain == '2') {
-          // if actScores[0] == '', means to request SAT questions, otherwise do ACT
+          // if true then SAT, else ACT
           setquestions([
             {
               text: "Maria is staying at a hotel that charges $99.95 per night plus tax for a room. A tax of 8% is applied to the room rate, and an additional onetime untaxed fee of $5.00 is charged by the hotel. Which of the following represents Maria’s total charge, in dollars, for staying x nights?",
@@ -83,6 +82,15 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
                 has_img: false,
                 explanation: "Choice 3 is the best answer because it utilizes proper punctuation for items listed in a series. In this case those items are nouns: “Yogurt manufacturers, food scientists, and government officials. Choices 1 and 2 are incorrect because both fail to recognize that the items are a part of a series. Since a comma is used after “manufacturers,” a semicolon or colon should not be used after “scientists.” Choice 4 is incorrect because the comma after “and” is unnecessary and deviates from grammatical conventions for presenting items in a series.",
               },
+          ]);
+        }
+      }, [showMain]);
+
+      useEffect(() => {
+        // 5 new problems has been selected, get NEXT batch on Qs based on WEIGHTAGE
+        if (currProblemSet > 1) {
+          // if true then SAT, else ACT
+          setquestions([
               {
                 text: "At a lunch stand, each hamburger has 50 more calories than each order of fries. If 2 hamburgers and 3 orders of fries have a total of 1700 calories, how many calories does a hamburger have?",
                 options: [
@@ -115,7 +123,7 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
                   { id: 2, text: "it, so farmers", isCorrect: false },
                   { id: 3, text: "it: farmers", isCorrect: false },
                 ],
-                type: "English",
+                type: "Science",
                 has_img: false,
                 explanation: "Choice 2 is the best answer because it provides a syntactically coherent and grammatically correct sentence. Choices 1 and 3 are incorrect because the adverbial conjunctions “therefore” and “so,” respectively, are unnecessary following “Because.” Choice 4 is incorrect because it results in a grammatically incomplete sentence (the part of the sentence before the colon must be an independent clause).",
               },
@@ -144,9 +152,13 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
                 explanation: "Choice 4 is the best answer because it is the only choice that provides a grammatically standard and coherent sentence. The participial phrase “Having become frustrated. . .” functions as an adjective modifying “I,” the writer.",
               },
           ]);
+          // reset all vars
+          setnotesArray([]);
+          setdrawingArray(['','','','','']);
+          setchosenAnswers([]);
+          setshowfirstwave(true);
         }
-        
-      }, [showMain]);
+      }, [currProblemSet]);
 
     if (showMain == '1') {
         return (
@@ -156,13 +168,14 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
 
                 <h1 className='top-right-sb'>SB</h1>
 
-                <Dashboard showDashoard={showDashoard} setshowDashoard={setshowDashoard} actScores={actScores} actData={actData} actWeightage={actWeightage}/>
+                <Dashboard showDashoard={showDashoard} setshowDashoard={setshowDashoard} actScores={actScores} actData={actData} 
+                actWeightage={actWeightage} currProblemSet={currProblemSet} setcurrProblemSet={setcurrProblemSet}/>
 
                 {/* Qcards + review page + ecards all in one */}
                 <Display questions={questions} showQCards={showQCards} setshowQCards={setshowQCards} notesArray={notesArray} 
                 setnotesArray={setnotesArray} chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers} drawingArray={drawingArray} 
                 setdrawingArray={setdrawingArray} setshowDashoard={setshowDashoard} setActData={setActData} actData={actData}
-                setActWeightage={setActWeightage} actWeightage={actWeightage}/>
+                setActWeightage={setActWeightage} actWeightage={actWeightage} currProblemSet={currProblemSet}/>
 
             </div>
         )

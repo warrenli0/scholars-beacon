@@ -16,7 +16,11 @@ export default function Choose({setshowMain, showMain, setshowwholeStart, setAct
     const [showStart, setshowStart] = useState(false);
     const [exit, setExit] = useState('0');
 
-    
+    useEffect(() => {
+        //Runs only on the first render
+        document.body.style = 'background: #F3C942;';
+    }, []);
+
     useEffect(() => {
         //Runs on the first render
         //And any time any dependency value changes
