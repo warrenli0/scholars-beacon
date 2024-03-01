@@ -2,7 +2,7 @@ import math from '../../images/sat-math.png';
 import english from '../../images/sat-english.png';
 import { useState } from "react";
 
-export default function EnterSat({showEnterSAT, setshowEnterSAT, chooseSATorACT, setchooseSATorACT}) {
+export default function EnterSat({showEnterSAT, setshowEnterSAT, chooseSATorACT, setchooseSATorACT, setSatScores}) {
 
     const [exit, setExit] = useState('0'); // used to trigger the exit animation
     const [validMath, setvalidMath] = useState('0'); // used to trigger shake
@@ -45,6 +45,9 @@ export default function EnterSat({showEnterSAT, setshowEnterSAT, chooseSATorACT,
             }
         } else { // next page
             if (exit == '0'){ // in case someone tries to click a couple buttons
+                setSatScores([eng, mat]); // update scores
+                // set weightages
+                
                 setExit('1'); // triggers animation
                 setchooseSATorACT('3'); // bring in next page
                 setTimeout(function(){

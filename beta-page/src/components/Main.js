@@ -23,6 +23,7 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
         if (showMain == '2') {
           // if true then SAT, else ACT
           if (choseSAT) { // first 5 SAT call
+            //WAR
             setquestions([
               {
                 text: "SAT: Maria is staying at a hotel that charges $99.95 per night plus tax for a room. A tax of 8% is applied to the room rate, and an additional onetime untaxed fee of $5.00 is charged by the hotel. Which of the following represents Maria’s total charge, in dollars, for staying x nights?",
@@ -88,6 +89,7 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
                 },
             ]);
           } else { // first 5 ACT call
+            //WAR
             setquestions([
               {
                 text: "ACT: Maria is staying at a hotel that charges $99.95 per night plus tax for a room. A tax of 8% is applied to the room rate, and an additional onetime untaxed fee of $5.00 is charged by the hotel. Which of the following represents Maria’s total charge, in dollars, for staying x nights?",
@@ -165,11 +167,14 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
           if (choseSAT) { // first 5 SAT call with weightage
             // satWeightage <- array of 4 ints, eg: [30,30,20,20]
             // [Reading, Writing, Math no calc, math calc]
+            //WAR
 
           } else { // first 5 ACT call , with weightage
             // actWeightage <- array of 4 ints, eg: [30,30,20,20]
             // ['English', 'Math', 'Reading', 'Science']
+            //WAR
           }
+          //WAR (below testing function can be deleted afteerwards)
           setquestions([
               {
                 text: "At a lunch stand, each hamburger has 50 more calories than each order of fries. If 2 hamburgers and 3 orders of fries have a total of 1700 calories, how many calories does a hamburger have?",

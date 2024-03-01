@@ -15,7 +15,7 @@ function App() {
 
   const [actScores, setActScores] = useState(["","","",""]);
   const [actWeightage, setActWeightage] = useState([25, 25, 25, 25]);
-  const [satScores, setSatScores] = useState(["","","",""]);
+  const [satScores, setSatScores] = useState(["",""]);
   const [satWeightage, setsatWeightage] = useState([25, 25, 25, 25]);
   const [choseSAT, setchoseSAT] = useState(true);
 
