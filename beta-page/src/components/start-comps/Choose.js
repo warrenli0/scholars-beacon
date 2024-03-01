@@ -5,7 +5,7 @@ import EnterAct from './EnterAct';
 import Begin from './Begin';
 import { useState, useEffect } from "react";
 
-export default function Choose({setshowMain, showMain, setshowwholeStart, setActScores, setSatScores, setActWeightage, setchoseSAT}) {
+export default function Choose({setshowMain, showMain, setshowwholeStart, setActScores, setSatScores, setActWeightage, setchoseSAT, setsatWeightage}) {
 
     const [peng_text, setpengText] = useState("Hey there! What test are you preparing for?");
     const [speak, setspeak] = useState("0");
@@ -86,7 +86,7 @@ export default function Choose({setshowMain, showMain, setshowwholeStart, setAct
             <h1 className='sb-top-right' exit={showMain}>SB</h1>
             <div className='start-text'>
                 <SatAct showChoice={showChoice} setshowChoice={setshowChoice} setchooseSATorACT={setchooseSATorACT} chooseSATorACT={chooseSATorACT}/>
-                <EnterSat showEnterSAT={showEnterSAT} setshowEnterSAT={setshowEnterSAT} chooseSATorACT={chooseSATorACT} setchooseSATorACT={setchooseSATorACT} setSatScores={setSatScores}/>
+                <EnterSat showEnterSAT={showEnterSAT} setshowEnterSAT={setshowEnterSAT} chooseSATorACT={chooseSATorACT} setchooseSATorACT={setchooseSATorACT} setSatScores={setSatScores} setsatWeightage={setsatWeightage}/>
                 <EnterAct showEnterACT={showEnterACT} setshowEnterACT={setshowEnterACT} chooseSATorACT={chooseSATorACT} setchooseSATorACT={setchooseSATorACT} setActScores={setActScores} setActWeightage={setActWeightage}/>
                 <Begin showStart={showStart} setshowMain={setshowMain} setshowwholeStart={setshowwholeStart}/>
             </div>

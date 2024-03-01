@@ -7,7 +7,7 @@ import React, { useState, useEffect } from "react";
 
 export default function Display({questions, showQCards, setshowQCards, notesArray, setnotesArray, 
   chosenAnswers, setchosenAnswers, drawingArray, setdrawingArray, setshowDashoard, setActData, actData, 
-  setActWeightage, actWeightage, currProblemSet}) {
+  setActWeightage, actWeightage, currProblemSet, choseSAT}) {
     const [bgNum, setbgNum] = useState(0);
 
     useEffect(() => {

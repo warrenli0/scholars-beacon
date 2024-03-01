@@ -6,7 +6,7 @@ import Dashboard from './main-comps/Dashboard';
 import React, { useState, useEffect } from "react";
 
 export default function Main({showMain, actScores, setActData, actData, setActWeightage, actWeightage, currProblemSet, setcurrProblemSet, choseSAT,
-  satWeightage, setsatWeightage}) {
+  satWeightage, setsatWeightage, satScores}) {
     const [showfirstwave, setshowfirstwave] = useState(true); // req T
     const [showQCards, setshowQCards] = useState(true); // req T
     const [showDashoard, setshowDashoard] = useState(false);
@@ -23,7 +23,7 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
         if (showMain == '2') {
           // if true then SAT, else ACT
           if (choseSAT) { // first 5 SAT call
-            //WAR
+            //WAR: satScores: int array[englishScore, mathScore]
             setquestions([
               {
                 text: "SAT: Maria is staying at a hotel that charges $99.95 per night plus tax for a room. A tax of 8% is applied to the room rate, and an additional onetime untaxed fee of $5.00 is charged by the hotel. Which of the following represents Maria’s total charge, in dollars, for staying x nights?",
@@ -89,7 +89,7 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
                 },
             ]);
           } else { // first 5 ACT call
-            //WAR
+            //WAR: actScores: int array[english, math, reading, science]
             setquestions([
               {
                 text: "ACT: Maria is staying at a hotel that charges $99.95 per night plus tax for a room. A tax of 8% is applied to the room rate, and an additional onetime untaxed fee of $5.00 is charged by the hotel. Which of the following represents Maria’s total charge, in dollars, for staying x nights?",
@@ -253,13 +253,13 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
                 <h1 className='top-right-sb'>SB</h1>
 
                 <Dashboard showDashoard={showDashoard} setshowDashoard={setshowDashoard} actScores={actScores} actData={actData} 
-                actWeightage={actWeightage} currProblemSet={currProblemSet} setcurrProblemSet={setcurrProblemSet}/>
+                actWeightage={actWeightage} currProblemSet={currProblemSet} setcurrProblemSet={setcurrProblemSet} choseSAT={choseSAT}/>
 
                 {/* Qcards + review page + ecards all in one */}
                 <Display questions={questions} showQCards={showQCards} setshowQCards={setshowQCards} notesArray={notesArray} 
                 setnotesArray={setnotesArray} chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers} drawingArray={drawingArray} 
                 setdrawingArray={setdrawingArray} setshowDashoard={setshowDashoard} setActData={setActData} actData={actData}
-                setActWeightage={setActWeightage} actWeightage={actWeightage} currProblemSet={currProblemSet}/>
+                setActWeightage={setActWeightage} actWeightage={actWeightage} currProblemSet={currProblemSet} choseSAT={choseSAT}/>
 
             </div>
         )

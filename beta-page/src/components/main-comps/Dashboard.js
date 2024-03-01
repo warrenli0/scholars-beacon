@@ -140,10 +140,10 @@ function ScoreChart({v, actScores, actData}) {
     )
 }
 
-export default function Dashboard({showDashoard, setshowDashoard, actScores, actData, actWeightage, currProblemSet, setcurrProblemSet}) {
+export default function Dashboard({showDashoard, setshowDashoard, actScores, actData, actWeightage, currProblemSet, setcurrProblemSet, choseSAT}) {
     const [graphID, setgraphID] = useState('1');
     const [exit, setexit] = useState('0');
-    const pie_data = {
+    const [pieData, setpieData] = useState({
         labels: ['English', 'Math', 'Reading', 'Science'],
         datasets: [
         {
@@ -164,7 +164,7 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
             borderWidth: 5,
         },
         ],
-    };
+    });
     const [corrData, setcorrData] = useState({
         labels: [],
         datasets: [{
@@ -337,6 +337,14 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
             setcorrData(cd);
             setuddData(ud);
             settimeData(td);
+
+            // SAT chosen
+            if (choseSAT) {
+                const pd = pieData;
+                pd.labels = ['Reading', 'Writing', 'Math (No Calc)', '(Math Calc)'];
+                //pd.data = satWeightage;
+                pd.data = [10,10,10,70];
+            }
         }
         
     }, [showDashoard]); 
@@ -510,7 +518,7 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                     </div>
                     <div className='pie-container'>
                         <Pie 
-                        data={pie_data} 
+                        data={pieData} 
                         options= {{
                             plugins: {
                                 legend: {
