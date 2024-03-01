@@ -15,10 +15,10 @@ defaults.font.family = 'Poppins';
 defaults.color = 'white';
 
 const data2 = {
-    labels: [1, 2, 3, 4, 5],
+    labels: [1, 2, 3],
     datasets: [{
       label: 'English',
-      data: [0, 50, 75, 50, 40],
+      data: [0, 100, 30],
       fill: false,
       backgroundColor: '#EF6C00',
       borderColor: '#d56000',
@@ -26,7 +26,7 @@ const data2 = {
     },
     {
         label: 'Math',
-        data: [100, 50, 75, 30, 40],
+        data: [100, 80, 20],
         fill: false,
         backgroundColor: '#F73508',
         borderColor: '#d62800',
@@ -34,7 +34,7 @@ const data2 = {
     },
     {
         label: 'Reading',
-        data: [0, 50, 75, 90, 80],
+        data: [0, 20, 40],
         fill: false,
         backgroundColor: '#08CAF7',
         borderColor: '#00a8ce',
@@ -42,13 +42,13 @@ const data2 = {
     },
     {
         label: 'Science',
-        data: [100, 100, 100, 80, 75],
+        data: [100, NaN, 80],
         fill: false,
         backgroundColor: '#00ED0B',
         borderColor: '#00be09',
         tension: 0.1
     }]
-  };
+};
   const data3 = {
     labels: [1, 2, 3, 4],
     datasets: [{
@@ -141,10 +141,8 @@ function ScoreChart({v, actScores, actData}) {
 }
 
 export default function Dashboard({showDashoard, setshowDashoard, actScores, actData, actWeightage, currProblemSet, setcurrProblemSet}) {
-    //console.log(actData); DELETEs
     const [graphID, setgraphID] = useState('1');
     const [exit, setexit] = useState('0');
-
     const pie_data = {
         labels: ['English', 'Math', 'Reading', 'Science'],
         datasets: [
@@ -167,6 +165,182 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
         },
         ],
     };
+    const [corrData, setcorrData] = useState({
+        labels: [],
+        datasets: [{
+          label: 'English',
+          data: [],
+          fill: false,
+          backgroundColor: '#EF6C00',
+          borderColor: '#d56000',
+          tension: 0.1,
+          pointStyle: 'circle',
+          pointRadius: 3,
+          pointHoverRadius: 3
+        },
+        {
+            label: 'Math',
+            data: [],
+            fill: false,
+            backgroundColor: '#F73508',
+            borderColor: '#d62800',
+            tension: 0.1,
+            pointStyle: 'circle',
+          pointRadius: 4,
+          pointHoverRadius: 4
+        },
+        {
+            label: 'Reading',
+            data: [],
+            fill: false,
+            backgroundColor: '#08CAF7',
+            borderColor: '#00a8ce',
+            tension: 0.1,
+            pointStyle: 'circle',
+          pointRadius: 5,
+          pointHoverRadius: 5,
+        },
+        {
+            label: 'Science',
+            data: [],
+            fill: false,
+            backgroundColor: '#00ED0B',
+            borderColor: '#00be09',
+            tension: 0.1,
+            pointStyle: 'circle',
+          pointRadius: 6,
+          pointHoverRadius: 5
+        }]
+    });
+    const [uddData, setuddData] = useState({
+        labels: [],
+        datasets: [{
+          label: 'English',
+          data: [],
+          fill: false,
+          backgroundColor: '#EF6C00',
+          borderColor: '#d56000',
+          tension: 0.1,
+          pointStyle: 'circle',
+          pointRadius: 3,
+          pointHoverRadius: 3
+        },
+        {
+            label: 'Math',
+            data: [],
+            fill: false,
+            backgroundColor: '#F73508',
+            borderColor: '#d62800',
+            tension: 0.1,
+            pointStyle: 'circle',
+          pointRadius: 4,
+          pointHoverRadius: 4
+        },
+        {
+            label: 'Reading',
+            data: [],
+            fill: false,
+            backgroundColor: '#08CAF7',
+            borderColor: '#00a8ce',
+            tension: 0.1,
+            pointStyle: 'circle',
+          pointRadius: 5,
+          pointHoverRadius: 5,
+        },
+        {
+            label: 'Science',
+            data: [],
+            fill: false,
+            backgroundColor: '#00ED0B',
+            borderColor: '#00be09',
+            tension: 0.1,
+            pointStyle: 'circle',
+          pointRadius: 6,
+          pointHoverRadius: 5
+        }]
+    });
+    const [timeData, settimeData] = useState({
+        labels: [],
+        datasets: [{
+          label: 'English',
+          data: [],
+          fill: false,
+          backgroundColor: '#EF6C00',
+          borderColor: '#d56000',
+          tension: 0.1,
+          pointStyle: 'circle',
+          pointRadius: 3,
+          pointHoverRadius: 3
+        },
+        {
+            label: 'Math',
+            data: [],
+            fill: false,
+            backgroundColor: '#F73508',
+            borderColor: '#d62800',
+            tension: 0.1,
+            pointStyle: 'circle',
+          pointRadius: 4,
+          pointHoverRadius: 4
+        },
+        {
+            label: 'Reading',
+            data: [],
+            fill: false,
+            backgroundColor: '#08CAF7',
+            borderColor: '#00a8ce',
+            tension: 0.1,
+            pointStyle: 'circle',
+          pointRadius: 5,
+          pointHoverRadius: 5,
+        },
+        {
+            label: 'Science',
+            data: [],
+            fill: false,
+            backgroundColor: '#00ED0B',
+            borderColor: '#00be09',
+            tension: 0.1,
+            pointStyle: 'circle',
+          pointRadius: 6,
+          pointHoverRadius: 5
+        }]
+    });
+
+    useEffect(() => {
+        if (showDashoard) {
+            // when dashboard is true, calculate in the datas for graphs
+            var setNum = "Set" + currProblemSet;    
+            console.log(actData);
+
+            // attempted, correct, understood, total time
+            // % correct
+            const sections = ['English', 'Math', 'Reading', 'Science']
+            var cd = corrData;
+            var ud = uddData;
+            var td = timeData;
+            cd.labels.push(currProblemSet);
+            ud.labels.push(currProblemSet);
+            td.labels.push(currProblemSet);
+
+            for (let i = 0; i < 4; i++) {
+                if (actData[sections[i]][setNum][0] == 0) { // no problems given in that set
+                    cd.datasets[i].data.push(NaN);
+                    ud.datasets[i].data.push(NaN);
+                    td.datasets[i].data.push(NaN);
+                } else {
+                    cd.datasets[i].data.push((actData[sections[i]][setNum][1] / actData[sections[i]][setNum][0]) * 100);
+                    ud.datasets[i].data.push((actData[sections[i]][setNum][2] / actData[sections[i]][setNum][0]) * 100);
+                    td.datasets[i].data.push((actData[sections[i]][setNum][3] / actData[sections[i]][setNum][0]));
+                }
+            }
+            setcorrData(cd);
+            setuddData(ud);
+            settimeData(td);
+        }
+        
+    }, [showDashoard]); 
+
 
     function tryFive(){
         if (exit == '0') {
@@ -205,7 +379,7 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                     </form>
                     <div className='line-container' version={graphID}>
                         <Line 
-                        data={data2} 
+                        data={timeData} 
                         options= {{
                             plugins: {
                                 legend: {
@@ -213,6 +387,12 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                                     labels: {
                                         boxWidth: 20,
                                     },
+                                    onHover: (event, chartElement) => {
+                                        event.native.target.style.cursor = 'pointer';
+                                    },
+                                    onLeave: (event, chartElement) => {
+                                        event.native.target.style.cursor = 'default';
+                                    }
                                 },
                             },
                             layout: {
@@ -229,16 +409,17 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                                 y: {
                                     title: {
                                         display: true,
-                                        text: '% Correct',
+                                        text: 'Avg Solve Time',
                                         align: 'center',
-                                    }
+                                    },
+                                    suggestedMin: 0
                                 }
                             }
                         }}/>
                     </div>
                     <div className='line-container2' version={graphID}>
                         <Line 
-                        data={data3} 
+                        data={corrData} 
                         options= {{
                             plugins: {
                                 legend: {
@@ -246,6 +427,12 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                                     labels: {
                                         boxWidth: 20,
                                     },
+                                    onHover: (event, chartElement) => {
+                                        event.native.target.style.cursor = 'pointer';
+                                    },
+                                    onLeave: (event, chartElement) => {
+                                        event.native.target.style.cursor = 'default';
+                                    }
                                 },
                             },
                             layout: {
@@ -264,14 +451,16 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                                         display: true,
                                         text: '% Correct',
                                         align: 'center',
-                                    }
+                                    },
+                                    suggestedMin: 0,
+                                    suggestedMax: 100
                                 }
-                            }
+                            },
                         }}/>
                     </div>
                     <div className='line-container3' version={graphID}>
                         <Line 
-                        data={data2} 
+                        data={uddData} 
                         options= {{
                             plugins: {
                                 legend: {
@@ -279,6 +468,12 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                                     labels: {
                                         boxWidth: 20,
                                     },
+                                    onHover: (event, chartElement) => {
+                                        event.native.target.style.cursor = 'pointer';
+                                    },
+                                    onLeave: (event, chartElement) => {
+                                        event.native.target.style.cursor = 'default';
+                                    }
                                 },
                             },
                             layout: {
@@ -295,12 +490,17 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                                 y: {
                                     title: {
                                         display: true,
-                                        text: '% Correct',
+                                        text: '% Understood',
                                         align: 'center',
-                                    }
+                                    },
+                                    suggestedMin: 0,
+                                    suggestedMax: 100
                                 }
                             }
                         }}/>
+                    </div>
+                    <div className='line-message' version={+currProblemSet}>
+                        <p>Do one more practice set to compare results!</p>
                     </div>
                 </div>
                 <div className='dash-pie'>

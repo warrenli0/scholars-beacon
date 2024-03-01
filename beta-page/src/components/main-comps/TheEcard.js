@@ -6,7 +6,8 @@ import thumbs_down from "../../images/thumbs-down.png"
 import red_thumbs_down from "../../images/red-thumbs-down.png"
 import React, { useState, useRef } from "react";
 
-export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQIndex, chosenAnswers, setActData, actData, setActWeightage, actWeightage}) {
+export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQIndex, chosenAnswers, setActData, actData, setActWeightage, actWeightage,
+    currProblemSet}) {
     const [showCard, setshowCard] = useState(true);
     const [exit, setexit] = useState('0');
     const [thumbUp, setthumbUp] = useState('0');
@@ -18,7 +19,7 @@ export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
         if (exit == '0' || exit == '2') {
             setexit('1');
             setbgNum(bgNum + 1);
-
+            var setNum = "Set" + currProblemSet;
             // update understood value
             if (checked) {
                 if (prob.type.substring(0, 4) == "Math") {
@@ -26,7 +27,7 @@ export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
                         ...actData, // copy other fields
                         Math: {
                             ...actData.Math,
-                            Set1: [actData.Math.Set1[0], actData.Math.Set1[1], actData.Math.Set1[2] + 1, actData.Math.Set1[3]],
+                            [setNum]: [actData.Math[setNum][0], actData.Math[setNum][1], actData.Math[setNum][2] + 1, actData.Math[setNum][3]],
                             Overall: [actData.Math.Overall[0], actData.Math.Overall[1], actData.Math.Overall[2] + 1, actData.Math.Overall[3]]
                         }
                     });
@@ -35,7 +36,7 @@ export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
                         ...actData, // copy other fields
                         [prob.type]: {
                             ...actData[prob.type],
-                            Set1: [actData[prob.type].Set1[0], actData[prob.type].Set1[1], actData[prob.type].Set1[2] + 1, actData[prob.type].Set1[3]],
+                            Set1: [actData[prob.type][setNum][0], actData[prob.type][setNum][1], actData[prob.type][setNum][2] + 1, actData[prob.type][setNum][3]],
                             Overall: [actData[prob.type].Overall[0], actData[prob.type].Overall[1], actData[prob.type].Overall[2] + 1, actData[prob.type].Overall[3]]
                         }
                     });

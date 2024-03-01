@@ -177,14 +177,44 @@ body {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: 10% 90%;    
+    position: relative;
 }
 .line-chart h3 {
     color: white;
     text-align: center;
 }
 
+.line-message {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white;
+    opacity: 1;
+    transition: opacity .4s;
+    transition-delay: 6s;
+}
+.line-message[version='1'] {
+    display: block;
+}
+.line-message[version='2'] {
+    display: block;
+    opacity: 0;
+}
+.line-message p{
+    text-align: center;
+    position: absolute;
+    right: 20%;
+    top: 30%;
+    width: 50%;
+    padding: 3px;
+    border: solid white 1px;
+    border-radius: 5px;
+}
+
 .line-container {
     position: relative;
+    z-index: 7;
     display: none;
 }
 .line-container[version='1'] {
@@ -193,6 +223,7 @@ body {
 
 .line-container2 {
     position: relative;
+    z-index: 7;
     display: none;
 }
 .line-container2[version='2'] {
@@ -201,6 +232,7 @@ body {
 
 .line-container3 {
     position: relative;
+    z-index: 7;
     display: none;
 }
 .line-container3[version='3'] {

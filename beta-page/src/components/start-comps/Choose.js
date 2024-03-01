@@ -5,7 +5,7 @@ import EnterAct from './EnterAct';
 import Begin from './Begin';
 import { useState, useEffect } from "react";
 
-export default function Choose({setshowMain, showMain, setshowwholeStart, setActScores, setSatScores, setActWeightage}) {
+export default function Choose({setshowMain, showMain, setshowwholeStart, setActScores, setSatScores, setActWeightage, setchoseSAT}) {
 
     const [peng_text, setpengText] = useState("Hey there! What test are you preparing for?");
     const [speak, setspeak] = useState("0");
@@ -18,7 +18,7 @@ export default function Choose({setshowMain, showMain, setshowwholeStart, setAct
 
     useEffect(() => {
         //Runs only on the first render
-        document.body.style = 'background: #F3C942;';
+        document.body.style = 'background: #F3C942;'; // sand bg color lol
     }, []);
 
     useEffect(() => {
@@ -32,6 +32,8 @@ export default function Choose({setshowMain, showMain, setshowwholeStart, setAct
                 setspeak("1");
             }, 2000);
         } else if (chooseSATorACT == '2') {
+            setchoseSAT(false); // FOR ACT
+            console.log("false -> ACT!");
             setspeak("reset");
             setpengText("Enter in your current ACT score!");
             setshowEnterACT(true); // ACT

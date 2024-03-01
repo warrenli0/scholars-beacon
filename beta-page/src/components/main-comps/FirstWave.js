@@ -1,14 +1,24 @@
 import React, { useEffect } from "react";
 import surfer from '../../images/surfing-peng.png';
 
-export default function FirstWave({showfirstwave, setshowfirstwave}) {
+export default function FirstWave({showfirstwave, setshowfirstwave, currProblemSet}) {
 
     useEffect(() => {
-        //Runs on every first render
+        //Runs only on the first render
         setTimeout(function(){
             setshowfirstwave(false);
         }, 6100);
-      });
+      }, []);
+
+    useEffect(() => {
+        if (currProblemSet > 1) {
+          setshowfirstwave(true);
+
+          setTimeout(function(){
+            setshowfirstwave(false);
+        }, 6100);
+        }
+    }, [currProblemSet]);
 
     if (showfirstwave) {
         return (

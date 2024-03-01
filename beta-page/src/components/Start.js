@@ -1,11 +1,12 @@
 import './Start.css'
 import Choose from './start-comps/Choose';
 
-export default function Start({showLP, setshowMain, showMain, showStart, setshowwholeStart, setActScores, setSatScores, setActWeightage}) {
+export default function Start({showLP, setshowMain, showMain, showStart, setshowwholeStart, setActScores, setSatScores, setActWeightage, setchoseSAT}) {
 
     if (!showLP && showStart) {
         return (
-            <Choose setshowMain={setshowMain} showMain={showMain} setshowwholeStart={setshowwholeStart} setActScores={setActScores} setSatScores={setSatScores} setActWeightage={setActWeightage}/>
+            <Choose setshowMain={setshowMain} showMain={showMain} setshowwholeStart={setshowwholeStart} setActScores={setActScores} 
+            setSatScores={setSatScores} setActWeightage={setActWeightage} setchoseSAT={setchoseSAT}/>
         )
     }
 };

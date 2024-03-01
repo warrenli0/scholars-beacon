@@ -16,6 +16,8 @@ function App() {
   const [actScores, setActScores] = useState(["","","",""]);
   const [actWeightage, setActWeightage] = useState([25, 25, 25, 25]);
   const [satScores, setSatScores] = useState(["","","",""]);
+  const [satWeightage, setsatWeightage] = useState([25, 25, 25, 25]);
+  const [choseSAT, setchoseSAT] = useState(true);
 
   const [currProblemSet, setcurrProblemSet] = useState(1);
   // attempted, correct, understood, total time
@@ -30,9 +32,10 @@ function App() {
       <LandingPage setShowTopWave={setShowTopWave} showLP={showLP} setshowLandingPage={setshowLandingPage} setWavesFinished={setWavesFinished}/>
       <WaveTransition showTopWave={showTopWave} wavesFinished={wavesFinished} setWavesFinished={setWavesFinished}/>
       <Start showLP={showLP} setshowMain={setshowMain} showMain={showMain} showStart={showStart} setshowwholeStart={setshowwholeStart} 
-      setActScores={setActScores} setSatScores={setSatScores} setActWeightage={setActWeightage}/>
+      setActScores={setActScores} setSatScores={setSatScores} setActWeightage={setActWeightage} setchoseSAT={setchoseSAT}/>
       <Main showMain={showMain} actScores={actScores} setActData={setActData} actData={actData} setActWeightage={setActWeightage} 
-      actWeightage={actWeightage} currProblemSet={currProblemSet} setcurrProblemSet={setcurrProblemSet}/>
+      actWeightage={actWeightage} currProblemSet={currProblemSet} setcurrProblemSet={setcurrProblemSet} choseSAT={choseSAT}
+      satWeightage={satWeightage} setsatWeightage={setsatWeightage}/>
     </div>
   )
 }

@@ -45,7 +45,8 @@ export default function EGrid({questions, notesArray, setnotesArray, bgNum, setb
                 <div className='ecard-container'> {/* ecard */}
                     <TheEcard prob={questions[currQIndex]} bgNum={bgNum} setbgNum={setbgNum} 
                     currQIndex={currQIndex} setcurrQIndex={setcurrQIndex} chosenAnswers={chosenAnswers} 
-                    setActData={setActData} actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage}/>
+                    setActData={setActData} actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage}
+                    currProblemSet={currProblemSet}/>
                 </div>
             </div>
         )

@@ -48,7 +48,7 @@ export default function QGrid({questions, notesArray, setnotesArray, bgNum, setb
     useEffect(() => {
       // 5 new problems has been selected, reset vars
       if (currProblemSet > 1) {
-        console.log("done1");
+        //console.log("done1");
         setcurrQIndex(0);
         setSeconds(-4);
         setshowQgrid(true);
@@ -80,7 +80,7 @@ export default function QGrid({questions, notesArray, setnotesArray, bgNum, setb
                         <TheQcard prob={questions[currQIndex]} bgNum={bgNum} setbgNum={setbgNum} currQIndex={currQIndex} 
                         setcurrQIndex={setcurrQIndex} chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers} 
                         setActData={setActData} actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage}
-                        seconds={seconds}/>
+                        seconds={seconds} currProblemSet={currProblemSet}/>
                     </div>
             </div>
         )

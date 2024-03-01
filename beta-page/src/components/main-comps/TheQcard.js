@@ -2,7 +2,7 @@ import arrow from "../../images/Arrow.png"
 import React, { useState, useRef } from "react";
 
 export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQIndex, chosenAnswers, setchosenAnswers, setActData, actData, 
-    setActWeightage, actWeightage, seconds}) {
+    setActWeightage, actWeightage, seconds, currProblemSet}) {
     const [showCard, setshowCard] = useState(true);
     const [selectedChoice, setselectedChoice] = useState('0');
     const [exit, setexit] = useState('0');
@@ -10,6 +10,7 @@ export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
 
     function nextQ() {
         if (exit == '0' || exit == '2') {
+            var setNum = "Set" + currProblemSet;
             setexit('1');
             setbgNum(bgNum + 1);
             if (prob.options[(+selectedChoice)-1].isCorrect) { // correct answer
@@ -22,7 +23,7 @@ export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
                         ...actData, // copy other fields
                         Math: {
                             ...actData.Math,
-                            Set1: [actData.Math.Set1[0] + 1, actData.Math.Set1[1] + 1, actData.Math.Set1[2], actData.Math.Set1[3] + (seconds - currseconds)] ,
+                            [setNum]: [actData.Math[setNum][0] + 1, actData.Math[setNum][1] + 1, actData.Math[setNum][2], actData.Math[setNum][3] + (seconds - currseconds)] ,
                             Overall: [actData.Math.Overall[0] + 1, actData.Math.Overall[1] + 1, actData.Math.Overall[2], actData.Math.Overall[3] + (seconds - currseconds)]
                             // 4th field is total seconds spent in this category, average out later
                         }
@@ -33,7 +34,7 @@ export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
                         ...actData, // copy other fields
                         [prob.type]: {
                             ...actData[prob.type],
-                            Set1: [actData[prob.type].Set1[0] + 1, actData[prob.type].Set1[1] + 1, actData[prob.type].Set1[2], actData[prob.type].Set1[3] + (seconds - currseconds)],
+                            [setNum]: [actData[prob.type][setNum][0] + 1, actData[prob.type][setNum][1] + 1, actData[prob.type][setNum][2], actData[prob.type][setNum][3] + (seconds - currseconds)],
                             Overall: [actData[prob.type].Overall[0] + 1, actData[prob.type].Overall[1] + 1, actData[prob.type].Overall[2], actData[prob.type].Overall[3] + (seconds - currseconds)]
                         }
                     });
@@ -49,7 +50,7 @@ export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
                         ...actData, // copy other fields
                         Math: {
                             ...actData.Math,
-                            Set1: [actData.Math.Set1[0] + 1, actData.Math.Set1[1], actData.Math.Set1[2], actData.Math.Set1[3] + (seconds - currseconds)],
+                            [setNum]: [actData.Math[setNum][0] + 1, actData.Math[setNum][1], actData.Math[setNum][2], actData.Math[setNum][3] + (seconds - currseconds)],
                             Overall: [actData.Math.Overall[0] + 1, actData.Math.Overall[1], actData.Math.Overall[2], actData.Math.Overall[3] + (seconds - currseconds)]
                         }
                     });
@@ -65,7 +66,7 @@ export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
                         ...actData, // copy other fields
                         [prob.type]: {
                             ...actData[prob.type],
-                            Set1: [actData[prob.type].Set1[0] + 1, actData[prob.type].Set1[1], actData[prob.type].Set1[2], actData[prob.type].Set1[3] + (seconds - currseconds)],
+                            [setNum]: [actData[prob.type][setNum][0] + 1, actData[prob.type][setNum][1], actData[prob.type][setNum][2], actData[prob.type][setNum][3] + (seconds - currseconds)],
                             Overall: [actData[prob.type].Overall[0] + 1, actData[prob.type].Overall[1], actData[prob.type].Overall[2], actData[prob.type].Overall[3] + (seconds - currseconds)]
                         }
                     });
@@ -87,7 +88,7 @@ export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
             }
             if (currQIndex == 4) { // last question
                 setTimeout(function(){
-                    //setcurrQIndex(currQIndex + 1); no need for thhis
+                    setcurrQIndex(1); //needed for notepad to work to trigger useeffuect
                     setshowCard(false); // remove qcard after scrolls up
                 }, 1500);
             } else {
