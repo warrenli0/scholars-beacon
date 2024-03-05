@@ -33,7 +33,6 @@ export default function Choose({setshowMain, showMain, setshowwholeStart, setAct
             }, 2000);
         } else if (chooseSATorACT == '2') {
             setchoseSAT(false); // FOR ACT
-            console.log("false -> ACT!");
             setspeak("reset");
             setpengText("Enter in your current ACT score!");
             setshowEnterACT(true); // ACT

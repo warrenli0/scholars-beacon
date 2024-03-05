@@ -66,7 +66,7 @@ export default function EnterSat({showEnterSAT, setshowEnterSAT, chooseSATorACT,
                     mathWeight = (50 - (dif*5));
                 }
 
-                setsatWeightage([englishWeight/2, mathWeight/2]);
+                setsatWeightage([englishWeight/2, englishWeight/2, mathWeight/2, mathWeight/2]);
                 setExit('1'); // triggers animation
                 setchooseSATorACT('3'); // bring in next page
                 setTimeout(function(){

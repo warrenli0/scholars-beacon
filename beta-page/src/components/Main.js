@@ -6,7 +6,7 @@ import Dashboard from './main-comps/Dashboard';
 import React, { useState, useEffect } from "react";
 
 export default function Main({showMain, actScores, setActData, actData, setActWeightage, actWeightage, currProblemSet, setcurrProblemSet, choseSAT,
-  satWeightage, setsatWeightage, satScores}) {
+  satWeightage, setsatWeightage, satScores, satData, setsatData}) {
     const [showfirstwave, setshowfirstwave] = useState(true); // req T
     const [showQCards, setshowQCards] = useState(true); // req T
     const [showDashoard, setshowDashoard] = useState(false);
@@ -168,14 +168,73 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
             // satWeightage <- array of 4 ints, eg: [30,30,20,20]
             // [Reading, Writing, Math no calc, math calc]
             //WAR
-
+            setquestions([
+              {
+                text: "At a lunch stand, each hamburger has 50 more calories than each order of fries. If 2 hamburgers and 3 orders of fries have a total of 1700 calories, how many calories does a hamburger have?",
+                options: [
+                  { id: 0, text: "320", isCorrect: false },
+                  { id: 1, text: "370", isCorrect: true },
+                  { id: 2, text: "270", isCorrect: false },
+                  { id: 3, text: "warren", isCorrect: false },
+                ],
+                type: "Math (no calc)",
+                has_img: false,
+                explanation: "The equation 2h + 3f = 1700 represents the fact that 2 hamburgers and 3 orders of fries contain a total of 1700 calories, and the equation h = f + 50 represents the fact that one hamburger contains 50 more calories than an order of fries. Substituting f + 50 for h in 2h + 3f = 1700 gives 2(f + 50) + 3f = 1700, meaning f = 320. Therefore, h = 370.",
+              },
+              {
+                text: "Which choice most effectively combines the two sentences at the quoted portion? Typically, the ice sheet begins to show evidence of thawing in late ‘summer. This’ follows several weeks of higher temperatures.",
+                options: [
+                  { id: 0, text: "summer, following", isCorrect: true },
+                  { id: 1, text: "summer, and this thawing follows", isCorrect: false },
+                  { id: 2, text: "summer, and such thawing follows", isCorrect: false },
+                  { id: 3, text: "summer and this evidence follows", isCorrect: false },
+                ],
+                type: "Writing",
+                has_img: false,
+                explanation: "Choice 1 is the best answer because it concisely combines the two sentences while maintaining the original meaning. Choices 2, 3, and 4 are incorrect because each is unnecessarily wordy, thus undermining one purpose of combining two sentences: to make the phrasing more concise.",
+              },
+              {
+                text: "Because consumers reap the nutritional benefits of Greek yogurt and support those who make and sell ‘it, therefore farmers’ and businesses should continue finding safe and effective methods of producing the food.",
+                options: [
+                  { id: 0, text: "NO CHANGE", isCorrect: false },
+                  { id: 1, text: "it, farmers", isCorrect: true },
+                  { id: 2, text: "it, so farmers", isCorrect: false },
+                  { id: 3, text: "it: farmers", isCorrect: false },
+                ],
+                type: "Writing",
+                has_img: false,
+                explanation: "Choice 2 is the best answer because it provides a syntactically coherent and grammatically correct sentence. Choices 1 and 3 are incorrect because the adverbial conjunctions “therefore” and “so,” respectively, are unnecessary following “Because.” Choice 4 is incorrect because it results in a grammatically incomplete sentence (the part of the sentence before the colon must be an independent clause).",
+              },
+              {
+                text: "Neal walks 25 meters in 13.7 seconds. If he walks at this same rate, which of the following is closest to the distance he will walk in 4 minutes?",
+                options: [
+                  { id: 0, text: "150 meters", isCorrect: false },
+                  { id: 1, text: "450 meters", isCorrect: true },
+                  { id: 2, text: "700 meters", isCorrect: false },
+                  { id: 3, text: "1000 meters", isCorrect: false },
+                ],
+                type: "Math (calc)",
+                has_img: false,
+                explanation: "25 meters in 13.7 seconds is a rate of about 1.82 m/s. He walks for 4 minutes which is 240 seconds. The total distance is then (1.82 m/s) * (240 s) = 436.8 m, which is closest to 450 meters.",
+              },
+              {
+                text: "Having become frustrated trying to solve difficult problems, ‘no colleagues were nearby to share ideas’.",
+                options: [
+                  { id: 0, text: "NO CHANGE", isCorrect: false },
+                  { id: 1, text: "colleagues were important for sharing ideas.", isCorrect: false },
+                  { id: 2, text: "ideas couldn’t be shared with colleagues.", isCorrect: false },
+                  { id: 3, text: "I missed having colleagues nearby to consult.", isCorrect: true },
+                ],
+                type: "Writing",
+                has_img: false,
+                explanation: "Choice 4 is the best answer because it is the only choice that provides a grammatically standard and coherent sentence. The participial phrase “Having become frustrated. . .” functions as an adjective modifying “I,” the writer.",
+              },
+          ]);
           } else { // first 5 ACT call , with weightage
             // actWeightage <- array of 4 ints, eg: [30,30,20,20]
             // ['English', 'Math', 'Reading', 'Science']
             //WAR
-          }
-          //WAR (below testing function can be deleted afteerwards)
-          setquestions([
+            setquestions([
               {
                 text: "At a lunch stand, each hamburger has 50 more calories than each order of fries. If 2 hamburgers and 3 orders of fries have a total of 1700 calories, how many calories does a hamburger have?",
                 options: [
@@ -237,6 +296,9 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
                 explanation: "Choice 4 is the best answer because it is the only choice that provides a grammatically standard and coherent sentence. The participial phrase “Having become frustrated. . .” functions as an adjective modifying “I,” the writer.",
               },
           ]);
+          }
+          //WAR (below testing function can be deleted afteerwards)
+          
           // reset all vars
           setnotesArray([]);
           setdrawingArray(['','','','','']);
@@ -253,13 +315,15 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
                 <h1 className='top-right-sb'>SB</h1>
 
                 <Dashboard showDashoard={showDashoard} setshowDashoard={setshowDashoard} actScores={actScores} actData={actData} 
-                actWeightage={actWeightage} currProblemSet={currProblemSet} setcurrProblemSet={setcurrProblemSet} choseSAT={choseSAT}/>
+                actWeightage={actWeightage} currProblemSet={currProblemSet} setcurrProblemSet={setcurrProblemSet} choseSAT={choseSAT}
+                satWeightage={satWeightage} satScores={satScores} satData={satData}/>
 
                 {/* Qcards + review page + ecards all in one */}
                 <Display questions={questions} showQCards={showQCards} setshowQCards={setshowQCards} notesArray={notesArray} 
                 setnotesArray={setnotesArray} chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers} drawingArray={drawingArray} 
                 setdrawingArray={setdrawingArray} setshowDashoard={setshowDashoard} setActData={setActData} actData={actData}
-                setActWeightage={setActWeightage} actWeightage={actWeightage} currProblemSet={currProblemSet} choseSAT={choseSAT}/>
+                setActWeightage={setActWeightage} actWeightage={actWeightage} currProblemSet={currProblemSet} choseSAT={choseSAT}
+                satWeightage={satWeightage} setsatWeightage={setsatWeightage} satData={satData} setsatData={setsatData}/>
 
             </div>
         )

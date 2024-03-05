@@ -5,7 +5,8 @@ import TheEcard from './TheEcard';
 import React, { useState, useEffect } from "react";
 
 export default function EGrid({questions, notesArray, setnotesArray, bgNum, setbgNum, chosenAnswers, 
-    drawingArray, setdrawingArray, setActData, actData, setActWeightage, actWeightage, currProblemSet}) {
+    drawingArray, setdrawingArray, setActData, actData, setActWeightage, actWeightage, currProblemSet,
+    choseSAT, satWeightage, setsatWeightage, satData, setsatData}) {
     const [showEgrid, setshowEgrid] = useState(true);
     const [currQIndex, setcurrQIndex] = useState(0);
     if (bgNum >= 11) { // last question done
@@ -46,7 +47,8 @@ export default function EGrid({questions, notesArray, setnotesArray, bgNum, setb
                     <TheEcard prob={questions[currQIndex]} bgNum={bgNum} setbgNum={setbgNum} 
                     currQIndex={currQIndex} setcurrQIndex={setcurrQIndex} chosenAnswers={chosenAnswers} 
                     setActData={setActData} actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage}
-                    currProblemSet={currProblemSet}/>
+                    currProblemSet={currProblemSet} choseSAT={choseSAT} satWeightage={satWeightage} setsatWeightage={setsatWeightage} 
+                    satData={satData} setsatData={setsatData}/>
                 </div>
             </div>
         )

@@ -7,7 +7,7 @@ import red_thumbs_down from "../../images/red-thumbs-down.png"
 import React, { useState, useRef } from "react";
 
 export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQIndex, chosenAnswers, setActData, actData, setActWeightage, actWeightage,
-    currProblemSet}) {
+    currProblemSet, choseSAT, satWeightage, setsatWeightage, satData, setsatData}) {
     const [showCard, setshowCard] = useState(true);
     const [exit, setexit] = useState('0');
     const [thumbUp, setthumbUp] = useState('0');
@@ -22,43 +22,73 @@ export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
             var setNum = "Set" + currProblemSet;
             // update understood value
             if (checked) {
-                if (prob.type.substring(0, 4) == "Math") {
-                    setActData({
-                        ...actData, // copy other fields
-                        Math: {
-                            ...actData.Math,
-                            [setNum]: [actData.Math[setNum][0], actData.Math[setNum][1], actData.Math[setNum][2] + 1, actData.Math[setNum][3]],
-                            Overall: [actData.Math.Overall[0], actData.Math.Overall[1], actData.Math.Overall[2] + 1, actData.Math.Overall[3]]
-                        }
-                    });
-                } else {
-                    setActData({
-                        ...actData, // copy other fields
+                if (choseSAT) { // SAT
+                    setsatData({
+                        ...satData, // copy other fields
                         [prob.type]: {
-                            ...actData[prob.type],
-                            Set1: [actData[prob.type][setNum][0], actData[prob.type][setNum][1], actData[prob.type][setNum][2] + 1, actData[prob.type][setNum][3]],
-                            Overall: [actData[prob.type].Overall[0], actData[prob.type].Overall[1], actData[prob.type].Overall[2] + 1, actData[prob.type].Overall[3]]
+                            ...satData[prob.type],
+                            [setNum]: [satData[prob.type][setNum][0], satData[prob.type][setNum][1], satData[prob.type][setNum][2] + 1, satData[prob.type][setNum][3]],
+                            Overall: [satData[prob.type].Overall[0], satData[prob.type].Overall[1], satData[prob.type].Overall[2] + 1, satData[prob.type].Overall[3]]
                         }
                     });
-                }
-            } {
-                // not understood 
-                if (prob.type.substring(0, 4) == "Math") {
-                    if (actWeightage[0]-1 >= 10 && actWeightage[1]+3 <= 60 && actWeightage[2]-1 >= 10 && actWeightage[3]-1 >= 10) {
-                        setActWeightage([actWeightage[0]-1, actWeightage[1]+3, actWeightage[2]-1, actWeightage[3]-1]);
+                } else { // ACT
+                    if (prob.type.substring(0, 4) == "Math") {
+                        setActData({
+                            ...actData, // copy other fields
+                            Math: {
+                                ...actData.Math,
+                                [setNum]: [actData.Math[setNum][0], actData.Math[setNum][1], actData.Math[setNum][2] + 1, actData.Math[setNum][3]],
+                                Overall: [actData.Math.Overall[0], actData.Math.Overall[1], actData.Math.Overall[2] + 1, actData.Math.Overall[3]]
+                            }
+                        });
+                    } else {
+                        setActData({
+                            ...actData, // copy other fields
+                            [prob.type]: {
+                                ...actData[prob.type],
+                                Set1: [actData[prob.type][setNum][0], actData[prob.type][setNum][1], actData[prob.type][setNum][2] + 1, actData[prob.type][setNum][3]],
+                                Overall: [actData[prob.type].Overall[0], actData[prob.type].Overall[1], actData[prob.type].Overall[2] + 1, actData[prob.type].Overall[3]]
+                            }
+                        });
                     }
-                } else {
-                    if (prob.type == "English") {
-                        if (actWeightage[0]+3 <= 60 && actWeightage[1]-1 >= 10 && actWeightage[2]-1 >= 10 && actWeightage[3]-1 >= 10) {
-                            setActWeightage([actWeightage[0]+3, actWeightage[1]-1, actWeightage[2]-1, actWeightage[3]-1]);
+                }
+            } else { // not understood 
+                if (choseSAT) { // SAT
+                    if (prob.type == "Reading") {
+                        if (satWeightage[0]+3 <= 60 && satWeightage[1]-1 >= 10 && satWeightage[2]-1 >= 10 && satWeightage[3]-1 >= 10) {
+                            setsatWeightage([satWeightage[0]+3, satWeightage[1]-1, satWeightage[2]-1, satWeightage[3]-1]);
                         }
-                    } else if (prob.type == "Reading") {
-                        if (actWeightage[0]-1 >= 10 && actWeightage[1]-1 >= 10 && actWeightage[2]+3 <= 60 && actWeightage[3]-1 >= 10) {
-                            setActWeightage([actWeightage[0]-1, actWeightage[1]-1, actWeightage[2]+3, actWeightage[3]-1]);
+                    } else if (prob.type == "Writing") {
+                        if (satWeightage[0]-1 >= 10 && satWeightage[1]+3 <= 60 && satWeightage[2]-1 >= 10 && satWeightage[3]-1 >= 10) {
+                            setsatWeightage([satWeightage[0]-1, satWeightage[1]+3, satWeightage[2]-1, satWeightage[3]-1]);
                         }
-                    } else if (prob.type == "Science") {
-                        if (actWeightage[0]-1 >= 10 && actWeightage[1]-1 >= 10 && actWeightage[2]-1 >= 10 && actWeightage[3]+3 <= 60) {
-                            setActWeightage([actWeightage[0]-1, actWeightage[1]-1, actWeightage[2]-1, actWeightage[3]+3]);
+                    } else if (prob.type == "Math (no calc)") {
+                        if (satWeightage[0]-1 >= 10 && satWeightage[1]-1 >= 10 && satWeightage[2]+3 <= 60 && satWeightage[3]-1 >= 10) {
+                            setsatWeightage([satWeightage[0]-1, satWeightage[1]-1, satWeightage[2]+3, satWeightage[3]-1]);
+                        }
+                    } else if (prob.type == "Math (calc)") {
+                        if (satWeightage[0]-1 >= 10 && satWeightage[1]-1 >= 10 && satWeightage[2]-1 >= 10 && satWeightage[3]+3 <= 60) {
+                            setsatWeightage([satWeightage[0]-1, satWeightage[1]-1, satWeightage[2]-1, satWeightage[3]+3]);
+                        }
+                    }
+                } else { // ACT
+                    if (prob.type.substring(0, 4) == "Math") {
+                        if (actWeightage[0]-1 >= 10 && actWeightage[1]+3 <= 60 && actWeightage[2]-1 >= 10 && actWeightage[3]-1 >= 10) {
+                            setActWeightage([actWeightage[0]-1, actWeightage[1]+3, actWeightage[2]-1, actWeightage[3]-1]);
+                        }
+                    } else {
+                        if (prob.type == "English") {
+                            if (actWeightage[0]+3 <= 60 && actWeightage[1]-1 >= 10 && actWeightage[2]-1 >= 10 && actWeightage[3]-1 >= 10) {
+                                setActWeightage([actWeightage[0]+3, actWeightage[1]-1, actWeightage[2]-1, actWeightage[3]-1]);
+                            }
+                        } else if (prob.type == "Reading") {
+                            if (actWeightage[0]-1 >= 10 && actWeightage[1]-1 >= 10 && actWeightage[2]+3 <= 60 && actWeightage[3]-1 >= 10) {
+                                setActWeightage([actWeightage[0]-1, actWeightage[1]-1, actWeightage[2]+3, actWeightage[3]-1]);
+                            }
+                        } else if (prob.type == "Science") {
+                            if (actWeightage[0]-1 >= 10 && actWeightage[1]-1 >= 10 && actWeightage[2]-1 >= 10 && actWeightage[3]+3 <= 60) {
+                                setActWeightage([actWeightage[0]-1, actWeightage[1]-1, actWeightage[2]-1, actWeightage[3]+3]);
+                            }
                         }
                     }
                 }

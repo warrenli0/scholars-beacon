@@ -26,6 +26,11 @@ function App() {
                                           English: {Set1:[0, 0, 0, 0], Set2:[0, 0, 0, 0], Set3:[0, 0, 0, 0], Set4:[0, 0, 0, 0], Set5:[0, 0, 0, 0], Overall:[0, 0, 0, 0]}, 
                                           Reading: {Set1:[0, 0, 0, 0], Set2:[0, 0, 0, 0], Set3:[0, 0, 0, 0], Set4:[0, 0, 0, 0], Set5:[0, 0, 0, 0], Overall:[0, 0, 0, 0]}, 
                                           Science: {Set1:[0, 0, 0, 0], Set2:[0, 0, 0, 0], Set3:[0, 0, 0, 0], Set4:[0, 0, 0, 0], Set5:[0, 0, 0, 0], Overall:[0, 0, 0, 0]}, }); // 5 [] for 5 problem set cap
+  
+  const [satData, setsatData] = useState({Reading: {Set1:[0, 0, 0, 0], Set2:[0, 0, 0, 0], Set3:[0, 0, 0, 0], Set4:[0, 0, 0, 0], Set5:[0, 0, 0, 0], Overall:[0, 0, 0, 0]}, 
+                                Writing: {Set1:[0, 0, 0, 0], Set2:[0, 0, 0, 0], Set3:[0, 0, 0, 0], Set4:[0, 0, 0, 0], Set5:[0, 0, 0, 0], Overall:[0, 0, 0, 0]}, 
+                                "Math (no calc)": {Set1:[0, 0, 0, 0], Set2:[0, 0, 0, 0], Set3:[0, 0, 0, 0], Set4:[0, 0, 0, 0], Set5:[0, 0, 0, 0], Overall:[0, 0, 0, 0]}, 
+                                "Math (calc)": {Set1:[0, 0, 0, 0], Set2:[0, 0, 0, 0], Set3:[0, 0, 0, 0], Set4:[0, 0, 0, 0], Set5:[0, 0, 0, 0], Overall:[0, 0, 0, 0]}, }); // 5 [] for 5 problem set cap
 
   return (
     <div>
@@ -36,7 +41,7 @@ function App() {
       setsatWeightage={setsatWeightage}/>
       <Main showMain={showMain} actScores={actScores} setActData={setActData} actData={actData} setActWeightage={setActWeightage} 
       actWeightage={actWeightage} currProblemSet={currProblemSet} setcurrProblemSet={setcurrProblemSet} choseSAT={choseSAT}
-      satWeightage={satWeightage} setsatWeightage={setsatWeightage} satScores={satScores}/>
+      satWeightage={satWeightage} setsatWeightage={setsatWeightage} satScores={satScores} satData={satData} setsatData={setsatData}/>
     </div>
   )
 }

@@ -40,6 +40,40 @@ body {
     justify-content: center;
 }
 
+.eng-header {
+    display: none;
+}
+.eng-header[version="1"] {
+    display: block;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(60%);
+    gap: 10px;
+}
+
+.mat-header {
+    display: none;
+}
+.mat-header[version="1"] {
+    display: block;
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(60%);
+    gap: 10px;
+}
+
 .dash-pie {
     grid-column-start: 5;
     grid-column-end: 7;
