@@ -2,14 +2,16 @@ import './Main.css'
 import FirstWave from './main-comps/FirstWave';
 import Display from './main-comps/Display';
 import Dashboard from './main-comps/Dashboard';
+import ThxPage from './main-comps/ThxPage';
 
 import React, { useState, useEffect } from "react";
 
 export default function Main({showMain, actScores, setActData, actData, setActWeightage, actWeightage, currProblemSet, setcurrProblemSet, choseSAT,
-  satWeightage, setsatWeightage, satScores, satData, setsatData}) {
+  satWeightage, setsatWeightage, satScores, satData, setsatData, firstBetaButton, log, setlog}) {
     const [showfirstwave, setshowfirstwave] = useState(true); // req T
     const [showQCards, setshowQCards] = useState(true); // req T
     const [showDashoard, setshowDashoard] = useState(false);
+    const [showThx, setshowThx] = useState(false);
     const [notesArray, setnotesArray] = useState([]);
     const [drawingArray, setdrawingArray] = useState(['','','','','']);
     const [chosenAnswers, setchosenAnswers] = useState([]);
@@ -26,6 +28,7 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
             //WAR: satScores: int array[englishScore, mathScore]
             setquestions([
               {
+                id: 1,
                 text: "SAT: Maria is staying at a hotel that charges $99.95 per night plus tax for a room. A tax of 8% is applied to the room rate, and an additional onetime untaxed fee of $5.00 is charged by the hotel. Which of the following represents Maria’s total charge, in dollars, for staying x nights?",
                 options: [
                   { id: 0, text: "(99.95 + 0.08x) + 5", isCorrect: false },
@@ -38,6 +41,7 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
                 explanation: "The room rate is $99.95 for every night. Since you stay for x nights, the price becomes 99.95x. However, there is a tax of 8% on the room rate, so the price is 0.08(99.95x). Lastly, with the addition of a one time untaxed fee of $5, the answer is the second option: 1.08(99.95x) + 5.",
               },
               {
+                id: 2,
                 text: "What is the real name of You-Know-Who?",
                 options: [
                   { id: 0, text: "Voldemort", isCorrect: true },
@@ -51,6 +55,7 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
                 explanation: "Read the first book of the world of witchcraft and wizardry.",
               },
               {
+                id: 3,
                 text: "At Luffy's High School, approximately 7 percent of enrolled juniors and 5 percent of enrolled seniors were inducted into the National Pirate Society last year. If there were 562 juniors and 602 seniors enrolled at Luffy's High School last year, which is closest to the total number of juniors and seniors at Luffy's High School last year who were inducted into the National Pirate Society?",
                 options: [
                   { id: 0, text: "140", isCorrect: false },
@@ -63,7 +68,8 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
                 has_img: true,
                 img_link: "https://i.pinimg.com/736x/92/9f/b5/929fb508fc6c76f8df83486b87e74e6e.jpg",
               },
-                {
+              {
+                id: 4,
                   text: "Greek yogurt business have found many methods of controlling and eliminating most environmental threats. Given these solutions as well as the many health benefits of the food, the advantages of Greek yogurt 'outdo' the potential drawbacks of its production. Since I love this problem so much and I am having so much fun, let me give you the problem not once, but twice! Greek yogurt business have found many methods of controlling and eliminating most environmental threats. Given these solutions as well as the many health benefits of the food, the advantages of Greek yogurt 'outdo' the potential drawbacks of its production. Did you know that I am typing this as a form of procrastination?",
                   options: [
                     { id: 0, text: "NO CHANGE", isCorrect: false },
@@ -76,6 +82,7 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
                   explanation: "“Outweigh” is the only choice between “advantages” and “drawbacks.” Choices 1, 2, and 3 are incorrect because each implies a competitive relationship that is inappropriate in this context.",
                 },
                 {
+                  id: 5,
                   text: "Yogurt manufacturers, food '/*scientists; and/*' government officials are also working together to develop additional solutions for reusing whey.",
                   options: [
                     { id: 0, text: "NO CHANGE", isCorrect: false },
@@ -316,14 +323,18 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
 
                 <Dashboard showDashoard={showDashoard} setshowDashoard={setshowDashoard} actScores={actScores} actData={actData} 
                 actWeightage={actWeightage} currProblemSet={currProblemSet} setcurrProblemSet={setcurrProblemSet} choseSAT={choseSAT}
-                satWeightage={satWeightage} satScores={satScores} satData={satData}/>
+                satWeightage={satWeightage} satScores={satScores} satData={satData} setshowThx={setshowThx} log={log} setlog={setlog}/>
+
+                <ThxPage showThx={showThx} setshowThx={setshowThx} choseSAT={choseSAT} actScores={actScores} actData={actData} 
+                actWeightage={actWeightage} currProblemSet={currProblemSet} satWeightage={satWeightage} satScores={satScores} 
+                satData={satData} firstBetaButton={firstBetaButton} log={log}/>
 
                 {/* Qcards + review page + ecards all in one */}
                 <Display questions={questions} showQCards={showQCards} setshowQCards={setshowQCards} notesArray={notesArray} 
                 setnotesArray={setnotesArray} chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers} drawingArray={drawingArray} 
                 setdrawingArray={setdrawingArray} setshowDashoard={setshowDashoard} setActData={setActData} actData={actData}
                 setActWeightage={setActWeightage} actWeightage={actWeightage} currProblemSet={currProblemSet} choseSAT={choseSAT}
-                satWeightage={satWeightage} setsatWeightage={setsatWeightage} satData={satData} setsatData={setsatData}/>
+                satWeightage={satWeightage} setsatWeightage={setsatWeightage} satData={satData} setsatData={setsatData} log={log} setlog={setlog}/>
 
             </div>
         )

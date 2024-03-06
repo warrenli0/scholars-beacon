@@ -34,7 +34,7 @@ function Timer({show, seconds, setSeconds}) {
 
 export default function QGrid({questions, notesArray, setnotesArray, bgNum, setbgNum, chosenAnswers, setchosenAnswers, 
   drawingArray, setdrawingArray, setActData, actData, setActWeightage, actWeightage, currProblemSet, choseSAT, satWeightage,
-  setsatWeightage, satData, setsatData}) {
+  setsatWeightage, satData, setsatData, log, setlog}) {
     const [showQgrid, setshowQgrid] = useState(true);
     const [currQIndex, setcurrQIndex] = useState(0);
     const [showIcon, setshowIcon] = useState('1');
@@ -82,7 +82,7 @@ export default function QGrid({questions, notesArray, setnotesArray, bgNum, setb
                         setcurrQIndex={setcurrQIndex} chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers} 
                         setActData={setActData} actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage}
                         seconds={seconds} currProblemSet={currProblemSet} choseSAT={choseSAT} satWeightage={satWeightage} setsatWeightage={setsatWeightage}
-                        satData={satData} setsatData={setsatData}/>
+                        satData={satData} setsatData={setsatData} log={log} setlog={setlog}/>
                     </div>
             </div>
         )

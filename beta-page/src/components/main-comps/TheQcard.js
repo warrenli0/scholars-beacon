@@ -2,7 +2,7 @@ import arrow from "../../images/Arrow.png"
 import React, { useState, useRef } from "react";
 
 export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQIndex, chosenAnswers, setchosenAnswers, setActData, actData, 
-    setActWeightage, actWeightage, seconds, currProblemSet, choseSAT, satWeightage, setsatWeightage, satData, setsatData}) {
+    setActWeightage, actWeightage, seconds, currProblemSet, choseSAT, satWeightage, setsatWeightage, satData, setsatData, log, setlog}) {
     const [showCard, setshowCard] = useState(true);
     const [selectedChoice, setselectedChoice] = useState('0');
     const [exit, setexit] = useState('0');
@@ -13,6 +13,23 @@ export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
             var setNum = "Set" + currProblemSet;
             setexit('1');
             setbgNum(bgNum + 1);
+
+            // overall log
+            setlog({
+                ...log,
+                [setNum]: {
+                    ...log[setNum],
+                    [prob.id]: {
+                        //...log[setNum][prob.id], should not be getting repeat problems
+                        qTime: (seconds - currseconds),
+                        eTime: 0,
+                        eThumbs: 0,
+                        understood: false,
+                        correct: prob.options[(+selectedChoice)-1].isCorrect,
+                    }
+                }
+            });
+
             if (prob.options[(+selectedChoice)-1].isCorrect) { // correct answer
                 setchosenAnswers([
                     ...chosenAnswers,
@@ -129,6 +146,13 @@ export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
             }
             if (currQIndex == 4) { // last question
                 setTimeout(function(){
+                    setlog({ // update elog
+                        ...log,
+                        [setNum]: {
+                            ...log[setNum],
+                            totalQtime: seconds, // store total qcard time
+                        }
+                    });
                     setcurrQIndex(1); //needed for notepad to work to trigger useeffuect
                     setshowCard(false); // remove qcard after scrolls up
                 }, 1100);

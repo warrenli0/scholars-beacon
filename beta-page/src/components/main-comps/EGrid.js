@@ -6,14 +6,20 @@ import React, { useState, useEffect } from "react";
 
 export default function EGrid({questions, notesArray, setnotesArray, bgNum, setbgNum, chosenAnswers, 
     drawingArray, setdrawingArray, setActData, actData, setActWeightage, actWeightage, currProblemSet,
-    choseSAT, satWeightage, setsatWeightage, satData, setsatData}) {
+    choseSAT, satWeightage, setsatWeightage, satData, setsatData, log, setlog}) {
     const [showEgrid, setshowEgrid] = useState(true);
     const [currQIndex, setcurrQIndex] = useState(0);
+    const [seconds, setSeconds] = useState(-3);
+
     if (bgNum >= 11) { // last question done
         setTimeout(function(){
             setshowEgrid(false); // remove qcard after everything goes away
         }, 1500);
     }
+
+    setTimeout(function(){
+        setSeconds(seconds + 1); // timer lol
+      }, 1000);
 
     useEffect(() => {
         // 5 new problems has been selected, reset vars
@@ -48,7 +54,7 @@ export default function EGrid({questions, notesArray, setnotesArray, bgNum, setb
                     currQIndex={currQIndex} setcurrQIndex={setcurrQIndex} chosenAnswers={chosenAnswers} 
                     setActData={setActData} actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage}
                     currProblemSet={currProblemSet} choseSAT={choseSAT} satWeightage={satWeightage} setsatWeightage={setsatWeightage} 
-                    satData={satData} setsatData={setsatData}/>
+                    satData={satData} setsatData={setsatData} log={log} setlog={setlog} seconds={seconds}/>
                 </div>
             </div>
         )

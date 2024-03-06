@@ -102,7 +102,7 @@ function ScoreChart({v, actScores, actData, choseSAT, satScores, satData}) {
 }
 
 export default function Dashboard({showDashoard, setshowDashoard, actScores, actData, actWeightage, currProblemSet, setcurrProblemSet, choseSAT,
-    satWeightage, satScores, satData}) {
+    satWeightage, satScores, satData, setshowThx, log, setlog}) {
     const [graphID, setgraphID] = useState('1');
     const [exit, setexit] = useState('0');
     const [pieData, setpieData] = useState({
@@ -510,6 +510,14 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
         }
     };
 
+    function finish() {
+        setlog({ // update elog
+            ...log,
+            totalSolved: (currProblemSet * 5),
+        });
+        setshowThx(true);
+    }
+
     if (showDashoard) {
         // different version if its SAT or ACT
         return (
@@ -718,7 +726,7 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                     <img src={beach}/>
                 </div>
                 <div className='dash-cont'>
-                    <img src={cont}/>
+                    <img src={cont} onClick={() => {finish()}}/>
                 </div>
             </div>
         ) 

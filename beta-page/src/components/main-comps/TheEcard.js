@@ -7,19 +7,42 @@ import red_thumbs_down from "../../images/red-thumbs-down.png"
 import React, { useState, useRef } from "react";
 
 export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQIndex, chosenAnswers, setActData, actData, setActWeightage, actWeightage,
-    currProblemSet, choseSAT, satWeightage, setsatWeightage, satData, setsatData}) {
+    currProblemSet, choseSAT, satWeightage, setsatWeightage, satData, setsatData, log, setlog, seconds}) {
     const [showCard, setshowCard] = useState(true);
     const [exit, setexit] = useState('0');
     const [thumbUp, setthumbUp] = useState('0');
     const [thumbDown, setthumbDown] = useState('0');
     const [checked, setchecked] = useState(false);
     const [mobile, setmobile] = useState('0');
+    const [currseconds, setcurrseconds] = useState(0);
 
     function nextQ() {
         if (exit == '0' || exit == '2') {
             setexit('1');
             setbgNum(bgNum + 1);
             var setNum = "Set" + currProblemSet;
+
+            var thum = 0;
+            if (thumbUp == '1') {
+                thum = 1;
+            } else if (thumbDown == '1') {
+                thum = 2;
+            }
+             // update log
+             setlog({
+                ...log,
+                [setNum]: {
+                    ...log[setNum],
+                    [prob.id]: {
+                        ...log[setNum][prob.id],
+                        eTime: (seconds - currseconds),
+                        eThumbs: thum,
+                        understood: checked,
+                    }
+                }
+            });
+            setcurrseconds(seconds);
+
             // update understood value
             if (checked) {
                 if (choseSAT) { // SAT
@@ -95,6 +118,13 @@ export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
             }
 
             if (currQIndex == 4) { // last question
+                setlog({ // update elog
+                    ...log,
+                    [setNum]: {
+                        ...log[setNum],
+                        totalEtime: seconds, // store total qcard time
+                    }
+                });
                 setTimeout(function(){
                     setshowCard(false); // remove qcard after scrolls up
                 }, 1500);

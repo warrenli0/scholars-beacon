@@ -7,7 +7,8 @@ import React, { useState, useEffect } from "react";
 
 export default function Display({questions, showQCards, setshowQCards, notesArray, setnotesArray, 
   chosenAnswers, setchosenAnswers, drawingArray, setdrawingArray, setshowDashoard, setActData, actData, 
-  setActWeightage, actWeightage, currProblemSet, choseSAT, satWeightage, setsatWeightage, satData, setsatData}) {
+  setActWeightage, actWeightage, currProblemSet, choseSAT, satWeightage, setsatWeightage, satData, setsatData,
+  log, setlog}) {
     const [bgNum, setbgNum] = useState(0);
 
     useEffect(() => {
@@ -54,12 +55,13 @@ export default function Display({questions, showQCards, setshowQCards, notesArra
                 chosenAnswers={chosenAnswers} setchosenAnswers={setchosenAnswers} drawingArray={drawingArray} 
                 setdrawingArray={setdrawingArray} setActData={setActData} actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage}
                 currProblemSet={currProblemSet} choseSAT={choseSAT} satWeightage={satWeightage} setsatWeightage={setsatWeightage} 
-                satData={satData} setsatData={setsatData}/>
+                satData={satData} setsatData={setsatData} log={log} setlog={setlog}/>
 
                 <EGrid questions={questions} notesArray={notesArray} setnotesArray={setnotesArray} bgNum={bgNum} setbgNum={setbgNum} 
                 chosenAnswers={chosenAnswers} drawingArray={drawingArray} setdrawingArray={setdrawingArray} setActData={setActData} 
                 actData={actData} setActWeightage={setActWeightage} actWeightage={actWeightage} currProblemSet={currProblemSet}
-                choseSAT={choseSAT} satWeightage={satWeightage} setsatWeightage={setsatWeightage} satData={satData} setsatData={setsatData}/>
+                choseSAT={choseSAT} satWeightage={satWeightage} setsatWeightage={setsatWeightage} satData={satData} setsatData={setsatData}
+                log={log} setlog={setlog}/>
 
             </div>
         )
