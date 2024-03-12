@@ -20,6 +20,71 @@ export default function ThxPage({showThx, setshowThx, choseSAT, actScores, actDa
         console.log("first beta button pushed:", firstBetaButton);
     }
 
+    /*
+    log variable : {
+
+        Set1: {
+            problemId1: {
+                qTime: 10,
+                eTime: 5,
+                eThumbs: 0,
+                understood: false,
+                correct: true,
+            },
+            totalQtime: 30,
+            totalEtime: 20, 
+        },
+        totalSolved: 5
+    
+    }*/
+
+    /* EXAMPLE:
+        {
+            "Set1": {
+                "1": {
+                "qTime": 3,
+                "eTime": 3,
+                "eThumbs": 0,
+                "understood": false,
+                "correct": false
+                },
+                "2": {
+                "qTime": 2,
+                "eTime": 2,
+                "eThumbs": 0,
+                "understood": false,
+                "correct": false
+                },
+                "3": {
+                "qTime": 3,
+                "eTime": 2,
+                "eThumbs": 0,
+                "understood": false,
+                "correct": false
+                },
+                "4": {
+                "qTime": 3,
+                "eTime": 2,
+                "eThumbs": 0,
+                "understood": false,
+                "correct": true
+                },
+                "5": {
+                "qTime": 3,
+                "eTime": 3,
+                "eThumbs": 0,
+                "understood": false,
+                "correct": false
+                },
+                "totalQtime": 14,
+                "totalEtime": 12
+            },
+            "totalSolved": 5
+            }
+
+    */
+    
+
     function Enter() {
         // send data
         console.log("beep boop");
