@@ -22,6 +22,14 @@ export default function EGrid({questions, notesArray, setnotesArray, bgNum, setb
       }, 1000);
 
     useEffect(() => {
+        // set seconds to 0, time to show ecards
+        if (bgNum == 6) {
+            setSeconds(-1);
+            console.log("done");
+        }
+    }, [bgNum]);
+
+    useEffect(() => {
         // 5 new problems has been selected, reset vars
         if (currProblemSet > 1) {
           setcurrQIndex(0);

@@ -45,7 +45,7 @@ export default function EnterSat({showEnterSAT, setshowEnterSAT, chooseSATorACT,
             }
         } else { // next page
             if (exit == '0'){ // in case someone tries to click a couple buttons
-                setSatScores([eng, mat]); // update scores
+                setSatScores([+eng, +mat]); // update scores
                 // set weightages
                 eng = +eng;
                 mat = +mat;

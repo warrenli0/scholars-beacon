@@ -70,7 +70,7 @@ export default function EnterAct({showEnterACT, setshowEnterACT, chooseSATorACT,
             }
         } else { // next page
             if (exit == '0'){ // in case someone tries to click a couple buttons
-                setActScores([wri, mat, red, sci]); // update scores
+                setActScores([+wri, +mat, +red, +sci]); // update scores
                 // get weightages
                 var lis = [[+wri, "English", 25],[+mat, "Math", 25],[+red, "Reading", 25],[+sci, "Science", 25]] 
                 lis.sort(function(a,b){return a[0]<(b[0]);}); // sort from greatest to least

@@ -145,14 +145,24 @@ export default function TheQcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
                 }
             }
             if (currQIndex == 4) { // last question
+                // update log
+                setlog({
+                    ...log,
+                    [setNum]: {
+                        ...log[setNum],
+                        [prob.id]: {
+                            //...log[setNum][prob.id], should not be getting repeat problems
+                            qTime: (seconds - currseconds),
+                            eTime: 0,
+                            eThumbs: 0,
+                            understood: false,
+                            correct: prob.options[(+selectedChoice)-1].isCorrect,
+                        },
+                        totalQtime: seconds, // store total qcard time
+                    }
+                });
+
                 setTimeout(function(){
-                    setlog({ // update elog
-                        ...log,
-                        [setNum]: {
-                            ...log[setNum],
-                            totalQtime: seconds, // store total qcard time
-                        }
-                    });
                     setcurrQIndex(1); //needed for notepad to work to trigger useeffuect
                     setshowCard(false); // remove qcard after scrolls up
                 }, 1100);

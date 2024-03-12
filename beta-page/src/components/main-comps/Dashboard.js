@@ -76,7 +76,7 @@ function ScoreChart({v, actScores, actData, choseSAT, satScores, satData}) {
             <div className={'score-style score-cont'+v}>
                 <div className='score-head'>
                     <h2 style={{color: colors[v]}}>{types[v]}</h2> 
-                    <h2>{+(actScores[v])}</h2>
+                    <h2>{(actScores[v])}</h2>
                 </div>
                 <div className='correct-chart'>
                     <h3>{actData[types[v]]["Overall"][1]}/{actData[types[v]]["Overall"][0]} Correct</h3>
@@ -530,11 +530,11 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                 </div>
                 <div className='eng-header' version={+(choseSAT)}>
                     <h2>English</h2> 
-                    <h2>{+(satScores[0])}</h2>
+                    <h2>{(satScores[0])}</h2> 
                 </div>
                 <div className='mat-header' version={+(choseSAT)}>
                     <h2>Math</h2> 
-                    <h2>{+(satScores[1])}</h2>
+                    <h2>{(satScores[1])}</h2>
                 </div>
                 <ScoreChart v={0} actScores={actScores} actData={actData} choseSAT={choseSAT} satScores={satScores} satData={satData}/>
                 <ScoreChart v={1} actScores={actScores} actData={actData} choseSAT={choseSAT} satScores={satScores} satData={satData}/>

@@ -118,13 +118,21 @@ export default function TheEcard({prob, bgNum, setbgNum, currQIndex, setcurrQInd
             }
 
             if (currQIndex == 4) { // last question
-                setlog({ // update elog
+                // update log
+                setlog({
                     ...log,
                     [setNum]: {
                         ...log[setNum],
+                        [prob.id]: {
+                            ...log[setNum][prob.id],
+                            eTime: (seconds - currseconds),
+                            eThumbs: thum,
+                            understood: checked,
+                        },
                         totalEtime: seconds, // store total qcard time
                     }
                 });
+               
                 setTimeout(function(){
                     setshowCard(false); // remove qcard after scrolls up
                 }, 1500);
