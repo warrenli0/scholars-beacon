@@ -21,13 +21,15 @@ export default function ThxPage({showThx, setshowThx, choseSAT, actScores, actDa
     }
 
     /*
+    for ethumbs, 0 means nothing chosen, 1 means thumbs up, 2 means thumbs down
+
     log variable : {
 
         Set1: {
             problemId1: {
                 qTime: 10,
                 eTime: 5,
-                eThumbs: 0,
+                eThumbs: 0, 
                 understood: false,
                 correct: true,
             },

@@ -27,7 +27,8 @@ function Content({version, calc, currQIndex, notesArray, setnotesArray, bgNum, d
 
     useEffect(() => {
         if (calculatorRef.current) {
-            const calculator = window.Desmos.GraphingCalculator(calculatorRef.current, {"keypad": false, "border": false});
+            // TODO: REMOVE COMMENT
+            //const calculator = window.Desmos.GraphingCalculator(calculatorRef.current, {"keypad": false, "border": false});
         }
     }, []);
 

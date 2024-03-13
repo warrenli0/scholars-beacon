@@ -29,7 +29,7 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
             setquestions([
               {
                 id: 1,
-                text: "SAT: Maria is staying at a hotel that charges $99.95 per night plus tax for a room. A tax of 8% is applied to the room rate, and an additional onetime untaxed fee of $5.00 is charged by the hotel. Which of the following represents Maria’s total charge, in dollars, for staying x nights?",
+                text: "Maria is staying at a hotel that charges $99.95 per night plus tax for a room. A tax of 8% is applied to the room rate, and an additional onetime untaxed fee of $5.00 is charged by the hotel. Which of the following represents Maria’s total charge, in dollars, for staying x nights?",
                 options: [
                   { id: 0, text: "(99.95 + 0.08x) + 5", isCorrect: false },
                   { id: 1, text: "1.08(99.95x) + 5", isCorrect: true },
