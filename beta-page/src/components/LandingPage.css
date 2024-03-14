@@ -462,7 +462,7 @@ html, body {
     
 }
 .ocean-text input {
-    width: 40%;
+    width: 35%;
     height: 30%;
     padding: 0 10px;
     font-weight: 600;
@@ -507,7 +507,7 @@ html, body {
     color:gold; 
 }
 .ocean-submit[dis="disabled"] {
-    cursor: auto;
+    visibility: hidden;
 }
 .ocean-submit[dis="disabled"]:hover {
     color: white;
@@ -595,20 +595,41 @@ html, body {
     .ocean-content h1 {
         font-size: 20px;
     }
+    .ocean-button {
+        font-size: 20px;
+    }
+    .scuba-peng {
+        max-height: 50%;
+        max-width: 50%;
+    }
+    .ocean-text h2{
+        font-size: 20px;
+    }
+    .ocean-text input {
+        width: 60%;
+    }
 
     .ocean-content {
-        grid-template-columns: 50% 50%;
-        grid-template-rows: 10% 45% 45%;
+        grid-template-columns: 1fr;
+        grid-template-rows: 10% 35% 35% 20%;
     }
     .ocean-header{
-        order: 1;
-    }
-    .five-probs{
-        order: 2;
-        align-items: center;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 1;
+        grid-row-end: 1;
     }
     .ocean-scuba-png{
-        order: 3;
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 2;
+        grid-row-end: 2;
+    }
+    .grad-peng {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        grid-row-start: 3;
+        grid-row-end: 3;
     }
     .join-disc {
         order: 4;

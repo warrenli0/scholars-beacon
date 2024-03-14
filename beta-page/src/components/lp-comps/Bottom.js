@@ -10,7 +10,7 @@ import grad_bubble from '../../images/bubble-grad-peng.png';
 import useFadeIn from '../../hooks/useFadeIn';
 import { useRef, useState } from "react";
 
-export default function Bottom({setShowTopWave, setshowLandingPage, setWavesFinished, setfirstBetaButton}) {
+export default function Bottom({setShowTopWave, setshowLandingPage, setWavesFinished, setfirstBetaButton, setshowMission}) {
 
     const divRef = useRef(null);
     useFadeIn(divRef);
@@ -26,6 +26,7 @@ export default function Bottom({setShowTopWave, setshowLandingPage, setWavesFini
     const [closedchestpointer, setclosedChestPointer] = useState("pointer");
     const [email, setEmail] = useState("");
     const [dis, setdis] = useState("");
+    const [emMsg, setemMsg] = useState("Know when we release:");
 
     function openTreasure() {
         setclosedChestOpa(0);
@@ -42,12 +43,23 @@ export default function Bottom({setShowTopWave, setshowLandingPage, setWavesFini
         }, 3000);
     };
 
+    function missionTime() {
+        setWavesFinished(false);
+        setShowTopWave(1);
+        setTimeout(function(){
+            setshowMission(true); // show mission page
+            window.scrollTo(0, 0);
+            setshowLandingPage(false);
+        }, 2500);
+    }
+
     function submitEmail() {
         const ele = document.getElementById("user_email");
         //console.log(ele.validity.valid);
-        if (ele.validity.valid && dis!="disabled") {
+        if (ele.validity.valid && dis!="disabled" && email != "") {
             //console.log("valid,", email);
             setdis("disabled");
+            setemMsg("Thank you — we will be in touch soon!");
             //WAR: email is var with user email
         }
     }   
@@ -65,7 +77,7 @@ export default function Bottom({setShowTopWave, setshowLandingPage, setWavesFini
             </div>
             <div className="ocean-content">
                 <div className='ocean-header' ref={divRef}>
-                    <h1 className="hidden">Launching in late March! Stay tuned!</h1>
+                    <h1 className="hidden">Launching in early April! Stay tuned!</h1>
                     <h3 className="hidden">let's achieve your dream score.</h3>
                 </div>
                 <div className="ocean-img ocean-scuba-png" ref={divRef2}>
@@ -74,14 +86,14 @@ export default function Bottom({setShowTopWave, setshowLandingPage, setWavesFini
                         <h2 className='ocean-button' onClick={() => waveTime()}>Try Our Beta</h2>
                     </div>
                 </div>
-                <div className="ocean-img ocean-scuba-png" ref={divRef3}>
+                <div className="ocean-img ocean-scuba-png grad-peng" ref={divRef3}>
                     <img src={grad_bubble} className="hidden2 scuba-peng seawweedo2"/>
                     <div className='hidden2'>
-                        <h2 className='ocean-button' onClick={() => waveTime()}>Our Mission</h2>
+                        <h2 className='ocean-button' onClick={() => missionTime()}>Our Mission</h2>
                     </div>
                 </div>
                 <div className="ocean-text five-probs" ref={divRef4}>
-                    <h2 className="hidden">Know when we release:</h2>
+                    <h2 className="hidden">{emMsg}</h2>
                     <input className="hidden" disabled={dis} type="email" id="user_email" placeholder="Your email" onChange={(e) => setEmail(e.target.value)}></input>
                     <div className="hidden"> 
                         <h4 className="ocean-submit" dis={dis} onClick={() => submitEmail()}>Submit</h4>

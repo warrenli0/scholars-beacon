@@ -85,6 +85,15 @@ export default function ThxPage({showThx, setshowThx, choseSAT, actScores, actDa
             }
 
     */
+
+            /*
+            <div className="thx-cont">
+                <h1>hi wo-lun</h1>
+                <input type="text" id="user-email" onChange={(e) => setemail(e.target.value)}></input>
+                <button onClick={() => {Enter()}}>Submit</button>
+                <ShowData />
+            </div>
+            */
     
 
     function Enter() {
@@ -92,15 +101,24 @@ export default function ThxPage({showThx, setshowThx, choseSAT, actScores, actDa
         console.log("beep boop");
     }
 
+    function submitEmail() {
+
+    }
+
     if (showThx) {
         
         return (
-            <div className="thx-cont">
-                <h1>hi wo-lun</h1>
-                <input type="text" id="user-email" onChange={(e) => setemail(e.target.value)}></input>
-                <button onClick={() => {Enter()}}>Submit</button>
-                <ShowData />
-            </div>
+            <div className='mis-top'>
+                    <div className='mis-text-cont'>
+                        <div className='mis-text'>
+                            <h1>You have completed the Beta!</h1>
+                            <h1>As promised, input your email below to be in the first group of students to use the full product in early April.</h1>
+                            <input type="email" id="user_email" placeholder="Your email"></input>
+                            <h4 className="ocean-submit" onClick={() => submitEmail()}>Submit</h4>
+                        </div>
+                    </div>
+                    <div className='mis-beach'></div>
+                </div>
         )
     }
 }   

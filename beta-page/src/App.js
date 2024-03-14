@@ -4,6 +4,7 @@ import LandingPage from "./components/LandingPage";
 import WaveTransition from "./components/WaveTransition";
 import Start from "./components/Start";
 import Main from "./components/Main";
+import Mission from "./components/Mission";
 
 function App() {
   // Properties
@@ -12,6 +13,7 @@ function App() {
   const [wavesFinished, setWavesFinished] = useState(false);
   const [showStart, setshowwholeStart] = useState(true); // true
   const [showMain, setshowMain] = useState('0'); // 1
+  const [showMission, setshowMission] = useState(false); 
 
   const [actScores, setActScores] = useState(["","","",""]);
   const [actWeightage, setActWeightage] = useState([25, 25, 25, 25]);
@@ -51,15 +53,17 @@ function App() {
 
   return (
     <div>
-      <LandingPage setShowTopWave={setShowTopWave} showLP={showLP} setshowLandingPage={setshowLandingPage} setWavesFinished={setWavesFinished} setfirstBetaButton={setfirstBetaButton}/>
+      <LandingPage setShowTopWave={setShowTopWave} showLP={showLP} setshowLandingPage={setshowLandingPage} setWavesFinished={setWavesFinished} 
+      setfirstBetaButton={setfirstBetaButton} setshowMission={setshowMission}/>
       <WaveTransition showTopWave={showTopWave} wavesFinished={wavesFinished} setWavesFinished={setWavesFinished}/>
       <Start showLP={showLP} setshowMain={setshowMain} showMain={showMain} showStart={showStart} setshowwholeStart={setshowwholeStart} 
       setActScores={setActScores} setSatScores={setSatScores} setActWeightage={setActWeightage} setchoseSAT={setchoseSAT}
-      setsatWeightage={setsatWeightage}/>
+      setsatWeightage={setsatWeightage} showMission={showMission}/>
       <Main showMain={showMain} actScores={actScores} setActData={setActData} actData={actData} setActWeightage={setActWeightage} 
       actWeightage={actWeightage} currProblemSet={currProblemSet} setcurrProblemSet={setcurrProblemSet} choseSAT={choseSAT}
       satWeightage={satWeightage} setsatWeightage={setsatWeightage} satScores={satScores} satData={satData} setsatData={setsatData}
       firstBetaButton={firstBetaButton} log={log} setlog={setlog}/>
+      <Mission showMission={showMission} setshowMission={setshowMission}/>
     </div>
   )
 }
