@@ -323,3 +323,62 @@
 .mis-social img{
    max-height: 100%;
 }
+
+.mis-q {
+    text-align: center;
+}
+
+.mis-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mis-inputs {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px;
+}
+
+.mis-inputs input {
+    width: 90%;
+    height: 50px;
+    padding: 0 10px;
+    font-weight: 600;
+    font-size: large;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 10px;
+}
+.mis-inputs select {
+    width: 50%;
+    height: 50px;
+    padding: 0 10px;
+    font-weight: 600;
+    font-size: large;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 10px;
+    background-color: white;
+}
+.mis-inputs input::placeholder {
+    color: #747474; 
+    font-weight: 800;
+    font-size: large;
+}
+.mis-inputs input:invalid {
+    background-color: ivory;
+    border: none;
+    outline: 2px solid red;
+    border-radius: 5px;
+}
+.mis-inputs input:disabled {
+    background-color: ivory;
+}
+.mis-msg {
+    width: 90%;
+    margin: 0 auto;
+}

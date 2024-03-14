@@ -5,6 +5,9 @@
     background-color: wheat;
 }
 
+.mis-text h4{
+    display: inline;
+}
 .mis-text input {
     width: 50%;
     height: 10%;
@@ -18,4 +21,13 @@
     color: #747474; 
     font-weight: 800;
     font-size: large;
+}
+.mis-text input:invalid {
+    background-color: ivory;
+    border: none;
+    outline: 2px solid red;
+    border-radius: 5px;
+  }
+.mis-text input:disabled {
+    background-color: ivory;
 }

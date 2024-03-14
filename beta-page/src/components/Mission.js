@@ -21,6 +21,7 @@ export default function Mission({showMission, setshowMission}) {
     const [email, setEmail] = useState("");
     const [friendEmail, setfriendEmail] = useState("");
     const [dis, setdis] = useState("");
+    const [personType, setpersonType] = useState("Parent");
 
     function buttonOne() {
 
@@ -224,6 +225,31 @@ export default function Mission({showMission, setshowMission}) {
                         <img src={disc} className=""/>
                         <img src={insta} className=""/>
                     </div>
+                    
+                    {/* 
+                    <div className='mis-q'>
+                        <h2>Inquiries or Questions?</h2>
+                    </div>
+                    <div className='mis-form'>
+                        <div className='mis-inputs'>
+                            <input type="email" id="friend_email" placeholder="Name" value={friendEmail} onChange={(e) => setfriendEmail(e.target.value)}></input>
+                            <select id="mis-type" onChange={(e=> setpersonType(e.target.value))}>
+                                <option value = "Parent">Parent</option>
+                                <option value = "Student">Student</option>
+                                <option value = "Tutor">Tutor</option>
+                                <option value = "Other">Other</option>
+                            </select>
+                        </div>
+                        <div className='mis-inputs'>
+                            <input type="email" id="friend_email" placeholder="Email" value={friendEmail} onChange={(e) => setfriendEmail(e.target.value)}></input>
+                            <input type="email" id="friend_email" placeholder="Company / School" value={friendEmail} onChange={(e) => setfriendEmail(e.target.value)}></input>
+                        </div>
+                        <textarea className='mis-msg'></textarea>  
+                    </div>
+                    <h1>temp</h1>
+                    
+                    */}
+                    
                 </div>
             </div>
         )
