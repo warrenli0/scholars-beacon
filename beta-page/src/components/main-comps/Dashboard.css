@@ -39,6 +39,9 @@ body {
     align-items: center;
     justify-content: center;
 }
+.dash-header[fin='1'] {
+    animation: mid-to-left 3s forwards;
+}
 
 .eng-header {
     display: none;
@@ -53,8 +56,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(60%);
+    padding-top: 20%;
     gap: 10px;
+}
+.eng-header[fin='1'] {
+    animation: mid-to-left 3s forwards;
 }
 
 .mat-header {
@@ -70,8 +76,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(60%);
+    padding-top: 20%;
     gap: 10px;
+}
+.mat-header[fin='1'] {
+    animation: mid-to-left 3s forwards;
 }
 
 .dash-pie {
@@ -85,6 +94,9 @@ body {
     grid-template-columns: minmax(0, 1fr); /* triggers reszize horizontally somehow https://itnext.io/a-fully-responsive-chart-js-chart-91a72ef5e2c */
     grid-template-rows: 25% 75% ;    
     padding-top: 6.5%;
+}
+.dash-pie[fin='1'] {
+    animation: mid-to-left 3s forwards;
 }
 .dash-pie h4 {
     font-weight: 500;
@@ -131,6 +143,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+.score-style[fin='1'] {
+    animation: mid-to-left 3s forwards;
 }
 .score-cont0 {
     grid-column-start: 1;
@@ -213,6 +228,9 @@ body {
     grid-template-rows: 10% 90%;    
     position: relative;
 }
+.line-chart[fin='1'] {
+    animation: mid-to-left 3s forwards;
+}
 .line-chart h3 {
     color: white;
     text-align: center;
@@ -284,11 +302,15 @@ body {
     align-items: center;
     justify-content: center;
 }
+.dash-try[fin='1'] {
+    animation: mid-to-left 3s forwards;
+}
 .dash-try h1 {
     position: relative;
     z-index: 3;
     cursor: pointer;
     transition: all .2s;
+    text-align: center;
 }
 .dash-try h1:hover {
     transform: scale(1.1);
@@ -323,6 +345,9 @@ body {
     padding-bottom: 10px;
     z-index: 1;
 }
+.dash-cont[fin='1']{
+    display: none;
+}
 .dash-cont img{
     width: 120px;
     cursor: pointer;
@@ -330,6 +355,83 @@ body {
 }
 .dash-cont img:hover {
     transform: scale(1.1);
+}
+
+.dash-done {
+    display: none;
+    grid-column-start: 3;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+.dash-done[fin='1'] {
+    display: flex;
+    flex-direction: column;
+    padding-top: 15%;
+    gap: 30px;
+    animation: right-to-mid 3s forwards; 
+}
+.dash-done h1 {
+    color: #59E0FF;
+}
+.dash-done h2 {
+    color: white;
+    font-weight: 500;
+}
+.dash-done input {
+    width: 80%;
+    height: 50px;
+    padding: 0 10px;
+    font-weight: 600;
+    font-size: large;
+    border-radius: 10px;
+    border: none;
+}
+.dash-done input::placeholder {
+    color: #747474; 
+    font-weight: 800;
+    font-size: large;
+}
+.dash-done input:invalid {
+    background-color: ivory;
+    border: none;
+    outline: 2px solid red;
+    border-radius: 5px;
+  }
+.dash-done input:disabled {
+    background-color: ivory;
+}
+
+.dash-submit {
+    font-weight: 500;
+    cursor: pointer;
+    transition: color .2s;
+    color: white;
+    display: inline;
+}
+.dash-submit:hover {
+    color:gold; 
+}
+.dash-submit[dis="disabled"] {
+    visibility: hidden;
+}
+
+.dash-tree-container {
+    display: none;
+    position: absolute;
+    bottom: 40px;
+    height: 80%;    
+
+    width: 30vw;
+    min-width: 350px;
+    min-height: 366px;
+    max-width: 50vw;
+    /*border: solid red 5px;*/
+}
+.dash-tree-container[fin='1'] {
+    display: block;
+    z-index: 4;
+    animation: right-to-mid 3s forwards; 
 }
 
 @keyframes down-dash {
@@ -347,5 +449,28 @@ body {
     }
     100% {
         top: calc(-100dvh);
+    }
+}
+
+@keyframes mid-to-left {
+    0% {
+        transform: translateX(0);
+    }
+    99% {
+        transform: translateX(-120vw);
+    }
+    100% {
+        transform: translateX(-120vw);
+        visibility: hidden;
+    }
+}
+
+
+@keyframes right-to-mid {
+    0% {
+        transform: translateX(120vw);
+    }
+    100% {
+        transform: translateX(0);
     }
 }

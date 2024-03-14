@@ -104,12 +104,12 @@ export default function ThxPage({showThx, setshowThx, choseSAT, actScores, actDa
 
     //WAR : email
     function submitEmail() {
-
+        // var: email
     }
 
     //WAR : fEmail for referral
-    function friendEmail() {
-
+    function friendEmail() {    
+        // var: fEmail
     }
 
     if (showThx) {
@@ -120,7 +120,7 @@ export default function ThxPage({showThx, setshowThx, choseSAT, actScores, actDa
                     <div className='mis-text'>
                         <h1>You have completed the Beta!</h1>
                         <h1>As promised, input your email below to be in the first group of students to use the full product in early April.</h1>
-                        <input type="email" id="user_email" placeholder="Your email"></input>
+                        <input type="text" id="user-email" placeholder="Your email" onChange={(e) => setemail(e.target.value)}></input>
                         <div>
                             <h4 className="ocean-submit" onClick={() => submitEmail()}>Submit</h4>
                         </div>

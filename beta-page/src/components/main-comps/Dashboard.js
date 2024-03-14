@@ -1,7 +1,8 @@
 import './Dashboard.css'
-import beach from '../../images/dash-beach.png';
+import beach from '../../images/mission-beach.png';
 import cont from '../../images/dash-continue.png';
 import stars from '../../images/starsbg.png';
+import ping_tree from '../../images/peng-on-tree.png';
 
 import React, { useState, useEffect } from "react";
 import { Chart as ChartJS, defaults } from "chart.js/auto";
@@ -22,7 +23,7 @@ defaults.color = 'white';
     science: [],
 }*/
 
-function ScoreChart({v, actScores, actData, choseSAT, satScores, satData}) {
+function ScoreChart({v, actScores, actData, choseSAT, satScores, satData, fin}) {
     const [types, settypes] = useState(['English', 'Math', 'Reading', 'Science']);
     const types2 = ['Reading', 'Writing', 'Math (no calc)', 'Math (calc)'];
     const types3 = ['Reading', 'Writing', 'No Calc', 'Calc'];
@@ -47,7 +48,7 @@ function ScoreChart({v, actScores, actData, choseSAT, satScores, satData}) {
 
     if (choseSAT) { // SAT
         return (
-            <div className={'score-style score-cont'+v}>
+            <div className={'score-style score-cont'+v} fin={fin}>
                 <div className='score-head'>
                     <h2 style={{color: colors2[v]}}>{types3[v]}</h2> 
                 </div>
@@ -73,7 +74,7 @@ function ScoreChart({v, actScores, actData, choseSAT, satScores, satData}) {
         )
     } else { // ACTs
         return (
-            <div className={'score-style score-cont'+v}>
+            <div className={'score-style score-cont'+v} fin={fin}>
                 <div className='score-head'>
                     <h2 style={{color: colors[v]}}>{types[v]}</h2> 
                     <h2>{(actScores[v])}</h2>
@@ -105,6 +106,11 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
     satWeightage, satScores, satData, setshowThx, log, setlog}) {
     const [graphID, setgraphID] = useState('1');
     const [exit, setexit] = useState('0');
+    const [fin, setfin] = useState('0');
+
+    const [email, setEmail] = useState("");
+    const [dis, setdis] = useState("");
+
     const [pieData, setpieData] = useState({
         labels: ['English', 'Math', 'Reading', 'Science'],
         datasets: [
@@ -511,11 +517,24 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
     };
 
     function finish() {
-        setlog({ // update elog
-            ...log,
-            totalSolved: (currProblemSet * 5),
-        });
-        setshowThx(true);
+        if (fin == '0') {
+            setlog({ // update elog
+                ...log,
+                totalSolved: (currProblemSet * 5),
+            });
+            //setshowThx(true);
+            setfin('1');
+        }
+    }
+
+     //WAR : email
+     function submitEmail() {
+        // var: email
+    }
+
+    //WAR : fEmail for referral
+    function friendEmail() {    
+        // var: fEmail
     }
 
     if (showDashoard) {
@@ -525,22 +544,22 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                 <div className='dash-stars'>
                     <img src={stars}/>
                 </div>
-                <div className='dash-header'>
+                <div className='dash-header' fin={fin}>
                     <h1>Let's <span style={{color: "#FFB800"}}>analyze</span>  how you did...</h1>
                 </div>
-                <div className='eng-header' version={+(choseSAT)}>
+                <div className='eng-header' version={+(choseSAT)} fin={fin}>
                     <h2>English</h2> 
                     <h2>{(satScores[0])}</h2> 
                 </div>
-                <div className='mat-header' version={+(choseSAT)}>
+                <div className='mat-header' version={+(choseSAT)} fin={fin}>
                     <h2>Math</h2> 
                     <h2>{(satScores[1])}</h2>
                 </div>
-                <ScoreChart v={0} actScores={actScores} actData={actData} choseSAT={choseSAT} satScores={satScores} satData={satData}/>
-                <ScoreChart v={1} actScores={actScores} actData={actData} choseSAT={choseSAT} satScores={satScores} satData={satData}/>
-                <ScoreChart v={2} actScores={actScores} actData={actData} choseSAT={choseSAT} satScores={satScores} satData={satData}/>
-                <ScoreChart v={3} actScores={actScores} actData={actData} choseSAT={choseSAT} satScores={satScores} satData={satData}/>
-                <div className='line-chart'>
+                <ScoreChart v={0} actScores={actScores} actData={actData} choseSAT={choseSAT} satScores={satScores} satData={satData} fin={fin}/>
+                <ScoreChart v={1} actScores={actScores} actData={actData} choseSAT={choseSAT} satScores={satScores} satData={satData} fin={fin}/>
+                <ScoreChart v={2} actScores={actScores} actData={actData} choseSAT={choseSAT} satScores={satScores} satData={satData} fin={fin}/>
+                <ScoreChart v={3} actScores={actScores} actData={actData} choseSAT={choseSAT} satScores={satScores} satData={satData} fin={fin}/>
+                <div className='line-chart' fin={fin}>
                     <form className='line-header'>
                         <label htmlFor="cars">Set vs</label>
                         <select name="cars" id="cars" onChange={(e=> setgraphID(e.target.value))}>
@@ -675,7 +694,7 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                         <p>Do one more practice set to compare results!</p>
                     </div>
                 </div>
-                <div className='dash-pie'>
+                <div className='dash-pie' fin={fin}>
                     <div className='pie-text'>
                         <h2>Personalized Algorithm</h2>
                         <h4><i>This is how we determine what questions you get in the future based on your accuracy, understanding, and scores. We prioritize your weak areas and reinforce your strong ones.</i></h4>
@@ -718,14 +737,25 @@ export default function Dashboard({showDashoard, setshowDashoard, actScores, act
                         </div>
                     </div>*/}
                 </div>
-                <div className='dash-try'>
+                <div className='dash-try' fin={fin}>
                     <h1 onClick={() => {tryFive()}}>Try <span style={{color: "#FFB800"}}>5 new</span> problems</h1>
                     <h4><i>adjusted to fit your algorithm!</i></h4>
+                </div>
+                    <div className='dash-tree-container' fin={fin}>
+                    <img src={ping_tree} className="coconut-tree"/>
+                </div>
+                <div className='dash-done' fin={fin}>
+                    <h1>You have completed the <span style={{color: '#FFB800'}}>Beta!</span></h1>
+                    <h2>As promised, input your email below to be in the first group of students to use the full product in late March.</h2>
+                    <input disabled={dis} type="email" id="user_email" placeholder="Your email" onChange={(e) => setEmail(e.target.value)}></input>
+                    <div className=""> 
+                        <h3 className="dash-submit" dis={dis} onClick={() => submitEmail()}>Submit</h3>
+                    </div>
                 </div>
                 <div className='dash-beach'>
                     <img src={beach}/>
                 </div>
-                <div className='dash-cont'>
+                <div className='dash-cont' fin={fin}>
                     <img src={cont} onClick={() => {finish()}}/>
                 </div>
             </div>
