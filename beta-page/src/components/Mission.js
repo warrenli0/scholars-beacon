@@ -225,6 +225,7 @@ export default function Mission({showMission, setshowMission}) {
                         <img src={disc} className=""/>
                         <img src={insta} className=""/>
                     </div>
+                    <div></div>
                     
                     {/* 
                     <div className='mis-q'>

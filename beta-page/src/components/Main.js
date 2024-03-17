@@ -202,7 +202,7 @@ export default function Main({showMain, actScores, setActData, actData, setActWe
                 options: [
                   { id: 0, text: "summer, following", isCorrect: true },
                   { id: 1, text: "summer, and this thawing follows", isCorrect: false },
-                  { id: 2, text: "summer, and such thawing follows", isCorrect: false },
+                  { id: 2, text: "summer, such thawing follows", isCorrect: false },
                   { id: 3, text: "summer and this evidence follows", isCorrect: false },
                 ],
                 type: "Writing",
